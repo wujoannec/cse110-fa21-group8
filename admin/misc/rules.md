@@ -20,7 +20,7 @@
 - *All members will make their deadlines or inform the group if they need help.*
 - *All members will bring up any issues they may be having with another member in a productive manner.*
 
-4. **Specific Team Member Responsibilities/Deadlines**
+4. **Specific Team Member Responsibilities/Deadlines (Optional, but ENCOURAGED!)**
 - *All members will show up to scheduled meetings on time (late with adequate excuse and adequate amount of notice)*
 - *All members will be expected not to procrastinate on given assignments or duties, if time permits.*
 
