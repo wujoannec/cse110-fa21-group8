@@ -9,7 +9,7 @@
 ![Power Point Theme](./src/powerPointThemeFont.png)   
 - Customize PowerPoint Background : [powerPointBackground.png](./src/powerPointBackground.png)
 ## Team Value: 
-- Team Value PowerPoint Slide : [powerPointBackground.pptx](./src/powerPointBackground.pptx)
+- Team Value PowerPoint Slide : [powerPointTeamValues.pptx](./src/powerPointTeamValues.pptx)
 - Screenshot of the Team Value PowerPoint Slide :  
 ![Power Point Theme](./src/powerPointTeamValues.png)    
 ## Team Members (in alphabetical order):
