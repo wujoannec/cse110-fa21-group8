@@ -8,7 +8,10 @@
 - Body Font : Times New Roman   
 ![Power Point Theme](./src/powerPointThemeFont.png)   
 - Customize PowerPoint Background : [powerPointBackground.png](./src/powerPointBackground.png)
-![Power Point Theme](./src/powerPointTheme.png)    
+## Team Value: 
+- Team Value PowerPoint Slide : [powerPointBackground.pptx](./src/powerPointBackground.pptx)
+- Screenshot of the Team Value PowerPoint Slide :  
+![Power Point Theme](./src/powerPointTeamValues.png)    
 ## Team Members (in alphabetical order):
 - ### Adithya Telang : [Software Tester]
   > Adithya is a student at UCSD. His favorite languages are Python, Java, and C++. Especially, he is skilled in Python libraries : Opencv, Sklearn, and Numpy.
