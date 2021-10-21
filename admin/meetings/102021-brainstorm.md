@@ -25,7 +25,7 @@
 - Future Business
   - Update draft of CRUD layout
 ### Discussion Notes:
-- **Feature Separation:**
+**Feature Separation:**\
 CRUD\
 —------------------------------------------------------------------------
 - Create (recipes, forum posts?)
