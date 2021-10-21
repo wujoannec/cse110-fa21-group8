@@ -26,7 +26,7 @@
   - Update draft of CRUD layout
 ### Discussion Notes:
 - **Feature Separation:**
-CRUD 
+CRUD\
 —------------------------------------------------------------------------
 - Create (recipes, forum posts?)
 - User create recipes
@@ -44,7 +44,7 @@ CRUD
 - List of all Recipes
 
 
-Goal (in order of priority)
+Goal (in order of priority)\
 —------------------------------------------------------------------------
 - Search function / filter by tags (tags) //ex: breakfast, dinner, lunch, cuisine type, short
 - Timer
@@ -60,7 +60,7 @@ Goal (in order of priority)
 - Start recipe ?
 
 
-Stretch
+Stretch\
 —------------------------------------------------------------------------
 - Share on social media
 - Cook it again 
