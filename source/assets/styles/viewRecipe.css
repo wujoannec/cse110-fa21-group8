@@ -30,3 +30,50 @@ h2 {
     /*Set maximum height, then have scroll through element*/
 
 }
+
+/*jonny css*/
+
+h1, #metaData {
+    /* display: inline-block; */
+    border-style: solid;
+    border-width: 1mm;
+    text-align: center;
+    display: inline;
+    padding: 1mm;
+    margin: 1mm;
+}
+
+#backArrow, #editOptions {
+    display: inline-block;
+    margin: 2mm 0mm 0mm 2mm;
+}
+ 
+#editOptions {
+    float: right;
+    font-size: 0;   /*removes spaace between btns*/
+}
+
+.editOptionsBtn {
+    border: solid;
+}
+
+.center {
+   display: flex;
+   justify-content: center;
+}
+
+#recipeImg {
+    width: 40vw;
+    height: 40vw;
+    /* height: 50vw; */
+}
+
+.cover {
+    object-fit: cover;
+}
+
+#confirmEdit {
+    border: solid;
+    float: right;
+    
+}

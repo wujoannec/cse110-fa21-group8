@@ -1,13 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
     <head>
-        <meta charset="utf-8">
-        <title></title>
-        <link rel="stylesheet" href="assets/styles/viewRecipe.css">
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+        <title>View Recipe</title>
+        <link rel='stylesheet' href='assets/styles/viewRecipe.css'>
     </head>
     <body>
-    
-        <img id='recipeImg'>
+
+        <input type='image' id='backArrow' src='assets/images/back-arrow.png' alt='back arrow' height='30'>
+        
+        <div id='editOptions'>
+            <input type='image' id='editBtn' class='editOptionsBtn' src='assets/images/back-arrow.png' alt='pencil' height='30'>
+            <input type='image' id='deleteBtn' class='editOptionsBtn' src='assets/images/back-arrow.png' alt='trash' height='30'>
+            <input type='image' id='favBtn' class='editOptionsBtn' src='assets/images/back-arrow.png' alt='star' height='30'>
+        </div>
+
+
+        <div class='center'>
+            <h1>Ice Cream</h1>
+        </div>
+
+        <div class='center'>
+            <p id='metaData'>Servings: 4</p>
+            <p id='metaData'>Cooking Time: 30 minutes</p>
+            <p id='metaData'>by Jonny Tran</p>
+        </div>
+
+        
+        <img id='recipeImg' class='cover' src='assets/images/recipe-img.jpg'>
 
         <article id='ingredientsList'>
             <h2>Ingredients</h2>
@@ -49,6 +71,11 @@
             </div>
         
         </article>
+
+        <div id='confirmEdit'>
+            <button id='saveBtn'>Save</button>
+            <button id='cancelBtn'>Cancel</button>
+        </div>
         
     </body>
 </html>
