@@ -6,17 +6,18 @@
         <meta http-equiv='X-UA-Compatible' content='ie=edge'>
         <title>View Recipe</title>
         <link rel='stylesheet' href='assets/styles/viewRecipe.css'>
+        <script src='assets/scripts/viewRecipe.js' type="module"></script>
+
     </head>
     <body>
 
-        <input type='image' id='backArrow' src='assets/images/back-arrow.png' alt='back arrow' height='30'>
+        <input type='image' id='backArrow' class='iconBtn' src='assets/images/back-arrow.png' alt='back arrow' height='30'>
         
         <div id='editOptions'>
-            <input type='image' id='editBtn' class='editOptionsBtn' src='assets/images/back-arrow.png' alt='pencil' height='30'>
-            <input type='image' id='deleteBtn' class='editOptionsBtn' src='assets/images/back-arrow.png' alt='trash' height='30'>
-            <input type='image' id='favBtn' class='editOptionsBtn' src='assets/images/back-arrow.png' alt='star' height='30'>
+            <input type='image' id='editBtn' class='iconBtn editOptionsBtn' src='assets/images/pencil.png' alt='pencil' height='30'>
+            <input type='image' id='deleteBtn' class='iconBtn editOptionsBtn' src='assets/images/trash.png' alt='trash' height='30'>
+            <input type='image' id='favBtn' class='iconBtn editOptionsBtn' src='assets/images/heart-empty.png' height='30'>
         </div>
-
 
         <div class='center'>
             <h1>Ice Cream</h1>
@@ -48,7 +49,6 @@
                 <input type='checkbox' class='ingredient'>
                 <label for='ingredient3'>Ingredient 3</label>
             </div>
-        
         </article>
 
 

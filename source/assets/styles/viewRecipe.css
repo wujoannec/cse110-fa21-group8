@@ -1,3 +1,15 @@
+/*
+Notes to fix:
+1. Heart full/empty icons don't line up
+2. Borders around editOptionsBtn are doubled in between icons
+3. Icons don't fit theme (looks ugly)
+4. Title isn't centered between nav/edit buttons
+
+*/
+
+body {
+    background-color: lightgreen;
+}
 
 h2 {
     color: blue;
@@ -11,22 +23,28 @@ h2 {
 
 #recipeImg {
     border: solid;
-    width: 50%;
+    /* width: 50%; */
     /* padding: 100%;  1:1 aspect ratio */
-    height: 50px;
-    object-fit: cover;
+    /* height: 50px; */
+    width: 40vw;
+    height: 40vw;
     margin: 3mm 0mm 3mm 0mm;
-}
 
+}
 
 #ingredientsList {
     border: solid;
-    width: 50%;
+    width: 40vw;
+    height: 40vw;
     margin: 3mm 0mm 3mm 0mm;
+
 }
 
 #instructionsList {
     border: dashed;
+    width: 60vw;
+    float: right;
+
     /*Set maximum height, then have scroll through element*/
 
 }
@@ -34,13 +52,17 @@ h2 {
 /*jonny css*/
 
 h1, #metaData {
-    /* display: inline-block; */
     border-style: solid;
     border-width: 1mm;
     text-align: center;
     display: inline;
     padding: 1mm;
     margin: 1mm;
+}
+
+.iconBtn {
+    width: 45px;
+    height: 45px;
 }
 
 #backArrow, #editOptions {
@@ -50,7 +72,7 @@ h1, #metaData {
  
 #editOptions {
     float: right;
-    font-size: 0;   /*removes spaace between btns*/
+    font-size: 0;   /*removes space between btns*/
 }
 
 .editOptionsBtn {
@@ -58,15 +80,11 @@ h1, #metaData {
 }
 
 .center {
+   width: 100%;
    display: flex;
    justify-content: center;
 }
 
-#recipeImg {
-    width: 40vw;
-    height: 40vw;
-    /* height: 50vw; */
-}
 
 .cover {
     object-fit: cover;
@@ -75,5 +93,5 @@ h1, #metaData {
 #confirmEdit {
     border: solid;
     float: right;
-    
+    font-size: 0;   /*removes spaace between btns*/
 }
