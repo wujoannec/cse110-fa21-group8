@@ -1,25 +1,34 @@
-.item1 { grid-area: header; }
-.item2 { grid-area: menu; }
-.item3 { grid-area: main; }
-.item4 { grid-area: right; }
-.item5 { grid-area: footer; }
+.recipe-grid {
+  grid-area: recipes;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: gray;
+  padding: 10px;
+}
 
-.grid-container {
-    display: grid;
-    grid-template-areas:
-      'header header header header'
-      'menu main main main'
-      'menu main main main'
-      'menu main main main';
-    grid-gap: 10px;
-    background-color: #2196F3;
-    padding: 10px;
-    height: 600px;
-  }
+.recipe {
+  background-color: lightgray;
+  border: solid gray;
+  font-size: 12pt;
+  text-align: center;
+  padding: 40px;
+}
 
-.grid-container > div {
-    background-color: lightblue;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
+.head {grid-area: header;}
+.search {grid-area: search;}
+.search-button {grid-area: button;}
+.tags {grid-area: tags;}
+.foot {grid-area: footer;}
+
+.home-grid {
+  display: grid;
+  grid-template-areas:
+    'header header search button'
+    'tags recipes recipes recipes'
+    'tags recipes recipes recipes'
+    'tags recipes recipes recipes'
+    'footer footer footer footer';
+  grid-gap: 10px;
+  background-color: lightgray;
+  padding: 10px;
 }
