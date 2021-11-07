@@ -7,29 +7,28 @@
         <title>View Recipe</title>
         <link rel='stylesheet' href='assets/styles/viewRecipe.css'>
         <script src='assets/scripts/viewRecipe.js' type="module"></script>
-
     </head>
     <body>
+        <nav id='navigation'>
+            <input type='image' id='backArrow' class='iconBtn' src='assets/images/back-arrow.png' alt='back arrow' height='30'>
+            
+            <div id='editOptions'>
+                <input type='image' id='editBtn' class='iconBtn editOptionBtns' src='assets/images/pencil.png' alt='pencil' height='30'>
+                <input type='image' id='deleteBtn' class='iconBtn editOptionBtns' src='assets/images/trash.png' alt='trash' height='30'>
+                <input type='image' id='favBtn' class='iconBtn editOptionBtns' src='assets/images/heart-empty.png' height='30'>
+            </div>
+        </nav>
 
-        <input type='image' id='backArrow' class='iconBtn' src='assets/images/back-arrow.png' alt='back arrow' height='30'>
-        
-        <div id='editOptions'>
-            <input type='image' id='editBtn' class='iconBtn editOptionsBtn' src='assets/images/pencil.png' alt='pencil' height='30'>
-            <input type='image' id='deleteBtn' class='iconBtn editOptionsBtn' src='assets/images/trash.png' alt='trash' height='30'>
-            <input type='image' id='favBtn' class='iconBtn editOptionsBtn' src='assets/images/heart-empty.png' height='30'>
+        <div class='center'>
+            <h1>Ice cream double sundae chocolate surprise with a shot of espresso</h1>
         </div>
 
         <div class='center'>
-            <h1>Ice Cream</h1>
+            <p id='servings' class='metaData'>Servings: 4</p>
+            <p id='cookTime' class='metaData'>Cooking Time: 30 minutes</p>
+            <p id='author' class='metaData'>by Jonny Tran</p>
         </div>
 
-        <div class='center'>
-            <p id='metaData'>Servings: 4</p>
-            <p id='metaData'>Cooking Time: 30 minutes</p>
-            <p id='metaData'>by Jonny Tran</p>
-        </div>
-
-        
         <img id='recipeImg' class='cover' src='assets/images/recipe-img.jpg'>
 
         <article id='ingredientsList'>
@@ -51,7 +50,6 @@
             </div>
         </article>
 
-
         <article id='instructionsList'>
             <h2>Instructions</h2>
             
@@ -69,13 +67,11 @@
                 <input type='checkbox' class='instruction'>
                 <label for='instruction3'>instruction 3</label>
             </div>
-        
         </article>
 
         <div id='confirmEdit'>
             <button id='saveBtn'>Save</button>
             <button id='cancelBtn'>Cancel</button>
         </div>
-        
     </body>
 </html>
