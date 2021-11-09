@@ -43,10 +43,18 @@
   color: blue;
 }
 
+.navbar {
+  grid-area: bar;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+  background-color: lightskyblue;
+}
+
 .home-grid {
   display: grid;
   grid-template-areas:
     'logo header header search search button'
+    'tags tags bar bar bar bar'
     'tags tags recipes recipes recipes recipes'
     'tags tags recipes recipes recipes recipes'
     'tags tags recipes recipes recipes recipes'
