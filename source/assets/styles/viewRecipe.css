@@ -86,16 +86,16 @@ h2 {
 }
 
 #ingredientsList {
+    grid-row: 2/3;
     border: solid;
-    width: 40vw;
-    height: 40vw;
-    margin: 3mm 0mm 3mm 0mm;
-
+    /* width: 100vw; */
+    /* margin: 3mm 0mm 3mm 0mm; */
 }
 
 #instructionsList {
+    grid-row: 3/4;
     border: dashed;
-    width: 60vw;
+    /* width: 100vw; */
     float: right;
 
     /*Set maximum height, then have scroll through element*/
@@ -109,8 +109,23 @@ h2 {
 }
 
 #recipeImg {
+    grid-row: 1/2;
     border: solid;
-    width: 40vw;
-    height: 40vw;
-    margin: 3mm 0mm 3mm 0mm;
+    /* width: 100vw; */
+    height: 100vw;
+    /* margin: 3mm 0mm 3mm 0mm; */
+}
+
+
+.recipeCardGrid>*{
+    width: 80vw;
+    margin: 10vw;
+}
+
+/*Layout*/
+
+
+.recipeCardGrid {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
 }
