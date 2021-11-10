@@ -45,7 +45,7 @@ function init() {
             recipe.setAttribute('height', recipeWH);
 
             // Add given recipe
-            recipeElements[i].textContent = recipes[pointer].substr(22);
+            recipeElements[i].textContent = recipes[pointer].substr(22, recipes[pointer].substr(22).length - 4).replace('-', ' ');
             recipeElements[i].appendChild(recipe);
 
             // Update pointer
