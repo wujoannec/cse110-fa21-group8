@@ -1,131 +1,130 @@
 /*
-Notes to fix:
-Aesthetic:
-1. Heart full/empty icons don't line up
-2. Borders around editOptionsBtn are doubled in between icons
-3. Icons don't fit theme (looks ugly)
-4. Title isn't centered between nav/edit buttons
-5. Divider between metaData, what to do about blank info
-6. Border/box-shadow/padding around icons messes up spacing on nav bar
-7. Website title/Devil Dishes consistent nav bar between pages
-8. Put delete button once in edit page (not as icon)
+To do:
+1. editRecipe skeleton
+2. navbar icon/grid sizing
+3. Change recipeCardGrid layout for desktop
 
-Function:
-5. Layout img/ingred/instructions 
-    a. (use grid?)
-    b. media query
-6. Scroll bar for text lists
-
-Justifications:
-1. Want to always see both, scroll bars
+Backlog:
+4. Wrap text on metaData
+5. Aesthetic (color scheme, Logo align between pages) [meet with entire UX team]
 */
 
 body {
-    background-color: white;
     margin: 0;
+    background-color: antiquewhite;
 }
 
-h1, .metaData {
-    border-width: 1mm;
-    text-align: center;
-    display: inline;
-    padding: 1mm;
+article[id='ingredients'] > h2, article[id='instructions'] > h2 {
+    margin: 2mm 0mm 2mm 3mm;
+
+}
+
+article[id='ingredients'] > div, article[id='instructions'] > div {
+    margin: 0 0 2mm 5mm;
+    display: flex;
+}
+
+/************/
+/** NAVBAR **/
+/************/
+#navbarGrid {
+    display: grid;
+    grid-auto-columns: auto;
+    background-color: lightblue;
+    
+    /* sticky navbar */
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* gives margin to first element after navbar so doesn't overlap */
+#navbarGrid + * {
+    margin-top: 65px;
+}
+
+#navbarGrid > * {
+    height: 33px;
+    width: 33px;
+    border: solid;
     margin: 1mm;
 }
 
-h1 {
-    font-size: calc(16px + 5vw);
+#backBtn {
+    grid-column: 1/2;
 }
 
-h2 {
-    color: blue;
-    padding: 0 0 0 3mm;
+#logo {
+    grid-column: 2/3;
 }
 
-.checklistItem {
-    color: red;
-    padding: 0 0 0 3mm;
+#editBtn {
+    grid-column: 3/4;
 }
 
-.center {
-   width: 100%;
-   display: flex;
-   justify-content: center;
+#favBtn {
+    grid-column: 4/5;
 }
 
-.cover {
-    object-fit: cover;
+/***********/
+/** TITLE **/
+/***********/
+#title {
+    text-align: center;
+    padding: 1mm;
+    margin-bottom: 1mm;
+    font-size: calc(12px + 5vw);
 }
 
-.editOptionBtns {
-    /* border: solid; */
-    box-shadow: inset 0 0 0 0.3em;
-    /* padding: 2mm 2mm 2mm 2mm; */
+#metaData > * {
+    text-align: center;
+    padding: 1mm;
+    font-size: calc(10px + 1.2vw);
 }
 
-.iconBtn {
-    width: 45px;
-    height: 45px;
-    margin: 2mm 0mm 2mm 0mm;
+#metaData {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3mm 5mm 12mm 0mm;
 }
 
-#backArrow, #editOptions {
-    display: inline-block;
-    /* margin: 2mm 2mm 2mm 2mm; */
+/*****************/
+/** RECIPE CARD **/
+/*****************/
+#recipeCardGrid {
+    display: grid;
+    grid-auto-rows: auto;
+    width: 95%;
+    
+    /* center recipe card */
+    margin: auto;
+    place-items: center;
 }
 
-#confirmEdit {
+#recipeCardGrid > * {
+    width: 100%;
+    margin: 1mm 0;
     border: solid;
-    float: right;
-    font-size: 0;  /*removes space between btns*/
-}
- 
-#editOptions {
-    float: right;
-    font-size: 0;  /*removes space between btns*/
-}
-
-#ingredientsList {
-    grid-row: 2/3;
-    border: solid;
-    /* width: 100vw; */
-    /* margin: 3mm 0mm 3mm 0mm; */
-}
-
-#instructionsList {
-    grid-row: 3/4;
-    border: dashed;
-    /* width: 100vw; */
-    float: right;
-
-    /*Set maximum height, then have scroll through element*/
-}
-
-#navigation {
-    /* border: dashed; */
-    background-color: lightblue;
-    padding: 2mm;
-    font-size: 0;
+    background-color: wheat;
 }
 
 #recipeImg {
     grid-row: 1/2;
-    border: solid;
-    /* width: 100vw; */
-    height: 100vw;
-    /* margin: 3mm 0mm 3mm 0mm; */
+}
+
+#ingredients {
+    grid-row: 2/3;
+}
+
+#instructions {
+    grid-row: 3/4;
 }
 
 
-.recipeCardGrid>*{
-    width: 80vw;
-    margin: 10vw;
-}
+/******************/
+/** DESKTOP VIEW **/
+/******************/
+@media(min-width: 770px) {
 
-/*Layout*/
-
-
-.recipeCardGrid {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
 }

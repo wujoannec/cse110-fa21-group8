@@ -9,119 +9,60 @@
         <script src='assets/scripts/viewRecipe.js' type="module"></script>
     </head>
     <body>
-        <nav id='navigation'>
-            <input type='image' id='backArrow' class='iconBtn' src='assets/images/back-arrow.png' alt='back arrow' height='30'>
-            
-            <div id='editOptions'>
-                <input type='image' id='editBtn' class='iconBtn editOptionBtns' src='assets/images/pencil.png' alt='pencil' height='30'>
-                <input type='image' id='deleteBtn' class='iconBtn editOptionBtns' src='assets/images/trash.png' alt='trash' height='30'>
-                <input type='image' id='favBtn' class='iconBtn editOptionBtns' src='assets/images/heart-empty.png' height='30'>
-            </div>
+        <nav id='navbarGrid'>
+            <input type='image' id='backBtn' src='assets/images/backArrow.png'>
+            <img id='logo' src='assets/images/logo.png'>
+            <input type='image' id='editBtn' src='assets/images/pencil.png'>
+            <input type='image' id='favBtn' src='assets/images/heartEmpty.png'>
         </nav>
-
-        <div class='center'>
-            <h1>Ice cream double sundae chocolate surprise with a shot of espresso</h1>
+        
+        <h1 id='title'>Ice cream double sundae chocolate surprise with a shot of espresso</h1>
+        <div id='metaData'>
+            <p><b>Servings:</b> <span id='servings'>4</span> &nbsp</p>
+            <p><b>Cooking Time:</b> <span id='cookTime'>30</span> minutes &nbsp</p>
+            <p><b>Author:</b> <span id='author'>Jonny Tran</span></p>
         </div>
 
-        <div class='center'>
-            <p id='servings' class='metaData'>Servings: 4</p>
-            <p id='cookTime' class='metaData'>Cooking Time: 30 minutes</p>
-            <p id='author' class='metaData'>by Jonny Tran</p>
-        </div>
+        <div id='recipeCardGrid'>
+            <img id='recipeImg' src='assets/images/recipeImg.jpg'>
 
-        <div class='recipeCardGrid'>
-
-            <img id='recipeImg' class='cover' src='assets/images/recipe-img.jpg'>
-
-            <article id='ingredientsList'>
+            <article id='ingredients'>
                 <h2>Ingredients</h2>
                 
-                <div id='ingredient1' class='checklistItem'>
-                    <input type='checkbox' class='ingredient'>
+                <div id='ingredient1'>
+                    <input type='checkbox'>
                     <label for='ingredient1'>Ingredient 1</label>
                 </div>
                 
-                <div id='ingredient2' class='checklistItem'>
-                    <input type='checkbox' class='ingredient'>
+                <div id='ingredient2'>
+                    <input type='checkbox'>
                     <label for='ingredient2'>Ingredient 2</label>
                 </div>
 
-                <div id='ingredient3' class='checklistItem'>
-                    <input type='checkbox' class='ingredient'>
+                <div id='ingredient3'>
+                    <input type='checkbox'>
                     <label for='ingredient3'>Ingredient 3</label>
                 </div>
             </article>
 
-            <article id='instructionsList'>
+            <article id='instructions'>
                 <h2>Instructions</h2>
                 
-                <div id='instruction1' class='checklistItem'>
-                    <input type='checkbox' class='instruction'>
-                    <label for='instruction1'>instruction 1</label>
+                <div id='instruction1'>
+                    <input type='checkbox'>
+                    <label for='instruction1'>Instruction 1</label>
                 </div>
                 
-                <div id='instruction2' class='checklistItem'>
-                    <input type='checkbox' class='instruction'>
-                    <label for='instruction2'>instruction 2</label>
+                <div id='instruction2'>
+                    <input type='checkbox'>
+                    <label for='instruction2'>Instruction 2</label>
                 </div>
 
-                <div id='instruction3' class='checklistItem'>
-                    <input type='checkbox' class='instruction'>
-                    <label for='instruction3'>instruction 3</label>
+                <div id='instruction3'>
+                    <input type='checkbox'>
+                    <label for='instruction3'>Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 </label>
                 </div>
             </article>
-
         </div>
-
-        <div id='confirmEdit'>
-            <button id='saveBtn'>Save</button>
-            <button id='cancelBtn'>Cancel</button>
-        </div>
-
-        </br>
-
-        <div class="recipeCardGridSmall">
-            <div id="recipeImgSmall"> IMAGE
-            </div>
-            <article id='ingredientsListSmall'>
-            <h2>Ingredients</h2>
-            
-            <div id='ingredient1' class='checklistItem'>
-                <input type='checkbox' class='ingredient'>
-                <label for='ingredient1'>Ingredient 1</label>
-            </div>
-            
-            <div id='ingredient2' class='checklistItem'>
-                <input type='checkbox' class='ingredient'>
-                <label for='ingredient2'>Ingredient 2</label>
-            </div>
-
-            <div id='ingredient3' class='checklistItem'>
-                <input type='checkbox' class='ingredient'>
-                <label for='ingredient3'>Ingredient 3</label>
-            </div>
-        </article>
-
-        <article id='instructionsListSmall'>
-            <h2>Instructions</h2>
-            
-            <div id='instruction1' class='checklistItem'>
-                <input type='checkbox' class='instruction'>
-                <label for='instruction1'>instruction 1</label>
-            </div>
-            
-            <div id='instruction2' class='checklistItem'>
-                <input type='checkbox' class='instruction'>
-                <label for='instruction2'>instruction 2</label>
-            </div>
-
-            <div id='instruction3' class='checklistItem'>
-                <input type='checkbox' class='instruction'>
-                <label for='instruction3'>instruction 3</label>
-            </div>
-        </article>
-        </div>
-
-
     </body>
 </html>
