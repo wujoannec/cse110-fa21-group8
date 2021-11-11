@@ -1,0 +1,65 @@
+.recipe-grid {
+  grid-area: recipes;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: blue;
+  padding: 10px;
+}
+
+.recipe {
+  background-color: lightgray;
+  border: solid blue;
+  font-size: 12pt;
+  text-align: center;
+  padding: 40px;
+}
+
+@font-face {
+  font-family: 'lobster';
+  src: url("assets/Lobster/Lobster-Regular.ttf");
+}
+
+.head {
+  grid-area: header;
+  font-size: 24pt;
+  font-family: 'lobster';
+  color: blue;
+}
+
+.logo {grid-area: logo;}
+.search {grid-area: search;}
+.search-button {grid-area: button;}
+
+.tags {
+  grid-area: tags;
+  background-color: lightgray;
+  border: solid blue;
+  text-align: center;
+}
+
+.foot {
+  grid-area: footer;
+  background-color: lightskyblue;
+  color: blue;
+}
+
+.navbar {
+  grid-area: bar;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+  background-color: lightskyblue;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-areas:
+    'logo header header search search button'
+    'tags tags bar bar bar bar'
+    'tags tags recipes recipes recipes recipes'
+    'tags tags recipes recipes recipes recipes'
+    'tags tags recipes recipes recipes recipes'
+    'footer footer footer footer footer footer';
+  grid-gap: 10px;
+  background-color: lightskyblue;
+  padding: 10px;
+}
