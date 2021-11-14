@@ -41,20 +41,26 @@ body {
 }
 
 @font-face {
-  font-family: 'lobster';
+  font-family: "lobster";
   src: url("assets/Lobster/Lobster-Regular.ttf");
 }
 
 .head {
   grid-area: header;
   font-size: 24pt;
-  font-family: 'lobster';
+  font-family: "lobster";
   color: blue;
 }
 
-.logo {grid-area: logo;}
-.search {grid-area: search;}
-.search-button {grid-area: button;}
+.logo {
+  grid-area: logo;
+}
+.search {
+  grid-area: search;
+}
+.search-button {
+  grid-area: button;
+}
 
 /* .tags {
   grid-area: tags;
@@ -79,12 +85,12 @@ body {
 .home-grid {
   display: grid;
   grid-template-areas:
-    'logo logo a b search search button'
-    'tags recipes recipes recipes recipes recipes recipes'
-    'tags recipes recipes recipes recipes recipes recipes'
-    'tags recipes recipes recipes recipes recipes recipes'
-    'tags bar bar bar bar bar bar'
-    'footer footer footer footer footer footer footer';
+    "logo logo a b search search button"
+    "tags recipes recipes recipes recipes recipes recipes"
+    "tags recipes recipes recipes recipes recipes recipes"
+    "tags recipes recipes recipes recipes recipes recipes"
+    "tags bar bar bar bar bar bar"
+    "footer footer footer footer footer footer footer";
   grid-gap: 10px;
   /* background-color: lightskyblue; */
   padding: 10px;
@@ -157,6 +163,11 @@ body {
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 595px) {
-  .sidenav {padding-top: 15px; width: 100px; /* Set the width of the sidebar */}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+    width: 100px; /* Set the width of the sidebar */
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
