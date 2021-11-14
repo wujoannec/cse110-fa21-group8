@@ -6,7 +6,7 @@ To do:
 3. Change recipeCardGrid layout for desktop
 
 Backlog:
-4. Wrap text on metaData
+4. Wrap text on metaData (make grid instead of text box)
 5. Aesthetic (color scheme, Logo align between pages) [meet with entire UX team]
 */
 
@@ -59,11 +59,11 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     width: 150px;
 }
 
-#editBtn {
+#confirmBtn {
     grid-column: 4/5;
 }
 
-#favBtn {
+#cancelBtn {
     grid-column: 5/6;
 }
 
@@ -71,10 +71,15 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 /** TITLE **/
 /***********/
 #title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     padding: 1mm;
-    margin-bottom: 1mm;
     font-size: calc(12px + 5vw);
+    width: 90%;
+    resize: vertical;
+    height: 185px;
 }
 
 #metaData > * {
@@ -86,30 +91,34 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 #metaData {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin: 3mm 5mm 0mm 0mm;
 }
-
 
 /**********/
 /** TAGS **/
 /**********/
-#tags {
+.tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0mm 0mm 10mm 0mm;
 }
 
-#tags > * {
+.tags > * {
     border: solid;
     border-radius: 5mm;
     border-color: burlywood;
     margin: 1mm;
     padding: 1mm;
     background-color: wheat;
+    opacity: 0.5;
+    cursor: pointer;
 }
 
+.selected {
+    opacity: 1;
+}
 
 /*****************/
 /** RECIPE CARD **/
@@ -135,12 +144,20 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     grid-row: 1/2;
 }
 
-#ingredients {
+#uploadImg {
     grid-row: 2/3;
 }
 
-#instructions {
+/* #imageEdit {
+    grid-row: 1/2;
+} */
+
+#ingredients {
     grid-row: 3/4;
+}
+
+#instructions {
+    grid-row: 4/5;
 }
 
 
