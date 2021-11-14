@@ -1,88 +1,131 @@
 @media only screen and (min-width: 513px) and (max-width: 768px) {
-  .recipe-grid {
-    grid-area: recipes;
-    display: grid;
-    grid-template-columns: auto auto;
-    background-color: blue;
-    padding: 10px;
+    .recipe-grid {
+      grid-area: recipes;
+      display: grid;
+      grid-template-columns: auto auto;
+      background-color: blue;
+      padding: 10px;
+    }
   }
-}
-
-@media only screen and (max-width: 512px) {
-  .recipe-grid {
-    grid-area: recipes;
-    display: grid;
-    grid-template-columns: auto;
-    background-color: blue;
-    padding: 10px;
+  
+  @media only screen and (max-width: 512px) {
+    .recipe-grid {
+      grid-area: recipes;
+      display: grid;
+      grid-template-columns: auto;
+      background-color: blue;
+      padding: 10px;
+    }
   }
-}
-
-@media only screen and (min-width: 769px) {
-  .recipe-grid {
-    grid-area: recipes;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: blue;
-    padding: 10px;
+  
+  @media only screen and (min-width: 769px) {
+    .recipe-grid {
+      grid-area: recipes;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      background-color: blue;
+      padding: 10px;
+    }
   }
-}
-
-.recipe {
-  background-color: lightgray;
-  border: solid blue;
-  font-size: 12pt;
-  text-align: center;
-  padding: 40px;
-}
-
-@font-face {
-  font-family: 'lobster';
-  src: url("assets/Lobster/Lobster-Regular.ttf");
-}
-
-.head {
-  grid-area: header;
-  font-size: 24pt;
-  font-family: 'lobster';
-  color: blue;
-}
-
-.logo {grid-area: logo;}
-.search {grid-area: search;}
-.search-button {grid-area: button;}
-
-.tags {
-  grid-area: tags;
-  background-color: lightgray;
-  border: solid blue;
-  text-align: center;
-}
-
-.foot {
-  grid-area: footer;
-  background-color: lightskyblue;
-  color: blue;
-}
-
-.navbar {
-  grid-area: bar;
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto;
-  background-color: lightskyblue;
-}
-
-.home-grid {
-  display: grid;
-  grid-template-areas:
-    'logo header header search search button'
-    'tags tags recipes recipes recipes recipes'
-    'tags tags recipes recipes recipes recipes'
-    'tags tags recipes recipes recipes recipes'
-    'tags tags bar bar bar bar'
-    'footer footer footer footer footer footer';
-  grid-gap: 10px;
-  min-height: 668px;
-  background-color: lightskyblue;
-  padding: 10px;
-}
+  
+  .recipe {
+    background-color: lightgray;
+    border: solid blue;
+    font-size: 12pt;
+    text-align: center;
+    padding: 90px;
+  }
+  
+  @font-face {
+    font-family: 'lobster';
+    src: url("assets/Lobster/Lobster-Regular.ttf");
+  }
+  
+  .head {
+    grid-area: header;
+    font-size: 24pt;
+    font-family: 'lobster';
+    color: blue;
+  }
+  
+  .logo {grid-area: logo;}
+  .search {grid-area: search;}
+  .search-button {grid-area: button;}
+  
+  /* .tags {
+    grid-area: tags;
+    background-color: lightgray;
+    border: solid blue;
+    text-align: center;
+  } */
+  
+  .foot {
+    grid-area: footer;
+    background-color: lightskyblue;
+    color: blue;
+  }
+  
+  .navbar {
+    grid-area: bar;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    background-color: lightskyblue;
+  }
+  
+  .home-grid {
+    display: grid;
+    grid-template-areas:
+      'logo header search search button'
+      'tags bar bar bar bar'
+      'tags recipes recipes recipes recipes'
+      'tags recipes recipes recipes recipes'
+      'tags recipes recipes recipes recipes'
+      'footer footer footer footer footer';
+    grid-gap: 10px;
+    min-height: 668px;
+    background-color: lightskyblue;
+    padding: 10px;
+    
+  }
+  
+  /* The sidebar menu */
+  .sidenav {
+    /* grid-area: tags; */
+    /* overflow: hidden; */
+    /* height: 100%; Full-height: remove this if you want "auto" height */
+    height: 83%;
+    position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 4; /* Stay at the top */
+    left: 0;
+    /* background-color: #111; Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    overflow-y: scroll;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 20px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 595px) {
+    .sidenav {padding-top: 15px; width: 100px; /* Set the width of the sidebar */}
+    .sidenav a {font-size: 18px;}
+   
+  
+    
+  }
