@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require("puppeteer");
 module.exports = async function () {
   // According to
   // (1) https://jestjs.io/docs/puppeteer
@@ -6,7 +6,7 @@ module.exports = async function () {
   // (3) https://stackoverflow.com/questions/62228154/puppeteer-fails-to-initiate-in-github-actions
   browser = await puppeteer.launch({
     headless: false,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
     slowMo: 25,
   });
 };
