@@ -1,9 +1,31 @@
-.recipe-grid {
-  grid-area: recipes;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: blue;
-  padding: 10px;
+@media only screen and (min-width: 513px) and (max-width: 768px) {
+  .recipe-grid {
+    grid-area: recipes;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: blue;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 512px) {
+  .recipe-grid {
+    grid-area: recipes;
+    display: grid;
+    grid-template-columns: auto;
+    background-color: blue;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .recipe-grid {
+    grid-area: recipes;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: blue;
+    padding: 10px;
+  }
 }
 
 .recipe {
@@ -54,12 +76,13 @@
   display: grid;
   grid-template-areas:
     'logo header header search search button'
+    'tags tags recipes recipes recipes recipes'
+    'tags tags recipes recipes recipes recipes'
+    'tags tags recipes recipes recipes recipes'
     'tags tags bar bar bar bar'
-    'tags tags recipes recipes recipes recipes'
-    'tags tags recipes recipes recipes recipes'
-    'tags tags recipes recipes recipes recipes'
     'footer footer footer footer footer footer';
   grid-gap: 10px;
+  min-height: 668px;
   background-color: lightskyblue;
   padding: 10px;
 }
