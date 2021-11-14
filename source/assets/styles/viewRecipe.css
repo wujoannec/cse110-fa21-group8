@@ -1,5 +1,6 @@
 /*
 To do:
+0. Tags metaData
 1. editRecipe skeleton
 2. navbar icon/grid sizing
 3. Change recipeCardGrid layout for desktop
@@ -29,8 +30,8 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 /************/
 #navbarGrid {
     display: grid;
-    grid-auto-columns: auto;
     background-color: lightblue;
+    grid-template-columns: 5px 50px auto 50px 50px;
     
     /* sticky navbar */
     position: fixed;
@@ -46,24 +47,24 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 #navbarGrid > * {
     height: 33px;
     width: 33px;
-    border: solid;
     margin: 1mm;
 }
 
 #backBtn {
-    grid-column: 1/2;
-}
-
-#logo {
     grid-column: 2/3;
 }
 
-#editBtn {
+#logo {
     grid-column: 3/4;
+    width: 150px;
+}
+
+#editBtn {
+    grid-column: 4/5;
 }
 
 #favBtn {
-    grid-column: 4/5;
+    grid-column: 5/6;
 }
 
 /***********/
@@ -86,8 +87,29 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 3mm 5mm 12mm 0mm;
+    margin: 3mm 5mm 0mm 0mm;
 }
+
+
+/**********/
+/** TAGS **/
+/**********/
+#tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0mm 0mm 10mm 0mm;
+}
+
+#tags > * {
+    border: solid;
+    border-radius: 5mm;
+    border-color: burlywood;
+    margin: 1mm;
+    padding: 1mm;
+    background-color: wheat;
+}
+
 
 /*****************/
 /** RECIPE CARD **/
