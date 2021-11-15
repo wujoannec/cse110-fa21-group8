@@ -1,6 +1,7 @@
 # Currently functional
 1. Code style checking & fixing via prettier   
-(available in VSCode IDE & Git Action on push to the staging branch)
+(available in VSCode IDE & Git Action on push to the staging branch)  
+(guidelines: params and returns in description above function, camelCase, curly braces underneath functions/statements, and semicolons)
 3. E2E test via puppeteer and jest   
 (available in VSCode IDE & Git Action on push to staging branch) 
 5. Auto deployment to self-hosting server via Git Hook  
