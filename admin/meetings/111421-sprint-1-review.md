@@ -32,13 +32,14 @@ Testing:
 ### Future Goals:
 
 Frontend and Backend:
+- Brooks and Amjad continue to work through apis
 - user login system
 - database storing
 - info for recipe cards hooked up (make functions for us to call when info needed)
 - Em and Jonny want to meet with backend to connect things with design -> maybe polish some visuals
 - Jonny and Ryan want to tap into a bit of backend (ie recipe management, tags, switching pages) based on skeletons
-- Joanne plans to make the polished "home" page which is very similar to explore (currently we have explore for MVP),  meet with backend to answer questions about our work, AESTHETIC changes
+- Joanne plans to make the polished "home" page which is very similar to explore (currently has explore for MVP),  meet with backend to answer questions about design work, AESTHETIC changes
 
 Testing:
 - Terry and Jim want to further improve workflow
-- ditch TestCafe for more basic unit testing (ie jest)
+- ditch TestCafe for more basic unit testing (ie npm/jest) and update changes with Adithya
