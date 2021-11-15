@@ -9,7 +9,9 @@
 1. Linting & Code quality tool
 3. Updating E2E testing code based on the UI variation
 4. Unit testing (backend functions)
-# Workflow Instruction  
+# Workflow flowchart
+![phase1.drawio.png](phase1.drawio.png)
+# Workflow instruction  
 First, manually create new [BRANCH] from [staging] branch on https://github.com/cse110-fa21-group8/cse110-fa21-group8 as needed  
 - **_Important_** :  
   - Make sure you ALWAYS create a new branch from the [staging] branch  
