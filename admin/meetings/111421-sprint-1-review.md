@@ -42,14 +42,3 @@ Frontend and Backend:
 Testing:
 - further improve workflow
 - ditch TestCafe for more basic unit testing (ie jest)
-
-## ADRs
-- **jest** for basic user testing
-- **MPA** for simpler page management
-- **MongoDB** for proper storage of recipes
-
-## CI/CD Pipeline
-1. push to remote server
-2. push to GitHub
-3. Since in staging branch, you can push anything
-4. if tests pass, then merge to main (manually) and publish
