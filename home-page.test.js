@@ -6,6 +6,17 @@ describe("Basic user flow for Website", () => {
     );
   });
 
+  // Keep checking whether there is some "ERROR" in the console log
+  page.on("console", (message) => {
+    const logMsg =
+      message.type() + " " + message.location().url + " " + message.text();
+    const logType = message.type();
+    if (logType === "error") {
+      console.log(logMsg);
+    }
+    expect(message.type()).not.toBe("error");
+  });
+
   // Expected number of recipes on each page
   const numRecipes = 2;
 
