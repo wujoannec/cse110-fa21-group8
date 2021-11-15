@@ -40,5 +40,5 @@ Frontend and Backend:
 - Joanne plans to make the polished "home" page which is very similar to explore (currently we have explore for MVP),  meet with backend to answer questions about our work, AESTHETIC changes
 
 Testing:
-- further improve workflow
+- Terry and Jim want to further improve workflow
 - ditch TestCafe for more basic unit testing (ie jest)
