@@ -10,7 +10,7 @@
   },
   "scripts": {
     "home-page-staging-test": "jest home-page-staging.test.js",
-    "home-page-test": "jest home-page-staging.test.js"
+    "home-page-test": "jest home-page.test.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
