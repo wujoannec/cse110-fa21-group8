@@ -2,7 +2,7 @@ describe("Basic user flow for Website", () => {
   // First, visit the website
   beforeAll(async () => {
     await page.goto(
-      "https://testing.tianyuezhang1997.site/cse110-fa21-group8/home-page/source/home-page"
+      "https://testing.tianyuezhang1997.site/cse110-fa21-group8/home-page-staging/source/home-page"
     );
   });
 
