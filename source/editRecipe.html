@@ -19,6 +19,7 @@
         <textarea id='title'>Ice cream double sundae chocolate surprise with a shot of espresso</textarea>
 
         <div id='metaData'>
+            <!-- Limit input servings to 3 digits (999 people), cookTime to 4 digits (9,999 minutes), make size of input box just longer than max input length -->
             <p><b>Servings:</b> <br><input type='text' id='servings' size='3' maxlength='2'></span> &nbsp;</p>
             <p><b>Cooking Time:</b> <br><input type='text' id='cookTime' size='5' maxlength='4'></span> minutes &nbsp;</p>
             <p><b>Author:</b> <br><input type='text' id='author' size='10'></span></p>
@@ -64,7 +65,7 @@
                 </div>
 
                 <div>
-                    <input type='button' value='+'>
+                    <input type='button' id='addIngredient' value='+'>
                 </div>
             </article>
 
@@ -84,7 +85,7 @@
                 </div>
 
                 <div>
-                    <input type='button' value='+'>
+                    <input type='button' id='addInstruction' value='+'>
                 </div>
             </article>
         </div>

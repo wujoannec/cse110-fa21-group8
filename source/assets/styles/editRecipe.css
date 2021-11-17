@@ -1,13 +1,10 @@
 /*
 To do:
-0. Tags metaData
-1. editRecipe skeleton
-2. navbar icon/grid sizing
-3. Change recipeCardGrid layout for desktop
-
-Backlog:
-4. Wrap text on metaData (make grid instead of text box)
-5. Aesthetic (color scheme, Logo align between pages) [meet with entire UX team]
+1. Ability to change order of instructions/ingredients items
+2. Fix sizing of input fields
+3. Wrap text on metaData (make grid instead of text box)
+4. Aesthetic (color scheme, Logo align between pages)
+5. Change recipeCardGrid layout for desktop
 */
 
 body {
