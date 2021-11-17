@@ -9,7 +9,8 @@
     "puppeteer": "^11.0.0"
   },
   "scripts": {
-    "test": "jest"
+    "home-page-staging-test": "jest home-page-staging.test.js",
+    "home-page-test": "jest home-page-staging.test.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
