@@ -1,8 +1,8 @@
-name: on-push-home-page-staging
+name: on-push-home-page
 on:
   push:
     branches:
-      - home-page-staging
+      - home-page
 jobs:
   UI_test:
     name: Test home-page branch
