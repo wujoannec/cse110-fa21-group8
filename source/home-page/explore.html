@@ -5,7 +5,8 @@
     <meta lang="utf-8" />
     <link rel="icon" href="assets/logo.jpg" />
     <link rel="stylesheet" href="style.css" />
-    <script src="scripts/home.js"></script>
+    <!-- <script src="scripts/home.js"></script> -->
+    <script src="assets/API_Demo-main/spnr_search.js" type="module"></script>
   </head>
   <body>
     <main>
@@ -78,10 +79,24 @@
             <label for="temp">Placeholder</label><br />
           </div>
         </div>
-        <input class="search" />
-        <button class="search-button">
+
+        <!-- Search API Installment -->
+        <input class="search" id="query"><button class="search-button" id="search"><img src="assets/search.png" width="40px" height="40px" /></button>
+        <select class="drop-down" name="all kinds of search" id="selector">
+            <option value="recipes/complexSearch?query=">Recipes</option>
+            <option value="food/ingredients/search?query=">Ingredients</option>
+            <!---option value="food/products/search?query=">Products</option--->
+            <option value="food/menuItems/search?query=">Menu Items</option>
+        </select>
+        <div id="result"></div>
+        <div id="detail"></div>
+        <a href="" id="sourceLink"></a>
+        <!-- Search API Installment -->
+
+        <!-- <input class="search" /> -->
+        <!-- <button class="search-button">
           <img src="assets/search.png" width="40px" height="40px" />
-        </button>
+        </button> -->
         <div class="recipe-grid">
           <div class="recipe">Recipe</div>
           <div class="recipe">Recipe</div>

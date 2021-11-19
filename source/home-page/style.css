@@ -62,6 +62,10 @@ body {
   grid-area: button;
 }
 
+.drop-down {
+  grid-area: drop;
+}
+
 /* .tags {
   grid-area: tags;
   background-color: antiquewhite;
@@ -85,12 +89,12 @@ body {
 .home-grid {
   display: grid;
   grid-template-areas:
-    "logo logo a b search search button"
-    "tags recipes recipes recipes recipes recipes recipes"
-    "tags recipes recipes recipes recipes recipes recipes"
-    "tags recipes recipes recipes recipes recipes recipes"
-    "tags bar bar bar bar bar bar"
-    "footer footer footer footer footer footer footer";
+    "logo logo a b search search drop button"
+    "tags recipes recipes recipes recipes recipes recipes recipes"
+    "tags recipes recipes recipes recipes recipes recipes recipes"
+    "tags recipes recipes recipes recipes recipes recipes recipes"
+    "tags bar bar bar bar bar bar bar"
+    "footer footer footer footer footer footer footer footer";
   grid-gap: 10px;
   /* background-color: lightskyblue; */
   padding: 10px;
