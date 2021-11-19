@@ -2,6 +2,10 @@
 ## Kickoff Meeting
 ### 9:45 PM-11:15PM @ Zoom University
 
+### Preview:
+
+![Team Image](unknown.png)
+
 ### Members:
 - [ X] Ryan
 - [ X] Zach
