@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="assets/styles/editRecipe.css" />
+    <script src="assets/scripts/editRecipe.js" type="module"></script>
+  </head>
+  <body>
+    <nav id="navbarGrid">
+      <input type="image" id="backBtn" src="assets/images/backArrow.png" />
+      <img id="logo" src="assets/images/logo.jpg" />
+      <input type="image" id="confirmBtn" src="assets/images/confirm.png" />
+      <input type="image" id="cancelBtn" src="assets/images/cancel.png" />
+    </nav>
+
+    <textarea id="title">
+Ice cream double sundae chocolate surprise with a shot of espresso</textarea
+    >
+
+    <div id="metaData">
+      <!-- Limit input servings to 3 digits (999 people), cookTime to 4 digits (9,999 minutes), make size of input box just longer than max input length -->
+      <p>
+        <b>Servings:</b> <br /><span
+          ><input type="text" id="servings" size="3" maxlength="2"
+        /></span>
+        &nbsp;
+      </p>
+      <p>
+        <b>Cooking Time:</b> <br /><span
+          ><input type="text" id="cookTime" size="5" maxlength="4"
+        /></span>
+        minutes &nbsp;
+      </p>
+      <p>
+        <b>Author:</b> <br /><span
+          ><input type="text" id="author" size="10"
+        /></span>
+      </p>
+    </div>
+
+    <div class="tags">
+      <p class="selected">Breakfastfhasdfhdasfjdsa</p>
+      <p>Breakfastfhasdfhdsa</p>
+      <p>Breakfastfhasdfhdsa</p>
+      <p>Breakfastfhasdfhdsa</p>
+      <p class="selected">Breakfastfhasdfhdsa</p>
+      <p>Breaasfjdsa</p>
+      <p>Breakfastfhasdfhdasfjdsa</p>
+      <p>Breakfastfhasdfhdasffghjfjhgfjfjdsa</p>
+      <p class="selected">Breakfastsfjdsa</p>
+      <p>Breakfastfhasdfhdasfjdsa</p>
+      <p class="selected">Breakfastfhasdfhdasfjdsa</p>
+      <p class="selected">Breakfastfhasdfhdasfjdsa</p>
+      <p>Breakfastfhasdfhdsa</p>
+      <p>Breakfastfhasdfhdsa</p>
+      <p>Breakfastfhasdfhdsa</p>
+    </div>
+
+    <div id="recipeCardGrid">
+      <article id="imageEdit">
+        <img id="recipeImg" src="assets/images/recipeImg.jpg" />
+        <input type="file" id="uploadImg" value="UPLOAD IMAGE" />
+      </article>
+
+      <article id="ingredients">
+        <h2>Ingredients</h2>
+
+        <div id="ingredient1">
+          <input type="text" value="Ingredient 1" />
+        </div>
+
+        <div id="ingredient2">
+          <input type="text" value="Ingredient 2" />
+        </div>
+
+        <div id="ingredient3">
+          <input type="text" value="Ingredient 3" />
+        </div>
+
+        <div>
+          <input type="button" id="addIngredient" value="+" />
+        </div>
+      </article>
+
+      <article id="instructions">
+        <h2>Instructions</h2>
+
+        <div id="instruction1">
+          <input type="text" value="Instruction 1" />
+        </div>
+
+        <div id="instruction2">
+          <input type="text" value="Instruction 2" />
+        </div>
+
+        <div id="instruction3">
+          <input
+            type="text"
+            value="Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 Instruction 3 "
+          />
+        </div>
+
+        <div>
+          <input type="button" id="addInstruction" value="+" />
+        </div>
+      </article>
+    </div>
+  </body>
+</html>
