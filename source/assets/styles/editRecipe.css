@@ -1,24 +1,21 @@
 /*
 To do:
 1. Ability to change order of instructions/ingredients items
-2. Fix sizing of input fields
+2. Fix sizing of input fields (edit)
 3. Wrap text on metaData (make grid instead of text box)
-4. Aesthetic (color scheme, Logo align between pages)
+4. Aesthetic (color scheme, Logo align between pages, height of top bar, font)
+5. Fix logo (transparent, commit to color), fix logo src (Bug)
+6. Bug: home/viewRecipe Pages do not load (on PR) 
+7. Margins on view Recipe recipe card text
+
+Done:
+6. Bug of tags visible over navbar
+
 */
 
 body {
     margin: 0 0 5mm 0;
     background-color: antiquewhite;
-}
-
-article[id='ingredients'] > h2, article[id='instructions'] > h2 {
-    margin: 2mm 0mm 2mm 3mm;
-
-}
-
-article[id='ingredients'] > div, article[id='instructions'] > div {
-    margin: 0 0 2mm 5mm;
-    display: flex;
 }
 
 
@@ -27,13 +24,17 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 /************/
 #navbarGrid {
     display: grid;
-    background-color: lightblue;
+    background-color: rgb(224, 248, 255);
     grid-template-columns: 5px 50px auto 50px 50px;
     
     /* sticky navbar */
     position: fixed;
+    z-index: 1;
     top: 0;
     width: 100%;
+
+    border-bottom: solid;
+    border-width: 1px;
 }
 
 /* gives margin to first element after navbar so doesn't overlap */
@@ -45,6 +46,13 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     height: 33px;
     width: 33px;
     margin: 1mm;
+    
+}
+
+#logo {
+    margin: 0mm;
+    height: 115%;
+    overflow-y: hidden;
 }
 
 #backBtn {
@@ -64,6 +72,24 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     grid-column: 5/6;
 }
 
+
+/********************/
+/** INPUT ELEMENTS **/
+/********************/
+[role='textbox'], #addIngredient, #addInstruction, [type='text']  {
+    background-color: rgb(245, 253, 255);
+    border-radius: 1mm;
+    padding: 2mm;
+    border: solid;
+    border-width: 1px;
+}
+
+#addIngredient, #addInstruction {
+    font-size: large;
+    width: 100%;
+}
+
+
 /***********/
 /** TITLE **/
 /***********/
@@ -76,13 +102,6 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     font-size: calc(12px + 5vw);
     width: 90%;
     resize: vertical;
-    height: 185px;
-}
-
-#metaData > * {
-    text-align: center;
-    padding: 1mm;
-    font-size: calc(10px + 1.2vw);
 }
 
 #metaData {
@@ -91,6 +110,25 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     justify-content: space-around;
     margin: 0mm 5mm 0mm 0mm;
 }
+
+
+#metaData > * {
+    text-align: center;
+    padding: 1mm;
+    font-size: calc(10px + 1.2vw);
+}
+
+
+#author, #cookTime, #servings {
+    display: inline-flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 0.5em;
+    height: 0.5em;
+}
+
+
 
 
 /**********/
@@ -162,6 +200,13 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     grid-row: 3/4;
 }
 
+#ingredients > *, #instructions > * {
+    margin: 2mm 4mm 2mm 4mm;    
+}
+
+#ingredients > h2, #instructions > h2 {
+    margin: 4mm 4mm;
+}
 
 /******************/
 /** DESKTOP VIEW **/
@@ -182,9 +227,6 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     #recipeCardGrid > * {
         width: 100%;
         height: 100%;
-        margin: 1mm 1mm;
-        border: solid;
-        background-color: wheat;
     }
 
     #imageEdit {
