@@ -122,8 +122,17 @@ body {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
-    line-height: 0.5em;
-    height: 0.5em;
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    height: 0.75em;
+}
+
+#author {
+    /* line-height: 0.5em; */
+    
+    max-width: 150px;
+    /* word-wrap: none; */
+    overflow: hidden;
 }
 
 
@@ -204,6 +213,12 @@ body {
 
 #ingredients > h2, #instructions > h2 {
     margin: 4mm 4mm;
+}
+
+#addIngredient, #addInstruction {
+    width: auto;
+    background-color: rgb(223, 221, 221);
+    font-family: 'Times New Roman', Times, serif;
 }
 
 /******************/
