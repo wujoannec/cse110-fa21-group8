@@ -3,7 +3,8 @@ To do:
 1. Ability to change order of instructions/ingredients items
 2. Fix sizing of input fields (edit)
 3. Wrap text on metaData (make grid instead of text box)
-4. Aesthetic (color scheme, Logo align between pages)
+4. Aesthetic (color scheme, Logo align between pages, height of top bar)
+5. Fix logo (transparent, commit to color)
 */
 
 body {
@@ -27,13 +28,17 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 /************/
 #navbarGrid {
     display: grid;
-    background-color: lightblue;
+    background-color: rgb(224, 248, 255);
     grid-template-columns: 5px 50px auto 50px 50px;
     
     /* sticky navbar */
     position: fixed;
+    z-index: 1;
     top: 0;
     width: 100%;
+
+    border-bottom: solid;
+    border-width: 1px;
 }
 
 /* gives margin to first element after navbar so doesn't overlap */
@@ -54,6 +59,9 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 #logo {
     grid-column: 3/4;
     width: 150px;
+    margin: 0mm;
+    height: 115%;
+    overflow-y: hidden;
 }
 
 #editBtn {
@@ -142,6 +150,14 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 
 #instructions {
     grid-row: 3/4;
+}
+
+#ingredients > *, #instructions > * {
+    margin: 2mm 4mm 2mm 4mm;    
+}
+
+#ingredients > h2, #instructions > h2 {
+    margin: 4mm 4mm;
 }
 
 
