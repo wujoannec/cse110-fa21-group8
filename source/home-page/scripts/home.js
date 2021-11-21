@@ -16,7 +16,7 @@ function init() {
     ]
     const recipeGrid = document.querySelector('.recipe-grid');
     const recipeElements = document.querySelectorAll('.recipe');
-    const recipeWH = 60;
+    const recipeWH = '160vw';
     var pointer = 0;
 
     fillGrid();
