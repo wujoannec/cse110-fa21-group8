@@ -74,7 +74,8 @@ body {
 /** INPUT ELEMENTS **/
 /********************/
 [role='textbox'], #addIngredient, #addInstruction, [type='text']  {
-    background-color: rgb(250, 255, 255);
+    /* background-color: rgb(250, 255, 255); */
+    background-color: white;
     border-radius: 1mm;
     padding: 2mm;
     border: solid;
