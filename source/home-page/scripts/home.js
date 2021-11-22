@@ -16,7 +16,7 @@ function init() {
     ]
     const recipeGrid = document.querySelector('.recipe-grid');
     const recipeElements = document.querySelectorAll('.recipe');
-    const recipeWH = '160vw';
+    const recipeWH = '170vw';
     var pointer = 0;
 
     fillGrid();
@@ -27,7 +27,7 @@ function init() {
             if(recipeElements[i].children.length > 0) {
                 if(recipeElements[i].children[0].tagName == 'IMG') {
                     recipeElements[i].removeChild(recipeElements[i].children[0]);
-                    recipeElements[i].textContent = "<EMPTY>"
+                    recipeElements[i].textContent = "\r\n<EMPTY>"
                 }
             }
         }
@@ -43,9 +43,16 @@ function init() {
             recipe.setAttribute('src', recipes[pointer]);
             recipe.setAttribute('width', recipeWH);
             recipe.setAttribute('height', recipeWH);
+            // recipe.style.position = "absolute";
+            // recipe.style.marginTop = "-7em";
+            // recipe.style.marginLeft = "-5em";
+
+
+            // recipe.style.xIndex = "200px"
+
 
             // Add given recipe
-            recipeElements[i].textContent = recipes[pointer].substr(22, recipes[pointer].substr(22).length - 4).replace('-', ' ')+'\r\n\n';
+            recipeElements[i].textContent = '\r\n' + recipes[pointer].substr(22, recipes[pointer].substr(22).length - 4).replace('-', ' ')+'\r\n\n';
             recipeElements[i].appendChild(recipe);
 
             // Update pointer
