@@ -9,20 +9,23 @@ if [[ ${remotes} != *${product}* ]]; then
     echo "to add ${product} as a remote repo before deploying your work"
 fi
 
-deploy_result=`git push product`
-push_result=`git push origin`
+# First, deploy current branch to the testing server 
+deploy_result=`git push --porcelain product`
 
-if [[ ${deploy_result} != *"completed"* ]]; then
+if [[ ${deploy_result} != *"Done"* || ${deploy_result} == *"up to date"* ]]; then
     echo "Error! Failed deploying to the testing server."
-    if [[ ${push_result} != *"completed"* ]]; then
-    echo "Error! Failed pushing to the team repo."
+else
+    echo "Succeed! Great job! Feel free to visit : "
+    echo "         https://testing.tianyuezhang1997.site/cse110-fa21-group8/${currBranch}"
+    echo "to see your deployed work."
+    # After successfully deploying to the testing server 
+    # push current to the team repo
+    push_result=`git push --porcelain origin`
+    if [[ ${push_result} != *"Done"* || ${push_result} == *"up to date"* ]]; then
+        echo "Error! Failed pushing to the team repo."
     else
         echo "Succeed! Great job! Feel free to visit : "
         echo "         https://github.com/cse110-fa21-group8/cse110-fa21-group8/actions"
         echo "to see the testing result of your work"
     fi
-    else
-        echo "Succeed! Great job! Feel free to visit : "
-        echo "         https://testing.tianyuezhang1997.site/cse110-fa21-group8/${currBranch}"
-        echo "to see your deployed work."
 fi
