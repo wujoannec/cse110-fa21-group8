@@ -3,23 +3,18 @@ To do:
 1. Ability to change order of instructions/ingredients items
 2. Fix sizing of input fields (edit)
 3. Wrap text on metaData (make grid instead of text box)
-4. Aesthetic (color scheme, Logo align between pages, height of top bar)
-5. Fix logo (transparent, commit to color)
+4. Aesthetic (color scheme, Logo align between pages, height of top bar, font)
+5. Fix logo (transparent, commit to color), fix logo src (Bug)
+6. Bug: home/viewRecipe Pages do not load (on PR) 
+7. Margins on view Recipe recipe card text
+
+Done:
+6. Bug of tags visible over navbar
 */
 
 body {
     margin: 0 0 5mm 0;
     background-color: antiquewhite;
-}
-
-article[id='ingredients'] > h2, article[id='instructions'] > h2 {
-    margin: 2mm 0mm 2mm 3mm;
-
-}
-
-article[id='ingredients'] > div, article[id='instructions'] > div {
-    margin: 0 0 2mm 5mm;
-    display: flex;
 }
 
 
@@ -50,10 +45,12 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     height: 33px;
     width: 33px;
     margin: 1mm;
+    
 }
 
 #backBtn {
     grid-column: 2/3;
+    cursor: pointer;
 }
 
 #logo {
@@ -64,12 +61,32 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     overflow-y: hidden;
 }
 
-#editBtn {
+#confirmBtn {
     grid-column: 4/5;
 }
 
-#favBtn {
+#cancelBtn {
     grid-column: 5/6;
+    cursor: pointer;
+}
+
+
+/********************/
+/** INPUT ELEMENTS **/
+/********************/
+[role='textbox'], #ingredientBtns > *, #instructionBtns > *, [type='text'], #deleteRecipeBtn {
+    background-color: white;
+    border-radius: 1mm;
+    padding: 2mm;
+    border: solid;
+    border-width: 1px;
+}
+
+#ingredientBtns > *, #instructionBtns > * {
+    font-size: large;
+    width: 5em;
+    display: inline;
+    background-color: rgb(224, 248, 255);
 }
 
 
@@ -77,10 +94,21 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 /** TITLE **/
 /***********/
 #title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     padding: 1mm;
-    margin-bottom: 1mm;
     font-size: calc(12px + 5vw);
+    width: 90%;
+    resize: vertical;
+}
+
+#metaData {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0mm 5mm 0mm 0mm;
 }
 
 #metaData > * {
@@ -89,18 +117,21 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     font-size: calc(10px + 1.2vw);
 }
 
-#metaData {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0mm 5mm 0mm 0mm;
+#author, #cookTime, #servings {
+    display: inline-flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    height: 0.75em;
 }
 
 
 /**********/
 /** TAGS **/
 /**********/
-#tags {
+.tags {
     display: flex;
     flex-wrap: wrap;
     max-width: 1100px;
@@ -108,13 +139,19 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     margin: 0mm auto 7mm auto;
 }
 
-#tags > * {
+.tags > * {
     border: solid;
     border-radius: 5mm;
     border-color: burlywood;
     margin: 1mm;
     padding: 1mm;
     background-color: wheat;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.selected {
+    opacity: 1;
 }
 
 
@@ -138,10 +175,20 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     background-color: wheat;
 }
 
-#recipeImg {
+#imageEdit {
     grid-row: 1/2;
-    max-width: 75%;
+    width: 75%;
+}
+
+#recipeImg {
+    max-width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
     object-fit: cover;
+}
+
+#uploadImg {
+    margin: 0 0 1mm 1mm;
 }
 
 #ingredients {
@@ -160,16 +207,21 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     margin: 4mm 4mm;
 }
 
+#ingredientBtns > *, #instructionBtns > *, #deleteRecipeBtn {
+    cursor: pointer;
+}
+
+#deleteRecipeBtn {
+    background-color: #ff9994;
+}
 
 /******************/
 /** DESKTOP VIEW **/
 /******************/
-
-/*switches to desktop layout for iPad landscape and bigger*/
 @media(min-width: 760px) {
     #recipeCardGrid {
         display: grid;
-        grid-auto-rows: 360px 20px auto;
+        grid-auto-rows: 360px 20px auto 20px 40px;
         grid-auto-columns: 360px 20px auto;
         width: 95%;
         max-width: 1100px;
@@ -182,18 +234,21 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     #recipeCardGrid > * {
         width: 100%;
         height: 100%;
-        margin: 1mm 1mm;
-        border: solid;
-        background-color: wheat;
     }
 
-    #recipeImg {
+    #imageEdit {
         grid-row: 1/2;
         grid-column: 1/2;
-        max-width: 100%;
+        width: 100%;
         object-fit: cover;
     }
 
+    #recipeImg {
+        max-height: 92%;
+        width: 100%;
+        object-fit: cover;
+    }
+    
     #ingredients {
         grid-row: 3/4;
         grid-column: 1/2;
@@ -202,5 +257,10 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
     #instructions {
         grid-row: 1/4;
         grid-column: 3/4;
+    }
+
+    #deleteRecipeBtn {
+        grid-row: 5/6;
+        grid-column: 1/4;
     }
 }
