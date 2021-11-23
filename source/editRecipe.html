@@ -24,8 +24,8 @@
 
             <div id='metaData'>
                 <!-- Limit input servings to 3 digits (999 people), cookTime to 4 digits (9,999 minutes), make size of input box just longer than max input length -->
-                <p><b>Servings:</b> <br><span><input type='text' id='servings' size='3' maxlength='2'></span> &nbsp;</p>
-                <p><b>Cooking Time:</b> <br><span><input type='text' id='cookTime' size='5' maxlength='4'></span> minutes &nbsp;</p>
+                <p><b>Servings:</b> <br><span><input type='text' id='servings' size='2' maxlength='2'></span> &nbsp;</p>
+                <p><b>Cooking Time:</b> <br><span><input type='text' id='cookTime' size='4' maxlength='4'></span> minutes &nbsp;</p>
                 <!-- <p><b>Author:</b> <br><span><input type='text' id='author' size='10'></span></p> -->
                 <p><b>Author:</b> <br><span id='author' role='textbox' contenteditable>Enter Name</span></p>
             </div>
@@ -89,6 +89,7 @@
                     
                     <div>
                         <input type='button' id='addInstruction' value='+ add instruction'>
+                        <input type='button' id='addInstruction' value='- remove instruction'>
                     </div>
                 </article>
             </div>
