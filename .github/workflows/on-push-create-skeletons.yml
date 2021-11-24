@@ -5,7 +5,7 @@ on:
       - create-skeletons
 jobs:
   UI_test:
-    name: UI Test (on push to [create-skeletons] branch)
+    name: UI Test (create-skeletons branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

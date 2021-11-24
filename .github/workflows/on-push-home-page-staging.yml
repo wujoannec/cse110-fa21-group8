@@ -5,7 +5,7 @@ on:
       - home-page-staging
 jobs:
   UI_test:
-    name: UI Test (on push to [home-page-staging] branch)
+    name: UI Test (home-page-staging branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
