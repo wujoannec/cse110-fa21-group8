@@ -12,7 +12,7 @@ jobs:
       - run: npm ci
       - run: npm run home-page-test
   style_test:
-    name: Coding Style Test (on push to [home-page] branch)
+    name: Coding Style Test (home-page branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

@@ -12,7 +12,7 @@ jobs:
       - run: npm ci
       - run: npm run create-skeletons-test
   style_test:
-    name: Coding Style Test (on push to [create-skeletons] branch)
+    name: Coding Style Test (create-skeletons branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
