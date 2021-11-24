@@ -5,7 +5,7 @@ on:
       - testing
 jobs:
   style_test:
-    name: Coding Style Test
+    name: Coding Style Test (on push to testing branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
