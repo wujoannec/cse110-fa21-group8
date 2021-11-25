@@ -39,3 +39,7 @@ body {
     height: 115%;
     overflow-y: hidden;
 }
+
+#inputs {
+    border: solid;
+}
