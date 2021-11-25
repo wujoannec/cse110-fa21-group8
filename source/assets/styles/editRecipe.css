@@ -1,15 +1,15 @@
 /*
 To do:
-1. Author input moves when no char/any char; limiting max char (sol: get rid of, fill in with user name)
-2. Delete buttons for each instruction/ingredient
-3. Add margin below recipe card
-4. Upload image button as click event (image takes up entire box)
-5. Center input on meta data (Cook time minutes is not centerer under Cooking Time)
-6. Style delete/confirm/cancel buttons (Make confirm/cancel more obvious)
+1. Ability to change order of instructions/ingredients items
+2. Fix sizing of input fields (edit)
+3. Wrap text on metaData (make grid instead of text box)
+4. Aesthetic (color scheme, Logo align between pages, height of top bar, font)
+5. Fix logo (transparent, commit to color), fix logo src (Bug)
+6. Bug: home/viewRecipe Pages do not load (on PR) 
+7. Margins on view Recipe recipe card text
 
-Backlog:
-7. Ability to change order of instructions/ingredients items
-8. Checkboxes style?
+Done:
+6. Bug of tags visible over navbar
 */
 
 body {
@@ -50,6 +50,7 @@ body {
 
 #backBtn {
     grid-column: 2/3;
+    cursor: pointer;
 }
 
 #logo {
@@ -66,14 +67,14 @@ body {
 
 #cancelBtn {
     grid-column: 5/6;
+    cursor: pointer;
 }
 
 
 /********************/
 /** INPUT ELEMENTS **/
 /********************/
-[role='textbox'], #addIngredient, #addInstruction, [type='text']  {
-    /* background-color: rgb(250, 255, 255); */
+[role='textbox'], #ingredientBtns > *, #instructionBtns > *, [type='text'], #deleteRecipeBtn {
     background-color: white;
     border-radius: 1mm;
     padding: 2mm;
@@ -81,9 +82,11 @@ body {
     border-width: 1px;
 }
 
-#addIngredient, #addInstruction {
+#ingredientBtns > *, #instructionBtns > * {
     font-size: large;
-    width: 100%;
+    width: 5em;
+    display: inline;
+    background-color: rgb(224, 248, 255);
 }
 
 
@@ -108,13 +111,11 @@ body {
     margin: 0mm 5mm 0mm 0mm;
 }
 
-
 #metaData > * {
     text-align: center;
     padding: 1mm;
     font-size: calc(10px + 1.2vw);
 }
-
 
 #author, #cookTime, #servings {
     display: inline-flex;
@@ -125,15 +126,6 @@ body {
     font-family: 'Times New Roman', Times, serif;
     height: 0.75em;
 }
-
-#author {
-    line-height: 0.5em;
-    width: 150px;
-    /* word-wrap: none; */
-    overflow: hidden;
-}
-
-
 
 
 /**********/
@@ -183,6 +175,11 @@ body {
     background-color: wheat;
 }
 
+#imageEdit {
+    grid-row: 1/2;
+    width: 75%;
+}
+
 #recipeImg {
     max-width: 100%;
     height: 100%;
@@ -194,21 +191,12 @@ body {
     margin: 0 0 1mm 1mm;
 }
 
-#imageEdit {
-    grid-row: 1/2;
-    width: 75%;
-}
-
 #ingredients {
     grid-row: 2/3;
 }
 
 #instructions {
     grid-row: 3/4;
-}
-
-#deleteRecipeBtn {
-    grid-row: 4/5;
 }
 
 #ingredients > *, #instructions > * {
@@ -219,10 +207,12 @@ body {
     margin: 4mm 4mm;
 }
 
-#addIngredient, #addInstruction {
-    width: auto;
-    background-color: rgb(223, 221, 221);
-    font-family: 'Times New Roman', Times, serif;
+#ingredientBtns > *, #instructionBtns > *, #deleteRecipeBtn {
+    cursor: pointer;
+}
+
+#deleteRecipeBtn {
+    background-color: #ff9994;
 }
 
 /******************/
@@ -231,7 +221,7 @@ body {
 @media(min-width: 760px) {
     #recipeCardGrid {
         display: grid;
-        grid-auto-rows: 360px 20px auto;
+        grid-auto-rows: 360px 20px auto 20px 40px;
         grid-auto-columns: 360px 20px auto;
         width: 95%;
         max-width: 1100px;
@@ -267,5 +257,10 @@ body {
     #instructions {
         grid-row: 1/4;
         grid-column: 3/4;
+    }
+
+    #deleteRecipeBtn {
+        grid-row: 5/6;
+        grid-column: 1/4;
     }
 }
