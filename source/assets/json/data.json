@@ -1,14 +1,14 @@
 {
-    "Burger" : "../source/assets/images/sample-recipes/burger.jpg",
-    "French Toast" : "../source/assets/images/sample-recipes/french-toast.jpg",
-    "Fried Ice Cream" : "../source/assets/images/sample-recipes/fried-ice-cream.jpg",
-    "Fries" : "../source/assets/images/sample-recipes/fries.jpg",
-    "Hot Coacoa" : "../source/assets/images/sample-recipes/hot-coacoa.jpg",
-    "Mochi" : "../source/assets/images/sample-recipes/mochi.jpg",
-    "Pizza" : "../source/assets/images/sample-recipes/pizza.jpg",
-    "Quesadilla" : "../source/assets/images/sample-recipes/quesa.jpg",
-    "Ravioli" : "../source/assets/images/sample-recipes/ravioli.jpg",
-    "Sushi" : "../source/assets/images/sample-recipes/sushi.jpg",
-    "Sweet Rice" : "../source/assets/images/sample-recipes/sweet-rice.jpg",
-    "Ice Cream Sundae" : "../source/assets/images/sample-recipes/Ice-Cream-Sundae.jpg"
+    "Burger": "./source/assets/images/sample-recipes/burger.jpg",
+    "French Toast": "./source/assets/images/sample-recipes/french-toast.jpg",
+    "Fried Ice Cream": "./source/assets/images/sample-recipes/fried-ice-cream.jpg",
+    "Fries": "./source/assets/images/sample-recipes/fries.jpg",
+    "Hot Coacoa": "./source/assets/images/sample-recipes/hot-coacoa.jpg",
+    "Mochi": "./source/assets/images/sample-recipes/mochi.jpg",
+    "Pizza": "./source/assets/images/sample-recipes/pizza.jpg",
+    "Quesadilla": "./source/assets/images/sample-recipes/quesa.jpg",
+    "Ravioli": "./source/assets/images/sample-recipes/ravioli.jpg",
+    "Sushi": "./source/assets/images/sample-recipes/sushi.jpg",
+    "Sweet Rice": "./source/assets/images/sample-recipes/sweet-rice.jpg",
+    "Ice Cream Sundae": "./source/assets/images/sample-recipes/Ice-Cream-Sundae.jpg"
 }
