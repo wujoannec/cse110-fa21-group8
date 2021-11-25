@@ -1,12 +1,21 @@
-let favButton = document.getElementById('favBtn');
-favButton.addEventListener('click', function () 
-{
-    if (favButton.getAttribute('src') == 'assets/images/heartEmpty.png')
-    {
-        favButton.setAttribute('src', 'assets/images/heartFull.png');
+// toggle favorites button
+let favBtn = document.getElementById('favBtn');
+favBtn.addEventListener('click', function () {
+    if (favBtn.getAttribute('src') == '../source/assets/images/heartEmpty.png') {
+        favBtn.setAttribute('src', '../source/assets/images/heartFull.png');
     }
-    else 
-    {
-        favButton.setAttribute('src', 'assets/images/heartEmpty.png');
+    else {
+        favBtn.setAttribute('src', '../source/assets/images/heartEmpty.png');
     }
+});
+
+// move to edit recipe page
+let editBtn = document.getElementById('editBtn');
+editBtn.addEventListener('click', function () {
+    window.location = 'editRecipe.html';
+});
+
+let backBtn = document.getElementById('backBtn');
+backBtn.addEventListener('click', function () {
+    window.location = 'index.html';
 });
