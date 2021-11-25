@@ -5,3 +5,6 @@ We will be creating a CRUD app in which handles recipes. More details to come as
 
 ## Team Page:
 [Click here](https://cse110-fa21-group8.github.io/cse110-fa21-group8/admin/team)
+
+## Website (WIP):
+[Website](https://cse110-fa21-group8.github.io/cse110-fa21-group8/)
