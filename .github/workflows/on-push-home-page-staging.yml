@@ -1,0 +1,19 @@
+name: on-push-home-page-staging
+on:
+  push:
+    branches:
+      - home-page-staging
+jobs:
+  UI_test:
+    name: UI Test (home-page-staging branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run home-page-staging-test
+  style_test:
+    name: Coding Style Test (home-page-staging branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npx prettier --check .
