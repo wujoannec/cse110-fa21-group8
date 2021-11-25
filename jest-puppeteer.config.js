@@ -10,3 +10,12 @@ module.exports = async function () {
     slowMo: 25,
   });
 };
+
+/*
+module.exports = {
+  launch: {
+    headless: false,
+    slowMo: 25,
+  },
+};
+*/
