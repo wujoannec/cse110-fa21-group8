@@ -1,0 +1,19 @@
+name: on-push-main
+on:
+  push:
+    branches:
+      - main
+jobs:
+  UI_test:
+    name: UI Test (main branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run main-test
+  style_test:
+    name: Coding Style Test (main branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npx prettier --check .
