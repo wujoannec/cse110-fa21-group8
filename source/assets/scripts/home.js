@@ -7,7 +7,7 @@ async function init() {
 
     async function fetchRecipes() {
         return new Promise((resolve, reject) => {  
-            let json = (window.location['pathname'] == "/views/explorePage.html") ? "../source/assets/json/dataDel.json" : "./source/assets/json/data.json";
+            let json = window.location['pathname'].includes("/views/explorePage.html") ? "../source/assets/json/dataDel.json" : "./source/assets/json/data.json";
             fetch(json)
                 .then(response => response.json())
                 .then(data => {
