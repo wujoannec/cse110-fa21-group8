@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: ls testing/
+      - run: npx eslint-config-prettier .
       - run: npx prettier --check .
