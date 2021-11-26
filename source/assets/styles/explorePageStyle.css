@@ -2,7 +2,7 @@ body {
   background-color: lightskyblue;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1200px) {
   .recipe-grid {
     grid-area: recipes;
     display: grid;
@@ -12,7 +12,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 999px) {
+@media only screen and (min-width: 800px) and (max-width: 1199px) {
   .recipe-grid {
     grid-area: recipes;
     display: grid;
@@ -22,7 +22,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 799px) {
   .recipe-grid {
     grid-area: recipes;
     display: grid;
@@ -33,11 +33,30 @@ body {
 }
 
 .recipe {
-  background-color: antiquewhite;
+  /* background-color: antiquewhite;
   border: solid lightblue;
   font-size: 12pt;
   text-align: center;
-  padding: 90px;
+  padding: 90px; */
+
+  display: grid;
+  grid-template-rows: auto auto;
+  background-color: antiquewhite;
+  border: solid lightblue;
+  text-align: center;
+  font-size: 20pt;
+}
+
+.recipe > img {
+  object-fit: fill;
+  align-self: center;
+}
+
+#createButton{
+  margin-top: 7vh;
+  width: 27%;
+  height: 50%;
+  font-size: xxx-large;
 }
 
 @font-face {

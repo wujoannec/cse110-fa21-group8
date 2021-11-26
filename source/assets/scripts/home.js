@@ -97,5 +97,11 @@ async function init() {
     createButton.addEventListener('click', function() {
         window.location = 'createRecipe.html';
     });
+
+    // Go to explore page.
+    const exploreButton = document.querySelector('.b');
+    exploreButton.addEventListener('click', () => {
+        window.location = "../views/explorePage.html";
+    })
 }
 

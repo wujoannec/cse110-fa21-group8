@@ -11,9 +11,14 @@ import { Router } from "./Router.js";
 
 window.addEventListener("DOMContentLoaded", init);
 async function init() {
+  explore();
+
   // let searchSuccess = false;
   let searchButton = document.getElementById("search");
-  searchButton.addEventListener("click", async function () {
+  searchButton.addEventListener("click", explore);
+
+  // Explore the different recipes.
+  async function explore() {
     let typeOfSearch = document.getElementById("selector").value;
     let response = await fetch(
       queryLink + "/" + typeOfSearch + document.getElementById("query").value,
@@ -32,11 +37,10 @@ async function init() {
       results = "menuItems";
     }
     res = data[results];
-    console.log(data[results]);
 
     // Fill up explore grid
     const recipeElements = document.querySelectorAll(".recipe");
-    const recipeWH = 60;
+    // const recipeWH = 60;
     var pointer = 0;
 
     fillGrid();
@@ -48,7 +52,7 @@ async function init() {
           if (recipeElements[i].children[0].tagName == "IMG") {
             recipeElements[i].removeChild(recipeElements[i].children[0]);
             recipeElements[i].removeAttribute("href");
-            recipeElements[i].textContent = "<EMPTY>";
+            recipeElements[i].textContent = "";
           }
         }
       }
@@ -66,8 +70,8 @@ async function init() {
         // Create recipe element
         const recipe = document.createElement("img");
         recipe.setAttribute("src", res[pointer]["image"]);
-        recipe.setAttribute("width", recipeWH);
-        recipe.setAttribute("height", recipeWH);
+        // recipe.setAttribute("width", recipeWH);
+        // recipe.setAttribute("height", recipeWH);
 
         // Add given recipe
         let idNum = res[pointer].id;
@@ -78,7 +82,6 @@ async function init() {
 
         recipeElements[i].textContent = res[pointer]["title"];
         recipeElements[i].setAttribute("href", originLink);
-        console.log(res[pointer])
         recipeElements[i].appendChild(recipe);
 
         // Update pointer
@@ -86,7 +89,6 @@ async function init() {
       }
 
       pointer = capacity + recipeElements.length;
-      console.log(pointer);
     }
 
     const rightButton = document.getElementById("right");
@@ -101,6 +103,12 @@ async function init() {
         fillGrid();
       }
     });
+
+    // Go back to home page.
+    const homeButton = document.querySelector('a');
+    homeButton.addEventListener('click', () => {
+      window.location = "../index.html";
+    })
 
     // resultSection.innerHTML = "";
     // for (let i = 0; i < res.length; i++) {
@@ -186,7 +194,7 @@ async function init() {
     //     console.log("error fetching recipes");
     //     return ;
     // }
-  });
+  }
 }
 
 // const query = document.getElementById("query").value;
