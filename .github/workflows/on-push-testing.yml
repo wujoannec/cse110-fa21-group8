@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm ci
       - run: ls testing/
-      - run: npx prettier --check testing/*.test.js
+      - run: npx prettier --check .
