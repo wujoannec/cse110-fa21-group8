@@ -6,10 +6,13 @@
   "parserOptions": {
     "ecmaVersion": 13
   },
-  "plugins": ["prettier"],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": [
       "error",
+      "warn",
       {
         "printWidth": 80,
         "tabWidth": 2,
@@ -31,5 +34,8 @@
       }
     ]
   },
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ]
 }
