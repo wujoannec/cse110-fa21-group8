@@ -1,18 +1,18 @@
-name: on-push-home-page
+name: on-push-home-explore
 on:
   push:
     branches:
-      - home-page
+      - home-explore
 jobs:
   UI_test:
-    name: UI Test (home-page branch)
+    name: UI Test (home-explore branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: npm run home-page-test
+      - run: npm run home-explore-test
   style_test:
-    name: Coding Style Test (home-page branch)
+    name: Coding Style Test (home-explore branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
