@@ -11,7 +11,6 @@
   ],
   "rules": {
     "prettier/prettier": [
-      "error",
       "warn",
       {
         "printWidth": 80,
