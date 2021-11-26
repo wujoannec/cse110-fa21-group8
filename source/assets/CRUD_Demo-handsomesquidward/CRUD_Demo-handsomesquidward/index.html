@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <title>Mongo_Demo</title>
+    <script type="module" src="crudOperation.js"></script>
+    <script type="module" src="CRUD.js"></script>
+</head>
+<body>
+    <main>
+        <div>
+            <input type="text" id="username" name="username" placeholder="user Name">
+            <input type="text" id="password" name="password" placeholder="password">
+            <select id="selector">
+                <option value="login">login</option>
+                <option value="register">register</option>
+            </select>
+            <button id="submit" type="submit">login</button>
+        </div>
+        <div id="cruddiv">
+            <input type="text" id="recipetitle" name="recipetitle" placeholder="recipe Title">
+            <input type="text" id="img" name="img" placeholder="link to the img">
+            <input type="text" id="ingredients" name="ingredients" placeholder="ingredients">
+            <select id="testcrud">
+                <option value="add">add</option>
+                <option value="delete">delete</option>
+                <option value="update">update</option>
+            </select>
+            <button id="add" type="submit">add</button>
+            <button id="getall" type="submit">get all recipes</button>
+        </div>
+        <h4 id="svResponse"></h4>
+    </main>
+</body>

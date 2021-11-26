@@ -58,7 +58,7 @@ tags.forEach(tag => {
 // return to view recipe page without making edits
 let backBtn = document.getElementById('backBtn');
 backBtn.addEventListener('click', function () {
-    window.location = 'homePage.html';
+    window.location = '../index.html';
 });
 // return to view recipe page without making edits
 // let confirmBtn = document.getElementById('confirmBtn');
