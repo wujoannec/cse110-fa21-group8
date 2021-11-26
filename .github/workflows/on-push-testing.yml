@@ -10,4 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: npx prettier --check testing/
+      - run: pwd
+      - run: ls
+      - run: npx prettier --check .
