@@ -58,23 +58,14 @@ form > * {
     margin: 2mm 0mm 0mm 0mm;
 }
 
-/* form > label {
-    grid-column: 1/2;
-    justify-self: right;
-} */
-
 form > input {
     height: 25px;
     width: 200px;
 }
 
-form > h2, form > p, form > [type='submit'] {
-
-}
-
 form > [type='submit'] {
     font-size: large;
-    height: 85%;
+    height: 75%;
     width: 210px;
     background-color: rgb(224, 248, 255);
     margin: 5mm 0mm 3mm 0mm;
