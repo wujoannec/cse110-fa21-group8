@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+        <title>Login</title>
+        <link rel='stylesheet' href='../source/assets/styles/register.css'>
+        <script src='assets/scripts/login.js' type="module"></script>
+    </head>
+    <body>
+        <!-- Register Page: email, username, password, confirm password, 
+        sign up button, text below sign up button that says 
+        “already have an account? Log in” and ‘log in’ is an href to log in page -->
+
+        <nav id='navbarGrid'>
+            <img id='logo' src='../source/assets/images/logo.png'>
+        </nav>
+
+        
+        <form id='inputs'>
+            <h2>Register a New Account</h2>
+            <!-- <label for='email'>Email: </label> -->
+            <input type='text' id='email' placeholder='Enter email'>
+
+            <!-- <label for='username'>Username: </label> -->
+            <input type='text' id='username' placeholder='Enter username'>
+
+            <!-- <label for='password'>Password: </label> -->
+            <input type='password' id='password' placeholder='Enter password'>
+            <!-- <label for='confirmPassword'>Confirm Password: </label> -->
+            <input type='password' id='confirmPassword' placeholder='Confirm password'>
+
+            <input type='submit' id='submit' value='Register New Account'>
+
+            <p id='errorMsg'>Error Message here</p>
+
+            <p>Already have an account? <a id=loginLink href=''>Log in</a></p>
+        </form>
+
+    </body>
+</html>
