@@ -6,9 +6,7 @@
   "parserOptions": {
     "ecmaVersion": 13
   },
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -33,8 +31,5 @@
       }
     ]
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended"
-  ]
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"]
 }
