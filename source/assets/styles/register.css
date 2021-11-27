@@ -60,13 +60,16 @@ form > * {
 
 form > input {
     height: 25px;
-    width: 200px;
+    width: 250px;
+    border-radius: 1mm;
+    font-size: large;
+    padding: 1mm;
 }
 
 form > [type='submit'] {
     font-size: large;
     height: 75%;
-    width: 210px;
+    width: 260px;
     background-color: rgb(224, 248, 255);
     margin: 5mm 0mm 3mm 0mm;
 }
