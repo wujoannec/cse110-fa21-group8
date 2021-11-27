@@ -1,9 +1,8 @@
-import { addRecipe } from "./crudCopy.js"; 
+import { addRecipe } from "./crudCopy.js";
 
 
 let confirmBtn = document.getElementById('confirmBtn');
-confirmBtn.addEventListener("click", async function() {
-
+confirmBtn.addEventListener("click", async function () {
     //Getting all elements
     let recipeTitle = document.getElementById("title").value;
     let servings = document.getElementById("servings").value;
@@ -14,32 +13,34 @@ confirmBtn.addEventListener("click", async function() {
     //returns all divs in ingredients article and instructions article
     let ingredients = document.querySelectorAll("#ingredients > div");
     let instructions = document.querySelectorAll("#instructions > div");
-    let tags = document.querySelectorAll(".tags > p");
+    let tags = document.querySelectorAll(".tags > *");
 
     let ingredientsArray = [];
     ingredients.forEach(ingredient => {
-        ingredientsArray.push(ingredient.textContent);
+        if (ingredient.className == 'ingredient') {
+            ingredientsArray.push(ingredient.textContent);
+        }
     });
 
     let instructionsArray = [];
     instructions.forEach(instruction => {
-        instructionsArray.push(instruction.textContent);
+        if (instruction.className == 'instruction') {
+            instructionsArray.push(instruction.textContent);
+        }
     });
 
     let tagsArray = [];
     tags.forEach(tag => {
-        if(tag.classList.contains('selected')) {
+        if (tag.classList.contains('selected')) {
             tagsArray.push(tag.textContent);
         }
     });
 
     let result = await addRecipe(recipeTitle, img, servings, cookTime, author, ingredientsArray, instructionsArray, tagsArray)
-        .then(resolved => {return resolved});
+        .then(resolved => { return resolved });
 
-    console.log("We executed here.")
-
+    window.location = 'viewRecipe.html';
     console.log(result);
-
 });
 
 
@@ -60,11 +61,6 @@ let backBtn = document.getElementById('backBtn');
 backBtn.addEventListener('click', function () {
     window.location = 'homePage.html';
 });
-// return to view recipe page without making edits
-// let confirmBtn = document.getElementById('confirmBtn');
-// confirmBtn.addEventListener('click', function () {
-//     window.location = 'createRecipe.html';
-// });
 
 let ingredientBtns = document.getElementById('ingredientBtns');
 // add ingredient text field

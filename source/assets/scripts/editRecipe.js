@@ -1,20 +1,61 @@
-import { editRecipe } from "./crudCopy.js"; 
+import { updateRecipe } from "./crudCopy.js";
 
-addbutton.addEventListener("click", async function() {
-    let title = recipeTitle.value;
-    let image = img.value;
-    
+// UPDATE part of CRUD
+let confirmBtn = document.getElementById('confirmBtn');
+confirmBtn.addEventListener('click', async function () {
+    //Getting all elements
+    let recipeTitle = document.getElementById("title").value;
+    let servings = document.getElementById("servings").value;
+    let cookTime = document.getElementById("cookTime").value;
+    let author = document.getElementById("author").value;
+    let img = document.getElementById("recipeImg").src;
+
+    //returns all divs in ingredients article and instructions article
+    let ingredients = document.querySelectorAll("#ingredients > div");
+    let instructions = document.querySelectorAll("#instructions > div");
+    let tags = document.querySelectorAll(".tags > *");
+
     let ingredientsArray = [];
-    // set mode automatically 
-        ingredientsArray.push(ingredients.value);
-    let result = await updateRecipe(title, image, ingredientsArray)
-        .then(resolved => {return resolved});
-    
+    ingredients.forEach(ingredient => {
+        if (ingredient.className == 'ingredient') {
+            ingredientsArray.push(ingredient.textContent);
+        }
+    });
+
+    let instructionsArray = [];
+    instructions.forEach(instruction => {
+        if (instruction.className == 'instruction') {
+            instructionsArray.push(instruction.textContent);
+        }
+    });
+
+    let tagsArray = [];
+    tags.forEach(tag => {
+        if (tag.classList.contains('selected')) {
+            tagsArray.push(tag.textContent);
+        }
+    });
+
+    let result = await updateRecipe(recipeTitle, img, servings, cookTime, author, ingredientsArray, instructionsArray, tagsArray)
+        .then(resolved => { return resolved });
+    console.log(result);
+
+    window.location = 'viewRecipe.html';
 });
 
+// DELETE part of CRUD
+let deleteBtn = document.getElementById('deleteRecipeBtn');
+deleteBtn.addEventListener('click', async function () {
+    let recipeTitle = document.getElementById('title').value;
+    let result = await deleteRecipe(recipeTitle)
+        .then(resolved => { return resolved });
+    console.log(result);
+
+    window.location = '../index.html';
+});
 
 // toggle tags
-let tags = document.querySelectorAll(".tags > *");
+let tags = document.querySelectorAll('.tags > *');
 tags.forEach(tag => {
     tag.addEventListener('click', function () {
         if (tag.classList.contains('selected')) {
@@ -84,15 +125,12 @@ uploadImg.addEventListener('change', function () {
     }
 });
 
-let deleteBtn = document.getElementById('deleteRecipeBtn');
-deleteBtn.addEventListener('click', deleteRecipe);
-
 async function deleteRecipe() {
     const recipes = [];
     var dataBank;
 
     async function fetchRecipes() {
-        return new Promise((resolve, reject) => {      
+        return new Promise((resolve, reject) => {
             fetch("../source/assets/json/data.json")
                 .then(response => response.json())
                 .then(data => {
