@@ -21,6 +21,8 @@
 - (1) ./tools/lint-JS.sh
 - (2) Fix your JavaScript code according to the [error] message,    
 - Repeat (1) & (2) until no more [error] message
+- Note: error message with "prettier-prettier" is due to wrong coding style,
+please follow the step (5) for more details. 
 ## 5. Check & Fix coding style
 - (1) ./tools/check-coding-style.sh  
 (if neither [warn] or [error] message, go directly to step 5)
