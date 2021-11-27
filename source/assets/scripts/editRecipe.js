@@ -73,20 +73,21 @@ let deleteBtn = document.getElementById("deleteRecipeBtn");
 deleteBtn.addEventListener("click", deleteRecipe);
 
 async function deleteRecipe() {
-  const recipes = [];
-  var dataBank;
+  //const recipes = [];
+  //var dataBank;
 
   async function fetchRecipes() {
     return new Promise((resolve, reject) => {
       fetch("../source/assets/json/data.json")
         .then((response) => response.json())
         .then((data) => {
-          let ind = 0;
+          //let ind = 0;
           delete data["Ice Cream Sundae"];
           console.log(data);
           resolve(true);
         })
-        .catch((error) => reject(false));
+        //.catch((error) => reject(false));
+        .catch(() => reject(false));
     });
   }
 

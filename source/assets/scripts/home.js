@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", init);
 async function init() {
   // Create Recipes (took some code from Lab 5)
   const recipes = [];
-  var dataBank;
+  // var dataBank;
 
   async function fetchRecipes() {
     return new Promise((resolve, reject) => {
@@ -21,7 +21,8 @@ async function init() {
           console.log(data);
           resolve(true);
         })
-        .catch((error) => reject(false));
+        //.catch((error) => reject(false));
+        .catch(() => reject(false));
     });
   }
 
@@ -32,7 +33,7 @@ async function init() {
     return;
   }
 
-  const recipeGrid = document.querySelector(".recipe-grid");
+  // const recipeGrid = document.querySelector(".recipe-grid");
   const recipeElements = document.querySelectorAll(".recipe");
   const recipeWH = "170vw";
   var pointer = 0;
@@ -88,12 +89,14 @@ async function init() {
   }
 
   const rightButton = document.getElementById("right");
-  rightButton.addEventListener("click", (e) => {
+  // rightButton.addEventListener("click", (e) => {
+  rightButton.addEventListener("click", () => {
     if (pointer < recipes.length) fillGrid();
   });
 
   const leftButton = document.getElementById("left");
-  leftButton.addEventListener("click", (e) => {
+  // leftButton.addEventListener("click", (e) => {
+  leftButton.addEventListener("click", () => {
     if (pointer > recipeElements.length) {
       pointer -= recipeElements.length * 2;
       fillGrid();
