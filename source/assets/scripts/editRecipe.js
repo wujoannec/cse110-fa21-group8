@@ -1,5 +1,59 @@
 import { updateRecipe } from "./crudCopy.js";
 
+// READ part of CRUD
+let result = await getRecipe(title)
+    .then(resolved => { return resolved });
+
+let recipeTitle = document.getElementById("title");
+recipeTitle.innerHTML = result.title;
+
+let servings = document.getElementById("servings");
+servings.innerHTML = result.servings;
+
+let cookTime = document.getElementById("cookTime");
+cookTime.innerHTML = result.cookTime;
+
+let author = document.getElementById("author");
+author.innerHTML = result.author;
+
+let img = document.getElementById("recipeImg");
+img.src = result.src;
+
+result.ingredients.forEach(ingredient => {
+    fillIngredient(ingredient);
+});
+
+result.instructions.forEach(instruction => {
+    fillInstruction(instruction);
+});
+
+let tags = document.querySelectorAll(".tags > *");
+tags.forEach(tag => {
+    if (result.tags.contains(tag.textContent)) {
+        tag.setAttribute('class', 'selected');
+    }
+});
+
+function fillIngredient(ingredient) {
+    let ingredientBtns = document.getElementById('ingredientBtns');
+    let newIngredient = document.createElement('div');
+    newIngredient.setAttribute('role', 'textbox');
+    newIngredient.setAttribute('contenteditable', 'true');
+    newIngredient.setAttribute('class', 'ingredient');
+    newIngredient.textContent = ingredient;
+    ingredientBtns.insertAdjacentElement("beforebegin", newIngredient);
+}
+
+function fillInstruction(instruction) {
+    let instructionBtns = document.getElementById('instructionBtns');
+    let newInstruction = document.createElement('div');
+    newInstruction.setAttribute('role', 'textbox');
+    newInstruction.setAttribute('contenteditable', 'true');
+    newInstruction.setAttribute('class', 'instruction');
+    newInstruction.textContent = instruction;
+    instructionBtns.insertAdjacentElement("beforebegin", newInstruction);
+}
+
 // UPDATE part of CRUD
 let confirmBtn = document.getElementById('confirmBtn');
 confirmBtn.addEventListener('click', async function () {
@@ -84,7 +138,7 @@ addIngredient.addEventListener('click', function () {
     let newIngredient = document.createElement('div');
     newIngredient.setAttribute('role', 'textbox');
     newIngredient.setAttribute('contenteditable', 'true');
-    newIngredient.setAttribute('id', 'newInstruction');
+    newIngredient.setAttribute('class', 'ingredient');
     ingredientBtns.insertAdjacentElement("beforebegin", newIngredient);
 });
 // remove ingredient text field
@@ -103,7 +157,7 @@ addInstruction.addEventListener('click', function () {
     let newInstruction = document.createElement('div');
     newInstruction.setAttribute('role', 'textbox');
     newInstruction.setAttribute('contenteditable', 'true');
-    newInstruction.setAttribute('id', 'newInstruction');
+    newInstruction.setAttribute('class', 'instruction');
     instructionBtns.insertAdjacentElement("beforebegin", newInstruction);
 });
 // remove ingredient text field
