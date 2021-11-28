@@ -42,11 +42,15 @@ body {
 }
 
 #navbarGrid > * {
+    margin: 1mm;
+}
+
+#navbarGrid > *, #navbarGrid > * > * {
     height: 33px;
     width: 33px;
-    margin: 1mm;
-    
 }
+
+
 
 #backBtn {
     grid-column: 2/3;

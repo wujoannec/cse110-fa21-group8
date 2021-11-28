@@ -47,9 +47,12 @@ article[id='ingredients'] > div, article[id='instructions'] > div {
 }
 
 #navbarGrid > * {
+    margin: 1mm;
+}
+
+#navbarGrid > *, #navbarGrid > * > * {
     height: 33px;
     width: 33px;
-    margin: 1mm;
 }
 
 #backBtn {
