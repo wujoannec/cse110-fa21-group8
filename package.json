@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-jest": "^27.3.1",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
+    "jest-puppeteer": "^6.0.0",
+    "jsdoc": "^3.6.7",
+    "prettier": "2.4.1",
+    "puppeteer": "^11.0.0"
+  },
+  "scripts": {
+    "implement-home-explore-staging-test": "jest implement-home-explore-staging.test.js",
+    "implement-home-explore-test": "jest implement-home-explore.test.js",
+    "login-page-staging-test": "jest login-page-staging.test.js",
+    "login-page-test": "jest login-page.test.js",
+    "home-page-staging-test": "jest home-page-staging.test.js",
+    "home-page-test": "jest home-page.test.js",
+    "home-explore-staging-test": "jest home-explore-staging.test.js",
+    "home-explore-test": "jest home-explore.test.js",
+    "create-skeletons-staging-test": "jest create-skeletons-staging.test.js",
+    "create-skeletons-test": "jest create-skeletons.test.js",
+    "main-staging-test": "jest main-staging.test.js",
+    "main-test": "jest main.test.js"
+  },
+  "jest": {
+    "preset": "jest-puppeteer",
+    "verbose": true
+  }
+}

@@ -1,0 +1,27 @@
+name: on-push-home-explore
+on:
+  push:
+    branches:
+      - home-explore
+jobs:
+  UI_test:
+    name: UI Test (home-explore branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run home-explore-test
+  style_test:
+    name: Coding Style Test (home-explore branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx prettier --check .
+  lint_JS_test:
+    name: Linting JS Test (home-explore branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx eslint .

@@ -1,0 +1,27 @@
+name: on-push-home-page
+on:
+  push:
+    branches:
+      - home-page
+jobs:
+  UI_test:
+    name: UI Test (home-page branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run home-page-test
+  style_test:
+    name: Coding Style Test (home-page branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx prettier --check .
+  lint_JS_test:
+    name: Linting JS Test (home-page branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx eslint .
