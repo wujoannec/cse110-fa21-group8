@@ -13,6 +13,10 @@
     "puppeteer": "^11.0.0"
   },
   "scripts": {
+    "implement-home-explore-staging-test": "jest implement-home-explore-staging.test.js",
+    "implement-home-explore-test": "jest implement-home-explore.test.js",
+    "login-page-staging-test": "jest login-page-staging.test.js",
+    "login-page-test": "jest login-page.test.js",
     "home-page-staging-test": "jest home-page-staging.test.js",
     "home-page-test": "jest home-page.test.js",
     "home-explore-staging-test": "jest home-explore-staging.test.js",
