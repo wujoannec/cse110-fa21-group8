@@ -50,8 +50,6 @@ body {
     width: 50px;
 }
 
-
-
 #backBtn {
     grid-column: 2/3;
     cursor: pointer;
