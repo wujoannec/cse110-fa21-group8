@@ -1,4 +1,49 @@
-// toggle tags
+import { addRecipe } from "./crudCopy.js"; 
+
+
+let confirmBtn = document.getElementById('confirmBtn');
+confirmBtn.addEventListener("click", async function() {
+
+    //Getting all elements
+    let recipeTitle = document.getElementById("title").value;
+    let servings = document.getElementById("servings").value;
+    let cookTime = document.getElementById("cookTime").value;
+    let author = document.getElementById("author").value;
+    let img = document.getElementById("recipeImg").src;
+
+    //returns all divs in ingredients article and instructions article
+    let ingredients = document.querySelectorAll("#ingredients > div");
+    let instructions = document.querySelectorAll("#instructions > div");
+    let tags = document.querySelectorAll(".tags > p");
+
+    let ingredientsArray = [];
+    ingredients.forEach(ingredient => {
+        ingredientsArray.push(ingredient.textContent);
+    });
+
+    let instructionsArray = [];
+    instructions.forEach(instruction => {
+        instructionsArray.push(instruction.textContent);
+    });
+
+    let tagsArray = [];
+    tags.forEach(tag => {
+        if(tag.classList.contains('selected')) {
+            tagsArray.push(tag.textContent);
+        }
+    });
+
+    let result = await addRecipe(recipeTitle, img, servings, cookTime, author, ingredientsArray, instructionsArray, tagsArray)
+        .then(resolved => {return resolved});
+
+    console.log("We executed here.")
+
+    console.log(result);
+
+});
+
+
+// toggle tags based off of selection
 let tags = document.querySelectorAll(".tags > *");
 tags.forEach(tag => {
     tag.addEventListener('click', function () {
@@ -16,10 +61,10 @@ backBtn.addEventListener('click', function () {
     window.location = 'homePage.html';
 });
 // return to view recipe page without making edits
-let confirmBtn = document.getElementById('confirmBtn');
-confirmBtn.addEventListener('click', function () {
-    window.location = 'viewRecipe.html';
-});
+// let confirmBtn = document.getElementById('confirmBtn');
+// confirmBtn.addEventListener('click', function () {
+//     window.location = 'createRecipe.html';
+// });
 
 let ingredientBtns = document.getElementById('ingredientBtns');
 // add ingredient text field
@@ -58,7 +103,6 @@ removeInstruction.addEventListener('click', function () {
         toDelete.remove();
     }
 });
-
 // change recipe image on upload
 let recipeImg = document.getElementById('recipeImg');
 let uploadImg = document.getElementById('uploadImg');

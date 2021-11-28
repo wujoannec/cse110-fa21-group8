@@ -1,3 +1,18 @@
+import { editRecipe } from "./crudCopy.js"; 
+
+addbutton.addEventListener("click", async function() {
+    let title = recipeTitle.value;
+    let image = img.value;
+    
+    let ingredientsArray = [];
+    // set mode automatically 
+        ingredientsArray.push(ingredients.value);
+    let result = await updateRecipe(title, image, ingredientsArray)
+        .then(resolved => {return resolved});
+    
+});
+
+
 // toggle tags
 let tags = document.querySelectorAll(".tags > *");
 tags.forEach(tag => {

@@ -17,5 +17,5 @@ editBtn.addEventListener('click', function () {
 
 let backBtn = document.getElementById('backBtn');
 backBtn.addEventListener('click', function () {
-    window.location = 'index.html';
+    window.location = '../index.html';
 });
