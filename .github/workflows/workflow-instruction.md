@@ -7,7 +7,8 @@
 - (5) npm ci
 - (6) chmod a+x -R tools/
 ## 2. Work on your branch until you want to commit
-- Before committing your work : 
+- Before committing your work,
+- Finish step 3,4,5 which includes:
 - (1) First, update your testing files & tools to the newest version (if not yet)
 - (2) Then, run the shell scripts inside the tools folder to help you pass the Linting & Coding style test  
 (Reminder: you can press [tab] to auto-complete your typing)
@@ -22,10 +23,10 @@
 - (2) Fix your JavaScript code according to the [error] message,    
 - Repeat (1) & (2) until no more [error] message
 - Note: error message with "prettier-prettier" is due to wrong coding style,
-please follow the step (5) for more details. 
+you can run "./tools/fix-coding-style.sh" which is step 5-(2) to solve it. 
 ## 5. Check & Fix coding style
 - (1) ./tools/check-coding-style.sh  
-(if neither [warn] or [error] message, go directly to step 5)
+(if neither [warn] or [error] message, go directly to step 6)
 - (2) ./tools/fix-coding-style.sh
 ## 6. Generate JSDocs 
 - ./tools/create-JSDocs.sh [PATH_TO_FOLDER_CONTAINING_ALL_JS_FILES]   
