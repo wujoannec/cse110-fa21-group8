@@ -24,7 +24,7 @@ body {
 #navbarGrid {
     display: grid;
     background-color: rgb(224, 248, 255);
-    grid-template-columns: 5px 50px auto 50px 50px;
+    grid-template-columns: 5px 60px auto 60px 60px;
     
     /* sticky navbar */
     position: fixed;
@@ -46,8 +46,8 @@ body {
 }
 
 #navbarGrid > *, #navbarGrid > * > * {
-    height: 33px;
-    width: 33px;
+    height: 50px;
+    width: 50px;
 }
 
 
@@ -59,7 +59,7 @@ body {
 
 #logo {
     grid-column: 3/4;
-    width: 150px;
+    width: 200px;
     margin: 0mm;
     height: 115%;
     overflow-y: hidden;
