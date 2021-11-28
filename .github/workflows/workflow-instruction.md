@@ -1,6 +1,6 @@
 # Workflow Instruction (Updated 11/27/2021)
 ## 1. Set up locally working environment
-- (1) git clone https://github.com/tianyuezhang1997/cse110-fa21-group8.git
+- (1) git clone https://github.com/cse110-fa21-group8/cse110-fa21-group8.git
 - (2) cd cse110-fa21-group8/
 - (3) git remote add product ssh://root@tianyuezhang1997.site/var/repo/cse110-fa21-group8.git
 - (4) git checkout [YOUR_BRANCH]
