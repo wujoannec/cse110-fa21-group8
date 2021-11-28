@@ -1,0 +1,27 @@
+name: on-push-create-skeletons
+on:
+  push:
+    branches:
+      - create-skeletons
+jobs:
+  UI_test:
+    name: UI Test (create-skeletons branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run create-skeletons-test
+  style_test:
+    name: Coding Style Test (create-skeletons branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx prettier --check .
+  lint_JS_test:
+    name: Linting JS Test (create-skeletons branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx eslint .

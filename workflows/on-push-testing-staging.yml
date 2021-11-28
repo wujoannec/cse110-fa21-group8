@@ -1,0 +1,13 @@
+name: on-push-testing-staging
+on:
+  push:
+    branches:
+      - testing-staging
+jobs:
+  style_test:
+    name: Coding Style Test (testing-staging branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx prettier --check .
