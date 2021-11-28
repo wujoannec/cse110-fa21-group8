@@ -1,25 +1,25 @@
-name: on-push-home-page-staging
+name: on-push-implement-home-explore-staging
 on:
   push:
     branches:
-      - home-page-staging
+      - implement-home-explore-staging
 jobs:
   UI_test:
-    name: UI Test (home-page-staging branch)
+    name: UI Test (implement-home-explore-staging branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: npm run home-page-staging-test
+      - run: npm run implement-home-explore-staging-test
   style_test:
-    name: Coding Style Test (home-page-staging branch)
+    name: Coding Style Test (implement-home-explore-staging branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
       - run: npx prettier --check .
   lint_JS_test:
-    name: Linting JS Test (home-page-staging branch)
+    name: Linting JS Test (implement-home-explore-staging branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
