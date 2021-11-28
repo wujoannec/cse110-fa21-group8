@@ -20,25 +20,32 @@ describe("Basic user flow for Website", () => {
   it("Check whether [createButton] is functioning", async () => {
     const button = await page.$("#createButton");
     await button.click();
-    await page.waitForNavigation({waitUntil: "networkidle2"});
+    await page.waitForNavigation({ waitUntil: "networkidle2" });
   });
 
   it("Input title,servings,cookTime,author on createRecipe.html", async () => {
-    await page.type("#title", "Ice Cream Sundae"); 
-    await page.type("#servings", "5"); 
-    await page.type("#cookTime", "45"); 
-    await page.type("#author", "Jonny Tran"); 
+    await page.type("#title", "Ice Cream Sundae");
+    await page.type("#servings", "5");
+    await page.type("#cookTime", "45");
+    await page.type("#author", "Jonny Tran");
   });
 
-  const selectedTags = ["Dessert", "Healthy","Sugar Free","Vegan","Cheap!","Intermediate"];
+  const selectedTags = [
+    "Dessert",
+    "Healthy",
+    "Sugar Free",
+    "Vegan",
+    "Cheap!",
+    "Intermediate",
+  ];
 
   it("Select tags on createRecipe.html", async () => {
     let tagsToSelect = selectedTags;
     const tags = await page.$$(".tags > p");
-    const tagNames = []; 
+    const tagNames = [];
     for (let i = 0; i < tags.length; i++) {
       const innerText = await tags[i].getProperty("innerText");
-      tagNames[i]  = innerText["_remoteObject"].value;
+      tagNames[i] = innerText["_remoteObject"].value;
       if (tagNames[i] == tagsToSelect[0]) {
         tagsToSelect.shift();
         await tags[i].click();
@@ -61,7 +68,7 @@ describe("Basic user flow for Website", () => {
     const innerText = await ingredient1.getProperty("innerText");
     ingredient1Text = innerText["_remoteObject"].value;
     await page.focus("#ingredient1");
-    await page.keyboard.press('End');
+    await page.keyboard.press("End");
     for (let i = 0; i < ingredient1Text.length; i++) {
       await page.keyboard.press("Backspace");
     }
@@ -71,10 +78,10 @@ describe("Basic user flow for Website", () => {
     const ingredients = [
       "1 pint chocolate ice cream",
       "1 pint vanilla ice cream",
-      "whipped cream"
+      "whipped cream",
     ];
     const button = await page.$("#addIngredient");
-    for (let i = 0; i < ingredients.length - 1 ; i++) {
+    for (let i = 0; i < ingredients.length - 1; i++) {
       await button.click();
     }
     // Add new box & Type in new text in the new box
@@ -89,7 +96,7 @@ describe("Basic user flow for Website", () => {
     const innerText = await instruction1.getProperty("innerText");
     instruction1Text = innerText["_remoteObject"].value;
     await page.focus("#instruction1");
-    await page.keyboard.press('End');
+    await page.keyboard.press("End");
     for (let i = 0; i < instruction1Text.length; i++) {
       await page.keyboard.press("Backspace");
     }
@@ -99,10 +106,10 @@ describe("Basic user flow for Website", () => {
     const instructions = [
       "Add chocolate ice cream",
       "Add vanilla ice cream",
-      "Add whipped cream"
+      "Add whipped cream",
     ];
     const button = await page.$("#addInstruction");
-    for (let i = 0; i < instructions.length - 1 ; i++) {
+    for (let i = 0; i < instructions.length - 1; i++) {
       await button.click();
     }
     // Add new box & Type in new text in the new box
@@ -115,6 +122,6 @@ describe("Basic user flow for Website", () => {
   it("Click the confirm button on createRecipe.html", async () => {
     const button = await page.$("#confirmBtn");
     await button.click();
-    await page.waitForNavigation({waitUntil: "networkidle2"});
+    await page.waitForNavigation({ waitUntil: "networkidle2" });
   });
 });
