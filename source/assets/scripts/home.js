@@ -68,7 +68,7 @@ async function init() {
             if(recipeElements[i].children.length > 0) {
                 if(recipeElements[i].children[0].tagName == 'IMG') {
                     recipeElements[i].removeChild(recipeElements[i].children[0]);
-                    recipeElements[i].textContent = "\r\n<EMPTY>"
+                    recipeElements[i].textContent = ""
                 }
             }
         }
@@ -96,6 +96,7 @@ async function init() {
             // recipeElements[i].textContent = '\r\n' +  recipes[pointer].slice(32, recipes[pointer].length - 4) + '\r\n\n';
             //recipeElements[i].textContent = '\r\n' + recipes[pointer].substr(32, recipes[pointer].substr(22).length - 4).replace('-', ' ')+'\r\n\n';
             recipeElements[i].textContent = recipes[i].title;
+            recipeElements[i].setAttribute("href", 'views/viewRecipe.html#' + recipes[i]._id);
             recipeElements[i].appendChild(recipe);
 
             // Update pointer
@@ -103,7 +104,6 @@ async function init() {
         }
 
         pointer = capacity + recipeElements.length;
-        console.log(pointer);
     }
 
     const rightButton = document.getElementById('right');
@@ -128,6 +128,77 @@ async function init() {
     const exploreButton = document.querySelector('.b');
     exploreButton.addEventListener('click', () => {
         window.location = 'views/explorePage.html';
+    });
+
+    // Filter for search
+    const searchButton = document.querySelector('.search-button');
+    const searchBar = document.querySelector('.search');
+    searchButton.addEventListener('click', () => {
+        fetchRecipes();
+
+        let recipeLength = recipes.length;
+        let newRecipes = [];
+        for(let i = 0; i < recipeLength; i++) {
+            let name = recipes[i].title != undefined ? recipes[i].title.toString() : "";
+            let tags = recipes[i].tags;
+
+            // Filter by name
+            if(name.includes(searchBar.value) || name.includes(searchBar.value.toLowerCase()) || name.includes(searchBar.value.toUpperCase()))
+                newRecipes.push(recipes[i]);
+
+            // Filter by tag
+            tags.forEach(element => {
+                if(element.toLowerCase().includes(searchBar.value) && !newRecipes.includes(recipes[i]))
+                     newRecipes.push(recipes[i]);
+            });
+        }
+        recipes = newRecipes;
+        pointer = 0;
+        
+        fillGrid();
+    });
+
+    var tagBoxes = document.querySelectorAll(".sidenav > input");
+    tagBoxes.forEach(element => {
+        element.addEventListener('click', () => {
+        fetchRecipes();
+
+        let newRecipes = [];
+        let recipeLength = recipes.length;
+
+        // Check for no tag selection
+        if(noTagSelected(tagBoxes)) {
+            pointer = 0;
+            fillGrid();
+            return;
+        }
+
+        // Check every tag box if it's been selected
+        for(let i = 0; i < recipeLength; i++) {
+            let names = recipes[i].tags;
+
+            // Check every tag on recipe to see if it matches the selected box
+            names.forEach(name => {
+                if(tagBoxes[i].checked) {
+                    if(name.includes(tagBoxes[i].value) || name.includes(tagBoxes[i].value.toLowerCase()) || name.includes(tagBoxes[i].value.toUpperCase()))
+                        if(!newRecipes.includes(recipes[i])) newRecipes.push(recipes[i]);
+                }
+            });
+        }
+
+        recipes = newRecipes;
+        pointer = 0;
+        fillGrid();
+
+        // Check if no tags are selected on the left panel
+        function noTagSelected(tagBoxes) {
+            for(let i = 0; i < tagBoxes.length; i++) {
+                if(tagBoxes[i].checked) return false;
+            }
+
+            return true;
+        }
+        });
     });
 }
 

@@ -71,7 +71,6 @@ async function getRecipe() {
         }
     });
     const res = await response.text();
-    console.log(res);
     return Promise.resolve(JSON.parse(res));
 }
 
@@ -93,7 +92,6 @@ async function getRecipe() {
         })
     });
     const res = await response.text();
-    console.log(res);
     return Promise.resolve(JSON.parse(res));
 }
 
