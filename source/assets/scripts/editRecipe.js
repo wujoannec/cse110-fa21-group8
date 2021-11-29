@@ -1,23 +1,27 @@
-import { updateRecipe } from "./crudCopy.js";
-
+import { updateRecipe, getOneRecipe, deleteRecipe } from "./CRUD.js";
 // READ part of CRUD
-let result = await getRecipe(title)
+const _id = window.location.hash.substring(1); 
+console.log("on line4, editRecipe.js" + _id);
+
+let result = await getOneRecipe(_id)
     .then(resolved => { return resolved });
 
+console.log(result);
 let recipeTitle = document.getElementById("title");
 recipeTitle.innerHTML = result.title;
 
 let servings = document.getElementById("servings");
-servings.innerHTML = result.servings;
+servings.value = result.servings;
 
 let cookTime = document.getElementById("cookTime");
-cookTime.innerHTML = result.cookTime;
+cookTime.value = result.cookTime;
 
 let author = document.getElementById("author");
-author.innerHTML = result.author;
+author.value = result.author;
 
 let img = document.getElementById("recipeImg");
 img.src = result.src;
+
 
 result.ingredients.forEach(ingredient => {
     fillIngredient(ingredient);
@@ -29,7 +33,7 @@ result.instructions.forEach(instruction => {
 
 let tags = document.querySelectorAll(".tags > *");
 tags.forEach(tag => {
-    if (result.tags.contains(tag.textContent)) {
+    if (result.tags.includes(tag.textContent)) {
         tag.setAttribute('class', 'selected');
     }
 });
@@ -58,7 +62,7 @@ function fillInstruction(instruction) {
 let confirmBtn = document.getElementById('confirmBtn');
 confirmBtn.addEventListener('click', async function () {
     //Getting all elements
-    let recipeTitle = document.getElementById("title").value;
+    let recipeTitle = document.getElementById("title").textContent;
     let servings = document.getElementById("servings").value;
     let cookTime = document.getElementById("cookTime").value;
     let author = document.getElementById("author").value;
@@ -90,26 +94,28 @@ confirmBtn.addEventListener('click', async function () {
         }
     });
 
-    let result = await updateRecipe(recipeTitle, img, servings, cookTime, author, ingredientsArray, instructionsArray, tagsArray)
+    let result = await updateRecipe(_id, recipeTitle, img, servings, cookTime, author, ingredientsArray, instructionsArray, tagsArray)
         .then(resolved => { return resolved });
     console.log(result);
 
-    window.location = 'viewRecipe.html';
+    console.log("in editRecipe.js: " + _id);
+    window.location.href = 'viewRecipe.html' + "#" + _id;
 });
 
 // DELETE part of CRUD
 let deleteBtn = document.getElementById('deleteRecipeBtn');
 deleteBtn.addEventListener('click', async function () {
-    let recipeTitle = document.getElementById('title').value;
-    let result = await deleteRecipe(recipeTitle)
+    // let recipeTitle = result.title;
+    let deleted = await deleteRecipe(_id)
         .then(resolved => { return resolved });
-    console.log(result);
+    console.log(deleted);
 
-    window.location = '../index.html';
+    // TODO: add below back
+    // window.location = '../index.html';
 });
 
 // toggle tags
-let tags = document.querySelectorAll('.tags > *');
+// let tags = document.querySelectorAll('.tags > *');
 tags.forEach(tag => {
     tag.addEventListener('click', function () {
         if (tag.classList.contains('selected')) {
@@ -179,6 +185,8 @@ uploadImg.addEventListener('change', function () {
     }
 });
 
+/*
+
 async function deleteRecipe() {
     const recipes = [];
     var dataBank;
@@ -206,5 +214,7 @@ async function deleteRecipe() {
 
     window.location = 'explorePage.html';
 }
+
+*/
 
 //on click of delete button, remove ice cream image from fetch data in home.js

@@ -1,27 +1,52 @@
+import {getRecipe} from "./CRUD.js";
 window.addEventListener('DOMContentLoaded', init);
 
 async function init() {
     // Create Recipes (took some code from Lab 5)
-    const recipes = [];
+    let recipes = [];
     var dataBank;
 
+    // async function fetchRecipes() {
+    //     return new Promise((resolve, reject) => {  
+    //         let json = window.location['pathname'].includes("/views/explorePage.html") ? "../source/assets/json/dataDel.json" : "./source/assets/json/data.json";
+    //         fetch(json)
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 let ind = 0;
+    //                 for(let recipe in data) {
+    //                     recipes[ind] = data[recipe];
+    //                     ind++;
+    //                 }
+    //                 console.log(data);
+    //                 resolve(true);
+    //             })
+    //             .catch(error => reject(false));
+    //     });
+    // }
+    
+
     async function fetchRecipes() {
-        return new Promise((resolve, reject) => {  
-            let json = window.location['pathname'].includes("/views/explorePage.html") ? "../source/assets/json/dataDel.json" : "./source/assets/json/data.json";
-            fetch(json)
-                .then(response => response.json())
-                .then(data => {
-                    let ind = 0;
-                    for(let recipe in data) {
-                        recipes[ind] = data[recipe];
-                        ind++;
-                    }
-                    console.log(data);
-                    resolve(true);
-                })
-                .catch(error => reject(false));
-        });
+        let result = await getRecipe()
+        .then(resolved => {return resolved});
+        recipes = result;
+        return Promise.resolve(true);
+        // return new Promise((resolve, reject) => {  
+        //     let json = window.location['pathname'].includes("/views/explorePage.html") ? "../source/assets/json/dataDel.json" : "./source/assets/json/data.json";
+        //     fetch(json)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             let ind = 0;
+        //             for(let recipe in data) {
+        //                 recipes[ind] = data[recipe];
+        //                 ind++;
+        //             }
+        //             console.log(data);
+        //             resolve(true);
+        //         })
+        //         .catch(error => reject(false));
+        // });
     }
+
 
     let fetchSuccessful = await fetchRecipes();
 
@@ -56,7 +81,7 @@ async function init() {
             
             // Create recipe element
             const recipe = document.createElement('img');
-            recipe.setAttribute('src', recipes[pointer]);
+            recipe.setAttribute('src', recipes[i].img);
             recipe.setAttribute('width', recipeWH);
             recipe.setAttribute('height', recipeWH);
             // recipe.style.position = "absolute";
@@ -65,11 +90,12 @@ async function init() {
 
 
             // recipe.style.xIndex = "200px"
-
+            //    'viewRecipe/recipes[i]._id'
 
             // Add given recipe
-            recipeElements[i].textContent = '\r\n' +  recipes[pointer].slice(32, recipes[pointer].length - 4) + '\r\n\n';
+            // recipeElements[i].textContent = '\r\n' +  recipes[pointer].slice(32, recipes[pointer].length - 4) + '\r\n\n';
             //recipeElements[i].textContent = '\r\n' + recipes[pointer].substr(32, recipes[pointer].substr(22).length - 4).replace('-', ' ')+'\r\n\n';
+            recipeElements[i].textContent = recipes[i].title;
             recipeElements[i].appendChild(recipe);
 
             // Update pointer

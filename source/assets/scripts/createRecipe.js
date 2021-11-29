@@ -1,10 +1,10 @@
-import { addRecipe } from "./crudCopy.js";
+import { addRecipe } from "./CRUD.js";
 
 
 let confirmBtn = document.getElementById('confirmBtn');
 confirmBtn.addEventListener("click", async function () {
   //Getting all elements
-  let recipeTitle = document.getElementById("title").value;
+  let recipeTitle = document.getElementById("title").textContent;
   let servings = document.getElementById("servings").value;
   let cookTime = document.getElementById("cookTime").value;
   let author = document.getElementById("author").value;
@@ -36,11 +36,13 @@ confirmBtn.addEventListener("click", async function () {
     }
   });
 
+  // result = _id;
   let result = await addRecipe(recipeTitle, img, servings, cookTime, author, ingredientsArray, instructionsArray, tagsArray)
     .then(resolved => { return resolved });
 
-  window.location = 'viewRecipe.html';
   console.log(result);
+
+  window.location.href = 'viewRecipe.html' + "#" + result;
 });
 
 
@@ -59,7 +61,7 @@ tags.forEach(tag => {
 // return to view recipe page without making edits
 let backBtn = document.getElementById('backBtn');
 backBtn.addEventListener('click', function () {
-  window.location = 'homePage.html';
+  window.location = 'index.html';
 });
 
 let ingredientBtns = document.getElementById('ingredientBtns');
