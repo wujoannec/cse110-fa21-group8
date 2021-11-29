@@ -1,7 +1,10 @@
-import { getRecipe } from "./crudCopy.js";
+import { getOneRecipe } from "./CRUD.js";
 
 // READ part of CRUD
-let result = await getRecipe(title)
+const _id = window.location.hash.substring(1); 
+console.log(_id);
+
+let result = await getOneRecipe(_id)
     .then(resolved => { return resolved });
 
 let recipeTitle = document.getElementById("title");
@@ -19,19 +22,19 @@ author.innerHTML = result.author;
 let img = document.getElementById("recipeImg");
 img.src = result.src;
 
-ingredientCount = 1;
+let ingredientCount = 1;
 result.ingredients.forEach(ingredient => {
     fillIngredient(ingredient, ingredientCount);
     ingredientCount++;
 });
 
-instructionCount = 1;
+let instructionCount = 1;
 result.instructions.forEach(instruction => {
     fillInstruction(instruction, instructionCount);
     instructionCount++;
 });
 
-let tags = document.getElementsByClassName('tags');
+let tags = document.getElementById('tags');
 result.tags.forEach(tag => {
     let newTag = document.createElement('p');
     newTag.textContent = tag;
@@ -47,9 +50,9 @@ function fillIngredient(ingredient, ingredientCount) {
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', name);
 
-    let label = documnet.createElement('label');
+    let label = document.createElement('label');
     label.setAttribute('for', name);
-    newIngredient.textContent = ingredient;
+    label.innerHTML = ingredient;
 
     newIngredient.appendChild(checkbox);
     newIngredient.appendChild(label);
@@ -65,13 +68,13 @@ function fillInstruction(instruction, instructionCount) {
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', name);
 
-    let label = documnet.createElement('label');
+    let label = document.createElement('label');
     label.setAttribute('for', name);
-    newIngredient.textContent = instruction;
+    label.innerHTML = instruction;
 
     newInstruction.appendChild(checkbox);
     newInstruction.appendChild(label);
-    instructions.appendChild(newIngredient);
+    instructions.appendChild(newInstruction);
 }
 
 // toggle favorites button
@@ -88,7 +91,8 @@ favBtn.addEventListener('click', function () {
 // move to edit recipe page
 let editBtn = document.getElementById('editBtn');
 editBtn.addEventListener('click', function () {
-    window.location = 'editRecipe.html';
+    // window.location = 'editRecipe.html';
+    window.location.href = 'editRecipe.html' + "#" + _id;
 });
 
 let backBtn = document.getElementById('backBtn');

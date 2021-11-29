@@ -1,4 +1,4 @@
-export {addRecipe, updateRecipe, deleteRecipe, getRecipe, authenticate};
+export { addRecipe, updateRecipe, deleteRecipe, getRecipe, authenticate, getOneRecipe };
 // add recipe
 const serverUrl = "https://devil-dishes.herokuapp.com/";
 // const serverUrl = "http://localhost:3000/";
@@ -10,11 +10,11 @@ const serverUrl = "https://devil-dishes.herokuapp.com/";
  * @param {String} authType type of authentication, either register or login 
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
- async function authenticate(username, password, authType){ 
+async function authenticate(username, password, authType) {
     // set mode automatically 
     const response = await fetch(serverUrl + authType, {
         method: "POST",
-        headers : {
+        headers: {
             "Content-type": "application/json",
         },
         body: JSON.stringify({
@@ -27,11 +27,7 @@ const serverUrl = "https://devil-dishes.herokuapp.com/";
     return Promise.resolve(res);
 }
 
-
-
 //CRUD
-
-
 /**
  * add recipe if recipe title DNE
  * @param {String} title 
@@ -39,17 +35,22 @@ const serverUrl = "https://devil-dishes.herokuapp.com/";
  * @param {Array} ingredients 
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
-async function addRecipe(title, img, ingredients){ 
+async function addRecipe(title, img, servings, cookTime, author, ingredients, instructions, tags) {
     // set mode automatically 
     const response = await fetch(serverUrl + "add", {
         method: "POST",
-        headers : {
+        headers: {
             "Content-type": "application/json",
         },
         body: JSON.stringify({
             "title": title,
             "img": img,
-            "ingredients": ingredients
+            "ingredients": ingredients,
+            "servings": servings,
+            "cookTime": cookTime,
+            "author": author,
+            "instructions": instructions,
+            "tags": tags
         })
     });
     const res = await response.text();
@@ -61,13 +62,35 @@ async function addRecipe(title, img, ingredients){
  * return all recipes for a user(for now, all recipes in the db)
  * @returns {Array} an array of java objects contains all recipes
  */
- async function getRecipe(){ 
+async function getRecipe() {
     // set mode automatically 
-    const response = await fetch(serverUrl + "getrecipe", {
+    const response = await fetch(serverUrl + "getAllRecipe", {
         method: "POST",
-        headers : {
+        headers: {
             "Content-type": "application/json",
         }
+    });
+    const res = await response.text();
+    console.log(res);
+    return Promise.resolve(JSON.parse(res));
+}
+
+/**
+ * @param _id: id of the current recipe
+ * return one recipe based on title
+ * @returns {Array} an array of java object contains the recipe
+ */
+ async function getOneRecipe(_id) {
+    // set mode automatically 
+    console.log("entered getOneRecipe");
+    const response = await fetch(serverUrl + "getRecipe", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+            "_id": _id
+        })
     });
     const res = await response.text();
     console.log(res);
@@ -81,17 +104,23 @@ async function addRecipe(title, img, ingredients){
  * @param {Array} ingredients 
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
-async function updateRecipe(title, img, ingredients){ 
+async function updateRecipe(_id, title, img, servings, cookTime, author, ingredients, instructions, tags) {
     // set mode automatically 
     const response = await fetch(serverUrl + "update", {
         method: "POST",
-        headers : {
+        headers: {
             "Content-type": "application/json",
         },
         body: JSON.stringify({
+            "_id": _id,
             "title": title,
             "img": img,
-            "ingredients": ingredients
+            "ingredients": ingredients,
+            "servings": servings,
+            "cookTime": cookTime,
+            "author": author,
+            "instructions": instructions,
+            "tags": tags
         })
     });
     const res = await response.text();
@@ -106,21 +135,19 @@ async function updateRecipe(title, img, ingredients){
  * @param {Array} ingredients (optional. can leave blank)
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
-async function deleteRecipe(title, img, ingredients){ 
+async function deleteRecipe(_id) {
     // set mode automatically 
+    console.log(_id);
     const response = await fetch(serverUrl + "delete", {
         method: "POST",
-        headers : {
+        headers: {
             "Content-type": "application/json",
         },
         body: JSON.stringify({
-            "title": title,
-            "img": img,
-            "ingredients": ingredients
+            "_id": _id,
         })
     });
     const res = await response.text();
     console.log(res);
     return Promise.resolve(res);
 }
-
