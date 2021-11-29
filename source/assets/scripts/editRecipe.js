@@ -111,7 +111,7 @@ deleteBtn.addEventListener('click', async function () {
     console.log(deleted);
 
     // TODO: add below back
-    // window.location = '../index.html';
+    window.location = '../index.html';
 });
 
 // toggle tags
