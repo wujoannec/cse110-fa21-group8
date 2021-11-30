@@ -48,7 +48,7 @@ Login page and Home/explore UI changes including sizing, colors, meeting with Em
 Terry:\
 Pipeline and pretty as well as lead Adithya and Jim
 
-Adithya:\ 
+Adithya:
 Working on setting up end to end and unit testing with Terry
 
 
