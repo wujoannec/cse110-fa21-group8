@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "babel-jest": "^27.3.1",
     "eslint": "^8.3.0",
@@ -24,7 +25,8 @@
     "create-skeletons-staging-test": "jest create-skeletons-staging.test.js",
     "create-skeletons-test": "jest create-skeletons.test.js",
     "main-staging-test": "jest main-staging.test.js",
-    "main-test": "jest main.test.js"
+    "main-test": "jest main.test.js",
+    "unit-test": "jest unit.test.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
