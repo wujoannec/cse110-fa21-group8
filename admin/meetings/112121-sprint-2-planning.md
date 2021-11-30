@@ -1,5 +1,5 @@
 # The Software Devils
-## Mid-Sprint 2 Checkups
+## Sprint 2 Planning
 ### 2:00PM-3:10PM @ Zoom University
 
 ### Members:
