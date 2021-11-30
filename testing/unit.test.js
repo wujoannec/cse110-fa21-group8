@@ -1,6 +1,6 @@
 // unit.test.js
 
-const functions = require('../source/assets/scripts/CRUD.js');
+const functions = require("../source/assets/scripts/CRUD.js");
 
 // TODO - Part 2
 //bandemic
@@ -30,8 +30,8 @@ test('the data is the message from server', () => {
 });
 */
 
-test('testing-1', () => {
-    expect(Array.isArray(functions.getRecipe())).toBe(false);
+test("testing-1", () => {
+  expect(Array.isArray(functions.getRecipe())).toBe(false);
 });
 
 /*
