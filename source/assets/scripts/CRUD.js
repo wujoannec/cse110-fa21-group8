@@ -31,7 +31,7 @@ async function authenticate(username, password, authType) {
 /**
  * add recipe if recipe title DNE
  * @param {String} title 
- * @param {String(path to img, needs to be a link for now)} img 
+ * @param {String} img 
  * @param {Array} ingredients 
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
@@ -98,7 +98,7 @@ async function getRecipe() {
 /**
  * update recipe if recipe title exists, even if nothing changed!
  * @param {String} title 
- * @param {String(path to img, needs to be a link for now)} img 
+ * @param {String} img 
  * @param {Array} ingredients 
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
@@ -129,7 +129,7 @@ async function updateRecipe(_id, title, img, servings, cookTime, author, ingredi
 /**
  * delete recipe if recipe id exists, even if nothing changed!
  * @param {String} title
- * @param {String(path to img, needs to be a link for now)} img (optional. can leave blank)
+ * @param {String} img (optional. can leave blank)
  * @param {Array} ingredients (optional. can leave blank)
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
