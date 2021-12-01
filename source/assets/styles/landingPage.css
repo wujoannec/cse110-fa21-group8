@@ -1,0 +1,93 @@
+body {
+  background-color: wheat;
+  margin: 0;
+}
+
+.navigation {
+  background-color: rgb(224, 248, 255);
+  padding: 1mm 0 0 0;
+  border-bottom: solid;
+}
+
+.navbarLinks {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: rgba(0, 0, 0);
+  margin: 7mm 7mm 6mm 0;
+  border-bottom: 0.25rem solid transparent;
+  float: right;
+}
+
+.navbarLinks:hover {
+  color: rgba(255, 0, 0, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.mainTitle {
+  margin: 1vh 0 1vh 0;
+}
+
+.midPage {
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.footer {
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+#landingImg {
+  width: 100%;
+  height: 54vh;
+  object-fit: cover;
+  border-bottom: solid;
+}
+
+/* from https://getcssscan.com/css-buttons-examples */
+.exploreButton {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: purple;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.exploreButton:hover,
+.exploreButton:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.exploreButton:hover {
+  transform: translateY(-1px);
+}
+
+.exploreButton:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
