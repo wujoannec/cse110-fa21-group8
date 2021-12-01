@@ -1,4 +1,4 @@
-# Sprint 2 Review Meeting
+# Sprint 3 Review Meeting
 
 ## Attendance:
 1. Ryan Wright
