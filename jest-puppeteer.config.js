@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-/*
+
 module.exports = async function () {
   // According to
   // (1) https://jestjs.io/docs/puppeteer
@@ -11,12 +11,12 @@ module.exports = async function () {
     slowMo: 25,
   });
 };
-*/
 
+/*
 module.exports = {
   launch: {
     headless: false,
     slowMo: 25,
   },
 };
-
+*/
