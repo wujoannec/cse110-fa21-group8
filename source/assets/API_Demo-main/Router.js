@@ -22,7 +22,7 @@ export class Router {
       link = window.location.href + hash;
     }
     if (statePopped != false && window.location.hash != hash) {
-      window.history.pushState({ curr_page: page }, "", link);
+      window.history.pushState({curr_page: page}, "", link);
     }
     this[page]();
   }

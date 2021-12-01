@@ -1,10 +1,11 @@
-import { updateRecipe, getOneRecipe, deleteRecipe } from "./CRUD.js";
+import {updateRecipe, getOneRecipe, deleteRecipe} from "./CRUD.js";
 // READ part of CRUD
-const _id = window.location.hash.substring(1); 
+const _id = window.location.hash.substring(1);
 console.log("on line4, editRecipe.js" + _id);
 
-let result = await getOneRecipe(_id)
-    .then(resolved => { return resolved });
+let result = await getOneRecipe(_id).then((resolved) => {
+  return resolved;
+});
 
 console.log(result);
 let recipeTitle = document.getElementById("title");
@@ -22,167 +23,178 @@ author.value = result.author;
 let img = document.getElementById("recipeImg");
 img.src = result.src;
 
-
-result.ingredients.forEach(ingredient => {
-    fillIngredient(ingredient);
+result.ingredients.forEach((ingredient) => {
+  fillIngredient(ingredient);
 });
 
-result.instructions.forEach(instruction => {
-    fillInstruction(instruction);
+result.instructions.forEach((instruction) => {
+  fillInstruction(instruction);
 });
 
 let tags = document.querySelectorAll(".tags > *");
-tags.forEach(tag => {
-    if (result.tags.includes(tag.textContent)) {
-        tag.setAttribute('class', 'selected');
-    }
+tags.forEach((tag) => {
+  if (result.tags.includes(tag.textContent)) {
+    tag.setAttribute("class", "selected");
+  }
 });
 
 function fillIngredient(ingredient) {
-    let ingredientBtns = document.getElementById('ingredientBtns');
-    let newIngredient = document.createElement('div');
-    newIngredient.setAttribute('role', 'textbox');
-    newIngredient.setAttribute('contenteditable', 'true');
-    newIngredient.setAttribute('class', 'ingredient');
-    newIngredient.textContent = ingredient;
-    ingredientBtns.insertAdjacentElement("beforebegin", newIngredient);
+  let ingredientBtns = document.getElementById("ingredientBtns");
+  let newIngredient = document.createElement("div");
+  newIngredient.setAttribute("role", "textbox");
+  newIngredient.setAttribute("contenteditable", "true");
+  newIngredient.setAttribute("class", "ingredient");
+  newIngredient.textContent = ingredient;
+  ingredientBtns.insertAdjacentElement("beforebegin", newIngredient);
 }
 
 function fillInstruction(instruction) {
-    let instructionBtns = document.getElementById('instructionBtns');
-    let newInstruction = document.createElement('div');
-    newInstruction.setAttribute('role', 'textbox');
-    newInstruction.setAttribute('contenteditable', 'true');
-    newInstruction.setAttribute('class', 'instruction');
-    newInstruction.textContent = instruction;
-    instructionBtns.insertAdjacentElement("beforebegin", newInstruction);
+  let instructionBtns = document.getElementById("instructionBtns");
+  let newInstruction = document.createElement("div");
+  newInstruction.setAttribute("role", "textbox");
+  newInstruction.setAttribute("contenteditable", "true");
+  newInstruction.setAttribute("class", "instruction");
+  newInstruction.textContent = instruction;
+  instructionBtns.insertAdjacentElement("beforebegin", newInstruction);
 }
 
 // UPDATE part of CRUD
-let confirmBtn = document.getElementById('confirmBtn');
-confirmBtn.addEventListener('click', async function () {
-    //Getting all elements
-    let recipeTitle = document.getElementById("title").textContent;
-    let servings = document.getElementById("servings").value;
-    let cookTime = document.getElementById("cookTime").value;
-    let author = document.getElementById("author").value;
-    let img = document.getElementById("recipeImg").src;
+let confirmBtn = document.getElementById("confirmBtn");
+confirmBtn.addEventListener("click", async function () {
+  //Getting all elements
+  let recipeTitle = document.getElementById("title").textContent;
+  let servings = document.getElementById("servings").value;
+  let cookTime = document.getElementById("cookTime").value;
+  let author = document.getElementById("author").value;
+  let img = document.getElementById("recipeImg").src;
 
-    //returns all divs in ingredients article and instructions article
-    let ingredients = document.querySelectorAll("#ingredients > div");
-    let instructions = document.querySelectorAll("#instructions > div");
-    let tags = document.querySelectorAll(".tags > *");
+  //returns all divs in ingredients article and instructions article
+  let ingredients = document.querySelectorAll("#ingredients > div");
+  let instructions = document.querySelectorAll("#instructions > div");
+  let tags = document.querySelectorAll(".tags > *");
 
-    let ingredientsArray = [];
-    ingredients.forEach(ingredient => {
-        if (ingredient.className == 'ingredient') {
-            ingredientsArray.push(ingredient.textContent);
-        }
-    });
+  let ingredientsArray = [];
+  ingredients.forEach((ingredient) => {
+    if (ingredient.className == "ingredient") {
+      ingredientsArray.push(ingredient.textContent);
+    }
+  });
 
-    let instructionsArray = [];
-    instructions.forEach(instruction => {
-        if (instruction.className == 'instruction') {
-            instructionsArray.push(instruction.textContent);
-        }
-    });
+  let instructionsArray = [];
+  instructions.forEach((instruction) => {
+    if (instruction.className == "instruction") {
+      instructionsArray.push(instruction.textContent);
+    }
+  });
 
-    let tagsArray = [];
-    tags.forEach(tag => {
-        if (tag.classList.contains('selected')) {
-            tagsArray.push(tag.textContent);
-        }
-    });
+  let tagsArray = [];
+  tags.forEach((tag) => {
+    if (tag.classList.contains("selected")) {
+      tagsArray.push(tag.textContent);
+    }
+  });
 
-    let result = await updateRecipe(_id, recipeTitle, img, servings, cookTime, author, ingredientsArray, instructionsArray, tagsArray)
-        .then(resolved => { return resolved });
-    console.log(result);
+  let result = await updateRecipe(
+    _id,
+    recipeTitle,
+    img,
+    servings,
+    cookTime,
+    author,
+    ingredientsArray,
+    instructionsArray,
+    tagsArray
+  ).then((resolved) => {
+    return resolved;
+  });
+  console.log(result);
 
-    console.log("in editRecipe.js: " + _id);
-    window.location.href = 'viewRecipe.html' + "#" + _id;
+  console.log("in editRecipe.js: " + _id);
+  window.location.href = "viewRecipe.html" + "#" + _id;
 });
 
 // DELETE part of CRUD
-let deleteBtn = document.getElementById('deleteRecipeBtn');
-deleteBtn.addEventListener('click', async function () {
-    // let recipeTitle = result.title;
-    let deleted = await deleteRecipe(_id)
-        .then(resolved => { return resolved });
-    console.log(deleted);
+let deleteBtn = document.getElementById("deleteRecipeBtn");
+deleteBtn.addEventListener("click", async function () {
+  // let recipeTitle = result.title;
+  let deleted = await deleteRecipe(_id).then((resolved) => {
+    return resolved;
+  });
+  console.log(deleted);
 
-    // TODO: add below back
-    window.location = '../index.html';
+  // TODO: add below back
+  window.location = "../index.html";
 });
 
 // toggle tags
 // let tags = document.querySelectorAll('.tags > *');
-tags.forEach(tag => {
-    tag.addEventListener('click', function () {
-        if (tag.classList.contains('selected')) {
-            tag.classList.remove('selected');
-        } else {
-            tag.classList.add('selected');
-        }
-    });
+tags.forEach((tag) => {
+  tag.addEventListener("click", function () {
+    if (tag.classList.contains("selected")) {
+      tag.classList.remove("selected");
+    } else {
+      tag.classList.add("selected");
+    }
+  });
 });
 
 // return to view recipe page without making edits
-let backBtn = document.getElementById('backBtn');
-backBtn.addEventListener('click', function () {
-    window.location = 'viewRecipe.html';
+let backBtn = document.getElementById("backBtn");
+backBtn.addEventListener("click", function () {
+  window.location = "viewRecipe.html";
 });
 // return to view recipe page without making edits
-let cancelBtn = document.getElementById('cancelBtn');
-cancelBtn.addEventListener('click', function () {
-    window.location = 'viewRecipe.html';
+let cancelBtn = document.getElementById("cancelBtn");
+cancelBtn.addEventListener("click", function () {
+  window.location = "viewRecipe.html";
 });
 
-let ingredientBtns = document.getElementById('ingredientBtns');
+let ingredientBtns = document.getElementById("ingredientBtns");
 // add ingredient text field
-let addIngredient = document.getElementById('addIngredient');
-addIngredient.addEventListener('click', function () {
-    let newIngredient = document.createElement('div');
-    newIngredient.setAttribute('role', 'textbox');
-    newIngredient.setAttribute('contenteditable', 'true');
-    newIngredient.setAttribute('class', 'ingredient');
-    ingredientBtns.insertAdjacentElement("beforebegin", newIngredient);
+let addIngredient = document.getElementById("addIngredient");
+addIngredient.addEventListener("click", function () {
+  let newIngredient = document.createElement("div");
+  newIngredient.setAttribute("role", "textbox");
+  newIngredient.setAttribute("contenteditable", "true");
+  newIngredient.setAttribute("class", "ingredient");
+  ingredientBtns.insertAdjacentElement("beforebegin", newIngredient);
 });
 // remove ingredient text field
-let removeIngredient = document.getElementById('removeIngredient');
-removeIngredient.addEventListener('click', function () {
-    let toDelete = ingredientBtns.previousElementSibling;
-    if (toDelete.nodeName == "DIV") {
-        toDelete.remove();
-    }
+let removeIngredient = document.getElementById("removeIngredient");
+removeIngredient.addEventListener("click", function () {
+  let toDelete = ingredientBtns.previousElementSibling;
+  if (toDelete.nodeName == "DIV") {
+    toDelete.remove();
+  }
 });
 
-let instructionBtns = document.getElementById('instructionBtns');
+let instructionBtns = document.getElementById("instructionBtns");
 // add ingredient text field
-let addInstruction = document.getElementById('addInstruction');
-addInstruction.addEventListener('click', function () {
-    let newInstruction = document.createElement('div');
-    newInstruction.setAttribute('role', 'textbox');
-    newInstruction.setAttribute('contenteditable', 'true');
-    newInstruction.setAttribute('class', 'instruction');
-    instructionBtns.insertAdjacentElement("beforebegin", newInstruction);
+let addInstruction = document.getElementById("addInstruction");
+addInstruction.addEventListener("click", function () {
+  let newInstruction = document.createElement("div");
+  newInstruction.setAttribute("role", "textbox");
+  newInstruction.setAttribute("contenteditable", "true");
+  newInstruction.setAttribute("class", "instruction");
+  instructionBtns.insertAdjacentElement("beforebegin", newInstruction);
 });
 // remove ingredient text field
-let removeInstruction = document.getElementById('removeInstruction');
-removeInstruction.addEventListener('click', function () {
-    let toDelete = instructionBtns.previousElementSibling;
-    if (toDelete.nodeName == "DIV") {
-        toDelete.remove();
-    }
+let removeInstruction = document.getElementById("removeInstruction");
+removeInstruction.addEventListener("click", function () {
+  let toDelete = instructionBtns.previousElementSibling;
+  if (toDelete.nodeName == "DIV") {
+    toDelete.remove();
+  }
 });
 
 // change recipe image on upload
-let recipeImg = document.getElementById('recipeImg');
-let uploadImg = document.getElementById('uploadImg');
-uploadImg.addEventListener('change', function () {
-    let img = uploadImg.files[0];
-    if (img) {
-        recipeImg.setAttribute('src', URL.createObjectURL(img));
-    }
+let recipeImg = document.getElementById("recipeImg");
+let uploadImg = document.getElementById("uploadImg");
+uploadImg.addEventListener("change", function () {
+  let img = uploadImg.files[0];
+  if (img) {
+    recipeImg.setAttribute("src", URL.createObjectURL(img));
+  }
 });
 
 /*

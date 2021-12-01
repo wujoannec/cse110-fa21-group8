@@ -7,7 +7,7 @@ let resultSection = document.getElementById("result");
 let detail = document.getElementById("detail");
 let res = [];
 
-import { Router } from "./Router.js";
+import {Router} from "./Router.js";
 
 window.addEventListener("DOMContentLoaded", init);
 async function init() {
@@ -105,10 +105,10 @@ async function init() {
     });
 
     // Go back to home page.
-    const homeButton = document.querySelector('a');
-    homeButton.addEventListener('click', () => {
+    const homeButton = document.querySelector("a");
+    homeButton.addEventListener("click", () => {
       window.location = "../index.html";
-    })
+    });
 
     // resultSection.innerHTML = "";
     // for (let i = 0; i < res.length; i++) {
