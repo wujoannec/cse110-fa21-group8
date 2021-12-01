@@ -54,6 +54,7 @@ Working on setting up end to end and unit testing with Terry
 
 
 ### Discussion Notes:
--Ryan and Jonny are going to assist backend
--want to make sure CRUD is up by end
--prepare for the demo 
+-We are behind on CRUD so we need to focus this week
+-Ryan and Jonny are going to assist backend\
+-Want to make sure CRUD is up by end\
+-Prepare for the demo in class (lead by Amjad)
