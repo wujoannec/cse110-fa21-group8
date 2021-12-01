@@ -19,4 +19,3 @@ module.exports = {
     slowMo: 25,
   },
 };
-
