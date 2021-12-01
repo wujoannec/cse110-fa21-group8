@@ -14,7 +14,7 @@ describe("Basic user flow for Website", () => {
     if (logType === "error") {
       console.log(logMsg);
     }
-    // expect(message.type()).not.toBe("error");
+    expect(message.type()).not.toBe("error");
   });
 
   it("Check whether [createButton] is functioning", async () => {
