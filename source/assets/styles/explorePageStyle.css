@@ -1,0 +1,186 @@
+:root {
+  /* --secondary-color: #ffc0cb; */
+  --primary-color: white;
+  --secondary-color: #cee4eb;
+  --tertiary-color: #cee4eb;
+  --quatriary-color: rgb(158, 158, 158);
+
+} 
+
+body {
+  background-color: var(--secondary-color);
+}
+
+@media only screen and (min-width: 1680px) {
+  .recipe-grid {
+    grid-area: recipes;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1680px) {
+  .recipe-grid {
+    grid-area: recipes;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .recipe-grid {
+    grid-area: recipes;
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+  }
+}
+
+.recipe {
+
+  display: grid;
+  grid-template-rows: auto auto;
+  background-color: var(--secondary-color);
+  border: 3pt solid var(--primary-color);
+  text-align: center;
+  font-size: 17pt;
+  /* white-space: pre-line; */
+  height: 200px;
+  width: 20em;
+  padding: 20px;
+  color: var(--quatriary-color);
+}
+
+.recipe > img {
+  object-fit: fill;
+  align-self: center;
+  margin: auto;
+  height: 170px;
+  padding:10px;
+  
+}
+
+#createButton {
+  margin-top: 7vh;
+  width: 27%;
+  height: 50%;
+  font-size: xxx-large;
+}
+
+
+.head {
+  grid-area: header;
+  font-size: 24pt;
+  font-family: "lobster";
+  color: blue;
+}
+
+.logo {
+  grid-area: logo;
+}
+.search {
+  grid-area: search;
+}
+.search-button {
+  grid-area: button;
+}
+
+.drop-down {
+  grid-area: drop;
+}
+
+/* .tags {
+  grid-area: tags;
+  background-color: antiquewhite;
+  border: solid blue;
+  text-align: center;
+} */
+
+.foot {
+  grid-area: footer;
+  /* background-color: lightskyblue; */
+  color: blue;
+}
+
+.navbar {
+  grid-area: bar;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+  /* background-color: lightskyblue; */
+}
+
+.home-grid {
+  display: grid;
+  grid-template-areas:
+    "logo logo a b search search drop button"
+    "tags recipes recipes recipes recipes recipes recipes recipes"
+    "tags recipes recipes recipes recipes recipes recipes recipes"
+    "tags recipes recipes recipes recipes recipes recipes recipes"
+    "tags bar bar bar bar bar bar bar"
+    "footer footer footer footer footer footer footer footer";
+  grid-gap: 10px;
+  background-color: var(--main-bg-color);
+  padding: 10px;
+}
+
+/* The sidebar menu */
+.sidenav {
+  width: fit-content;
+  min-width: 20px;
+  max-width: 100%;
+  height: 720px;
+  z-index: 1; /* Stay on top */
+  top: 4; /* Stay at the top */
+  left: 0%;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding: 6px 80px 6px 10px;
+  overflow-y: scroll;
+  font-size: 2vw;
+  text-align: left;
+  color: #818181;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 20px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.a {
+  grid-area: a;
+  color: var(--quatriary-color);
+  font-size: 2vw;
+  padding-top: 1vw;
+  text-align: center;
+}
+
+.b {
+  grid-area: b;
+  color: var(--quatriary-color);
+  font-size: 2vw;
+  padding-top: 1vw;
+  text-align: center;
+}
+
+.tags {
+  grid-area: tags;
+  background-color:  #cee4eb;
+  border-radius: 10px;
+
+  border: 2px solid white;
+  text-align: center;
+  font-size: 30pt;
+  max-height: 100%;
+}
+

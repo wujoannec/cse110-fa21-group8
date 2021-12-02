@@ -7,6 +7,14 @@ module.exports = async function () {
   browser = await puppeteer.launch({
     headless: false,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    slowMo: 25,
   });
 };
+
+/*
+module.exports = {
+  launch: {
+    headless: false,
+    slowMo: 5,
+  },
+};
+*/

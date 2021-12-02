@@ -1,0 +1,27 @@
+name: on-push-login-page-staging
+on:
+  push:
+    branches:
+      - login-page-staging
+jobs:
+  UI_test:
+    name: UI Test (login-page-staging branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run login-page-staging-test
+  style_test:
+    name: Coding Style Test (login-page-staging branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx prettier --check .
+  lint_JS_test:
+    name: Linting JS Test (login-page-staging branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npx eslint .

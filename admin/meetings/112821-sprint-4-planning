@@ -1,0 +1,68 @@
+# The Software Devils
+## Sprint 4 Planning
+### 2:00PM-3:10PM @ Zoom University
+
+### Members:
+- [ X] Ryan
+- [  ] Zach 
+- [ X] Joanne
+- [ X] Amjad
+- [ X] Terry
+- [ X] Em
+- [ X] Jonny
+- [ X] Brooks
+- [ X] Adithya
+- [ X] Jim
+
+### Agenda:
+- Old Business
+  - Changing of 2 members to be dual front/backend
+- New Business
+  - Checkups
+  - Talk about FINAL sprint ideas
+  - Who's going to do video
+  - Which features will be implemented in what order
+- Future Business
+  - Just checkups
+  
+### Discussion Notes:
+Need\
+—------------------------------------------------------------------------\
+Amjad:\
+Leadership, making sure everything is togther, cleaning the repo, working with backend on Spoonacular
+
+Brooks:\
+Making final touches on the backend connecting pieces
+
+Em:\
+Getting outsider feedback and doing final polishing of view/edit/add recipe pages according to feedback of non-classmates
+
+Jonny:\
+Continuing backend work for the view edit page as needed
+
+Ryan:\
+Fixing up the backend to make tags work and any other help for backend
+
+Jim:\ 
+Debugging the unit testing pipeline
+
+Joanne:\
+Making sure UI of register+ login page is good and reinstating my UI changes (someone pushed new code using the old CSS and it has created conflicts)
+
+Terry:\
+Leading Jim and Adithya on unit testing so that our testing pipeline can be done
+
+Adithya:
+Resolving the unit testing pipeline
+
+
+
+### Final Discussion:
+
+- Final Video: Joanne + Amjad
+- Job: each person shows ui to family member and asks for honest opinions
+- Just unit testing left for pipeline
+- Saturday final presentation
+- Timer is the first additional feature to be added
+
+
