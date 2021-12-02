@@ -40,7 +40,7 @@ body {
   margin-top: 65px;
 }
 
-#navbarGrid > *{
+#navbarGrid > * {
   margin: 1mm;
   height: 33px;
   width: 33px;
@@ -54,7 +54,7 @@ body {
 #logo {
   grid-column: 3/4;
   width: 150px;
-  margin: 0mm;      /* accounts for logo image itself having border */
+  margin: 0mm; /* accounts for logo image itself having border */
   height: 115%;
   overflow-y: hidden;
 }
@@ -67,11 +67,6 @@ body {
   grid-column: 5/6;
   cursor: pointer;
 }
-
-
-
-
-
 
 /********************/
 /** INPUT ELEMENTS **/
@@ -101,9 +96,9 @@ body {
 /***********/
 
 /* Placeholder text for div */
-[role="textbox"]:empty:not(:focus):before{
-    content:attr(data-text);
-    color: gray;
+[role="textbox"]:empty:not(:focus):before {
+  content: attr(data-text);
+  color: gray;
 }
 
 #title {
@@ -236,30 +231,27 @@ body {
 /** DESKTOP VIEW **/
 /******************/
 @media (min-width: 760px) {
+  /* taller navbar */
+  #navbarGrid {
+    grid-template-columns: 5px 60px auto 60px 60px;
+  }
 
-/* taller navbar */
-#navbarGrid {
-  grid-template-columns: 5px 60px auto 60px 60px;
-}
+  /* gives margin to first element after navbar so doesn't overlap */
+  #navbarGrid + * {
+    margin-top: 82px;
+  }
 
-/* gives margin to first element after navbar so doesn't overlap */
-#navbarGrid + * {
-  margin-top: 82px;
-}
+  #navbarGrid > * {
+    height: 50px;
+    width: 50px;
+    margin: 1mm;
+  }
 
-#navbarGrid > * {
-  height: 50px;
-  width: 50px;
-  margin: 1mm;
-}
-
-
-#logo {
+  #logo {
     width: 200px;
-    margin-top: -2px;   /* accounts for logo image itself having border */
+    margin-top: -2px; /* accounts for logo image itself having border */
     height: 110%;
-}
-
+  }
 
   #recipeCardGrid {
     display: grid;
