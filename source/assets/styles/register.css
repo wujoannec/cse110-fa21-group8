@@ -65,11 +65,12 @@ form > input {
   padding: 1mm;
 }
 
-form > [type="submit"] {
+form > #submit {
   font-size: large;
-  height: 75%;
-  width: 260px;
+  /* height: 75%; */
+  /* width: 260px; */
   background-color: rgb(224, 248, 255);
+  cursor: pointer;
   margin: 5mm 0mm 3mm 0mm;
 }
 
