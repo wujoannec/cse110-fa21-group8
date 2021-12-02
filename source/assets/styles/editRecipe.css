@@ -37,7 +37,7 @@ body {
 
 /* gives margin to first element after navbar so doesn't overlap */
 #navbarGrid + * {
-  margin-top: 65px;
+  margin-top: 82px;
 }
 
 #navbarGrid > * {
@@ -98,6 +98,13 @@ body {
 /***********/
 /** TITLE **/
 /***********/
+
+/* Placeholder text for div */
+[role="textbox"]:empty:not(:focus):before{
+    content:attr(data-text);
+    color: gray;
+}
+
 #title {
   display: block;
   margin-left: auto;
