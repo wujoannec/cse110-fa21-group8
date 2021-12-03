@@ -4,6 +4,7 @@ import {getOneRecipe} from "./CRUD.js";
 const hash = window.location.hash.replace(/^#/, '').split("&");
 let loggedIn = false;
 let _id = 0;
+let userName = "";
 // check if logged in
 if (hash.length == 2) {
   loggedIn = true;

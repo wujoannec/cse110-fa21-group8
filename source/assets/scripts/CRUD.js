@@ -5,11 +5,12 @@ export {
   getRecipe,
   authenticate,
   getOneRecipe,
-  getOneRecipeExplore
+  getOneRecipeExplore,
+  addFavorite
 };
 // add recipe
-const serverUrl = "https://devil-dishes.herokuapp.com/";
-// const serverUrl = "http://localhost:3000/";
+// const serverUrl = "https://devil-dishes.herokuapp.com/";
+const serverUrl = "http://localhost:3000/";
 
 /**
  * user authentication
@@ -28,6 +29,28 @@ async function authenticate(username, password, authType) {
     body: JSON.stringify({
       username: username,
       password: password,
+    }),
+  });
+  const res = await response.text();
+  console.log(res);
+  return Promise.resolve(res);
+}
+
+/**
+ * add to user favorite section
+ * @param {String} username username
+ * @param {String} _id recipe id
+ * @returns {String} Message from server, you can use this to determine whether succeeded
+ */
+async function addFavorite(username, _id) {
+  const response = await fetch(serverUrl + "addFavorite", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      _id: _id,
     }),
   });
   const res = await response.text();
@@ -76,16 +99,20 @@ async function addRecipe(
 }
 
 /**
- * return all recipes for a user(for now, all recipes in the db)
+ * return all recipes for a user
+ * @param {String} username username
  * @returns {Array} an array of java objects contains all recipes
  */
-async function getRecipe() {
+async function getRecipe(username) {
   // set mode automatically
   const response = await fetch(serverUrl + "getAllRecipe", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
+    body: JSON.stringify({
+      username: username,
+    }),
   });
   const res = await response.text();
   return Promise.resolve(JSON.parse(res));
