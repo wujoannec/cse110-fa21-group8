@@ -65,7 +65,7 @@ describe("Basic user flow for Website", () => {
     //expect(message.type()).not.toBe("error");
   });
 
-  it("Click [createButton] on index.html", async () => {
+  it("Click [createButton] on views/homePage.html", async () => {
     const button = await page.$("#createButton");
     await button.click();
     await page.waitForNavigation({waitUntil: "networkidle2"});
