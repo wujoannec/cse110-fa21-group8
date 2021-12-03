@@ -7,7 +7,7 @@ let resultSection = document.getElementById("result");
 let detail = document.getElementById("detail");
 let res = [];
 
-const userName = window.location.hash.replace(/^#/, '');
+let userName = window.location.hash.replace(/^#/, '');
 let loggedIn = false;
 // if logged in
 if (userName != "") {
@@ -98,7 +98,12 @@ async function init() {
         console.log(sourceJson);
 
         recipeElements[i].textContent = res[pointer]["title"];
-        recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + userName + "&" + idNum);
+        if (loggedIn) {
+          recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + userName + "&" + idNum);  
+        }
+        else {
+          recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + idNum);
+        }
         recipeElements[i].appendChild(recipe);
 
         // Update pointer

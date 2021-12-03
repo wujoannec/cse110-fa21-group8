@@ -122,7 +122,7 @@ confirmBtn.addEventListener("click", async function () {
 let deleteBtn = document.getElementById("deleteRecipeBtn");
 deleteBtn.addEventListener("click", async function () {
   // let recipeTitle = result.title;
-  let deleted = await deleteRecipe(_id).then((resolved) => {
+  let deleted = await deleteRecipe(userName, _id).then((resolved) => {
     return resolved;
   });
   console.log(deleted);

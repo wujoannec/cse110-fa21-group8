@@ -9,8 +9,8 @@ export {
   addFavorite
 };
 // add recipe
-const serverUrl = "https://devil-dishes.herokuapp.com/";
-// const serverUrl = "http://localhost:3000/";
+// const serverUrl = "https://devil-dishes.herokuapp.com/";
+const serverUrl = "http://localhost:3000/";
 
 /**
  * user authentication
@@ -207,15 +207,15 @@ async function updateRecipe(
 }
 
 /**
- * delete recipe if recipe id exists, even if nothing changed!
+ * delete recipe if recipe id exists, also delete from user favorites if favorated
  * @param {String} title
  * @param {String} img (optional. can leave blank)
  * @param {Array} ingredients (optional. can leave blank)
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
-async function deleteRecipe(_id) {
+async function deleteRecipe(username, _id) {
   // set mode automatically
-  console.log(_id);
+  // console.log(_id);
   const response = await fetch(serverUrl + "delete", {
     method: "POST",
     headers: {
@@ -223,6 +223,7 @@ async function deleteRecipe(_id) {
     },
     body: JSON.stringify({
       _id: _id,
+      username: username
     }),
   });
   const res = await response.text();
