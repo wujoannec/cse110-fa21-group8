@@ -68,7 +68,7 @@ describe("Basic user flow for Website", () => {
   it("Click [createButton] on index.html", async () => {
     const button = await page.$("#createButton");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("Input title,servings,cookTime,author on createRecipe.html", async () => {
@@ -150,7 +150,7 @@ describe("Basic user flow for Website", () => {
   it("Click the confirm button on createRecipe.html", async () => {
     const button = await page.$("#confirmBtn");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("Click the back button on viewRecipe.html", async () => {
@@ -166,7 +166,7 @@ describe("Basic user flow for Website", () => {
     // click on the back button
     const button = await page.$("#backBtn");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("check whether the new recipe is on home page", async () => {
@@ -186,7 +186,7 @@ describe("Basic user flow for Website", () => {
     // click on the newly created recipe
     const buttons = await page.$$(".recipe");
     await buttons[newRecipeIndex].click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("check all information is correct on viewRecipe.html", async () => {
@@ -221,7 +221,7 @@ describe("Basic user flow for Website", () => {
   it("Click the edit button on viewRecipe.html", async () => {
     const button = await page.$("#editBtn");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("Check whether editing is functioning on editRecipe.html", async () => {
@@ -233,13 +233,13 @@ describe("Basic user flow for Website", () => {
   it("Click the confirm button on createRecipe.html", async () => {
     const button = await page.$("#confirmBtn");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("Click the back button on viewRecipe.html", async () => {
     const button = await page.$("#backBtn");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("check whether the recipe is updated on home page", async () => {
@@ -251,19 +251,19 @@ describe("Basic user flow for Website", () => {
     expect(updatedRecipeText).toBe(title + " (Updated)");
     // click on the updated recipe
     await updatedRecipe.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("Click the edit button on viewRecipe.html", async () => {
     const button = await page.$("#editBtn");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("Check whether deleting is functioning on editRecipe.html", async () => {
     const button = await page.$("#deleteRecipeBtn");
     await button.click();
-    await page.waitForNavigation({ waitUntil: "networkidle2" });
+    await page.waitForNavigation({waitUntil: "networkidle2"});
   });
 
   it("check whether the new recipe is deleted from home page", async () => {
