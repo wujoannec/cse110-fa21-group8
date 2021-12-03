@@ -100,7 +100,7 @@ async function init() {
       recipeElements[i].textContent = recipes[i].title;
       recipeElements[i].setAttribute(
         "href",
-        "views/viewRecipe.html#" + recipes[i]._id
+        "viewRecipe.html#" + recipes[i]._id
       );
       recipeElements[i].appendChild(recipe);
 
@@ -132,7 +132,7 @@ async function init() {
   // Go to explore page.
   const exploreButton = document.querySelector(".b");
   exploreButton.addEventListener("click", () => {
-    window.location = "views/explorePage.html";
+    window.location = "explorePage.html";
   });
 
   // Filter for search

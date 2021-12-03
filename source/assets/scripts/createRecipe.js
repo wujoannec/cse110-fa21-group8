@@ -69,7 +69,7 @@ tags.forEach((tag) => {
 // return to view recipe page without making edits
 let backBtn = document.getElementById("backBtn");
 backBtn.addEventListener("click", function () {
-  window.location = "../index.html";
+  window.location = "homePage.html";
 });
 
 let ingredientBtns = document.getElementById("ingredientBtns");
