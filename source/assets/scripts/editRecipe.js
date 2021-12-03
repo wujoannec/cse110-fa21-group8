@@ -128,7 +128,7 @@ deleteBtn.addEventListener("click", async function () {
   console.log(deleted);
 
   // TODO: add below back
-  window.location.href = "../index.html" + "#" + userName;
+  window.location.href = "homePage.html" + "#" + userName;
 });
 
 // toggle tags

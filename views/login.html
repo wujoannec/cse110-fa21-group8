@@ -4,11 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="../source/assets/images/logoBear.png" />
     <title>Login</title>
     <link rel="stylesheet" href="../source/assets/styles/login.css" />
     <script src="assets/scripts/login.js" type="module"></script>
   </head>
   <body>
-    LOGIN PAGE
+    <nav id="navbarGrid">
+      <img id="logo" src="../source/assets/images/logo.png" />
+    </nav>
+
+    <form id="inputs">
+      <h2>Log In</h2>
+
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <input type="submit" id="submit" value="Log in" />
+
+      <p id="errorMsg">Error Message here</p>
+
+      <p>
+        Don't have an account?
+        <a id="registerLink" href="../views/register.html">Register here</a>
+      </p>
+    </form>
   </body>
 </html>

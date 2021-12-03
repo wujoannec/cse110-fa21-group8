@@ -1,4 +1,4 @@
-import {authenticate} from "./CRUD.js"
+import {authenticate} from "./CRUD.js";
 const auth_type = "register";
 
 let userName = document.getElementById("username");
@@ -28,4 +28,3 @@ reg.addEventListener("click", async function() {
         error.innerHTML = "Password doesn't match";
     }
 });
-
