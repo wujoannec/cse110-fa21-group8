@@ -100,39 +100,47 @@ function fillInstruction(instruction, instructionCount) {
 let favBtn = document.getElementById("favBtn");
 favBtn.addEventListener("click", async function () {
   if (favBtn.getAttribute("src") == "../source/assets/images/heartEmpty.png") {
-    // get the ingredients array
-    let ingredientsArray = [];
-    // the ingredients
-    let ingredientSection = document.getElementById("ingredients").children;
-    // first is title
-    for (let i = 1 ; i < ingredientSection.length; i++) {
-      ingredientsArray.push(ingredientSection[i].children[1].innerHTML);
+    // if logged in 
+    if (loggedIn) {
+      // get the ingredients array
+      let ingredientsArray = [];
+      // the ingredients
+      let ingredientSection = document.getElementById("ingredients").children;
+      // first is title
+      for (let i = 1 ; i < ingredientSection.length; i++) {
+        ingredientsArray.push(ingredientSection[i].children[1].innerHTML);
+      }
+      // get the instructions array
+      let instructionArray = [];
+      // the instructions
+      let instructionSection = document.getElementById("instructions").children;
+      // first is title
+      for (let i = 1 ; i < instructionSection.length; i++) {
+        instructionArray.push(instructionSection[i].children[1].innerHTML);
+      }
+      // get the tags array
+      let tagsArray = [];
+      // the tags
+      let tagSection = document.getElementById("tags").children;
+      for (let i = 0 ; i < tagSection.length; i++) {
+        tagsArray.push(tagSection[i].innerHTML);
+      }
+      // add recipe to the database
+      let recipeId = await addRecipe(result.title, result.image, result.servings, result.readyInMinutes,
+                                      result.creditsText, ingredientsArray, instructionArray, tagsArray)
+                              .then((resolved) => {return resolved});
+      // add recipe id to the user's favlist 
+      let res = await addFavorite(userName, recipeId)
+                        .then((resolved) => {return resolved});
+      console.log(res);
+      favBtn.setAttribute("src", "../source/assets/images/heartFull.png");
     }
-    // get the instructions array
-    let instructionArray = [];
-    // the instructions
-    let instructionSection = document.getElementById("instructions").children;
-    // first is title
-    for (let i = 1 ; i < instructionSection.length; i++) {
-      instructionArray.push(instructionSection[i].children[1].innerHTML);
+    // if not logged in
+    else {
+      window.location.href = "register.html";
     }
-    // get the tags array
-    let tagsArray = [];
-    // the tags
-    let tagSection = document.getElementById("tags").children;
-    for (let i = 0 ; i < tagSection.length; i++) {
-      tagsArray.push(tagSection[i].innerHTML);
-    }
-    // add recipe to the database
-    let recipeId = await addRecipe(result.title, result.image, result.servings, result.readyInMinutes,
-                                    result.creditsText, ingredientsArray, instructionArray, tagsArray)
-                            .then((resolved) => {return resolved});
-    // add recipe id to the user's favlist 
-    let res = await addFavorite(userName, recipeId)
-                      .then((resolved) => {return resolved});
-    console.log(res);
-    favBtn.setAttribute("src", "../source/assets/images/heartFull.png");
-  } else {
+  } 
+  else {
     favBtn.setAttribute("src", "../source/assets/images/heartEmpty.png");
   }
 });
