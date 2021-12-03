@@ -10,6 +10,24 @@
     <script src="assets/scripts/login.js" type="module"></script>
   </head>
   <body>
-    LOGIN PAGE
+    <nav id="navbarGrid">
+      <img id="logo" src="../source/assets/images/logo.png" />
+    </nav>
+
+    <form id="inputs">
+      <h2>Log In</h2>
+
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <input type="submit" id="submit" value="Log in" />
+
+      <p id="errorMsg">Error Message here</p>
+
+      <p>
+        Don't have an account?
+        <a id="registerLink" href="../views/register.html">Register here</a>
+      </p>
+    </form>
   </body>
 </html>
