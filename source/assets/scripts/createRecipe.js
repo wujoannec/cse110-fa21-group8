@@ -1,5 +1,6 @@
 import {addRecipe} from "./CRUD.js";
 
+const userName = window.location.hash.replace(/^#/, '');
 let confirmBtn = document.getElementById("confirmBtn");
 confirmBtn.addEventListener("click", async function () {
   //Getting all elements
@@ -51,7 +52,7 @@ confirmBtn.addEventListener("click", async function () {
 
   console.log(result);
 
-  window.location.href = "viewRecipe.html" + "#" + result;
+  window.location.href = "viewRecipe.html" + "#" + userName + "&" + result;
 });
 
 // toggle tags based off of selection
@@ -69,7 +70,7 @@ tags.forEach((tag) => {
 // return to view recipe page without making edits
 let backBtn = document.getElementById("backBtn");
 backBtn.addEventListener("click", function () {
-  window.location = "homePage.html";
+  window.location = "homePage.html" + window.location.hash;
 });
 
 let ingredientBtns = document.getElementById("ingredientBtns");

@@ -1,5 +1,6 @@
 import {getRecipe} from "./CRUD.js";
 window.addEventListener("DOMContentLoaded", init);
+const userName = window.location.hash.replace(/^#/, '');
 
 async function init() {
   // Create Recipes (took some code from Lab 5)
@@ -24,8 +25,8 @@ async function init() {
   //     });
   // }
 
-  async function fetchRecipes() {
-    let result = await getRecipe().then((resolved) => {
+  async function fetchRecipes(username) {
+    let result = await getRecipe(username).then((resolved) => {
       return resolved;
     });
     recipes = result;
@@ -47,7 +48,7 @@ async function init() {
     // });
   }
 
-  let fetchSuccessful = await fetchRecipes();
+  let fetchSuccessful = await fetchRecipes(userName);
 
   if (!fetchSuccessful) {
     console.log("Recipe fetch unsuccessful");
@@ -100,7 +101,7 @@ async function init() {
       recipeElements[i].textContent = recipes[i].title;
       recipeElements[i].setAttribute(
         "href",
-        "viewRecipe.html#" + recipes[i]._id
+        "viewRecipe.html#" + userName + "&" + recipes[i]._id
       );
       recipeElements[i].appendChild(recipe);
 
@@ -126,13 +127,13 @@ async function init() {
 
   const createButton = document.getElementById("createButton");
   createButton.addEventListener("click", function () {
-    window.location = "createRecipe.html";
+    window.location.href = "createRecipe.html" + "#" + userName;
   });
 
   // Go to explore page.
   const exploreButton = document.querySelector(".b");
   exploreButton.addEventListener("click", () => {
-    window.location = "explorePage.html";
+    window.location = "explorePage.html" + "#" + userName;
   });
 
   // Filter for search

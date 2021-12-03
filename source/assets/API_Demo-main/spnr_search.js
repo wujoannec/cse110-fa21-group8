@@ -7,7 +7,14 @@ let resultSection = document.getElementById("result");
 let detail = document.getElementById("detail");
 let res = [];
 
-import {Router} from "./Router.js";
+const userName = window.location.hash.replace(/^#/, '');
+let loggedIn = false;
+// if logged in
+if (userName != "") {
+  loggedIn = true;
+}
+
+
 
 window.addEventListener("DOMContentLoaded", init);
 async function init() {
@@ -91,7 +98,7 @@ async function init() {
         console.log(sourceJson);
 
         recipeElements[i].textContent = res[pointer]["title"];
-        recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + idNum);
+        recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + userName + "&" + idNum);
         recipeElements[i].appendChild(recipe);
 
         // Update pointer
@@ -118,7 +125,14 @@ async function init() {
     // Go back to home page.
     const homeButton = document.querySelector("a");
     homeButton.addEventListener("click", () => {
-      window.location = "homePage.html";
+      if (loggedIn) {
+        window.location.href = "homePage.html" + "#" + userName;
+      }
+      // if did not login
+      else {
+        window.location.href = "register.html";
+      }
+
     });
 
     // resultSection.innerHTML = "";

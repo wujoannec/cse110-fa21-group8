@@ -178,3 +178,11 @@ body {
   font-size: 30pt;
   max-height: 100%;
 }
+
+.a {
+  cursor: pointer;
+}
+
+.b {
+  cursor: pointer;
+}

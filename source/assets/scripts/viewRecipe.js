@@ -1,8 +1,23 @@
 import {getOneRecipe} from "./CRUD.js";
 
 // READ part of CRUD
-const _id = window.location.hash.substring(1);
-console.log(_id);
+const hash = window.location.hash.replace(/^#/, '').split("&");
+let loggedIn = false;
+let _id = 0;
+let userName = "";
+// check if logged in
+if (hash.length == 2) {
+  loggedIn = true;
+}
+// get id based on login status
+if (loggedIn) {
+  _id = hash[1];
+  userName = hash[0];
+}
+else {
+  _id = hash[0];
+}
+console.log("userID: " + _id);
 
 let result = await getOneRecipe(_id).then((resolved) => {
   return resolved;
@@ -92,12 +107,12 @@ favBtn.addEventListener("click", function () {
 let editBtn = document.getElementById("editBtn");
 editBtn.addEventListener("click", function () {
   // window.location = 'editRecipe.html';
-  window.location.href = "editRecipe.html" + "#" + _id;
+  window.location.href = "editRecipe.html" + window.location.hash;
 });
 
 let backBtn = document.getElementById("backBtn");
 backBtn.addEventListener("click", function () {
-  window.location = "homePage.html";
+  window.location.href = "homePage.html" + "#" + userName;
 });
 
 // Add confetti

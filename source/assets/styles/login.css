@@ -69,18 +69,21 @@ body {
     padding: 1mm;
   }
   
-  form > [type="submit"] {
+  form > #submit {
     font-size: large;
-    height: 75%;
+    height: 60%;
     width: 260px;
     background-color: rgb(224, 248, 255);
+    cursor: pointer;
     margin: 5mm 0mm 3mm 0mm;
+    text-align: center;
   }
   
   #errorMsg {
     color: firebrick;
     display: none;
     margin: 7mm 0mm;
+    text-align: center;
   }
   
   form > p {
