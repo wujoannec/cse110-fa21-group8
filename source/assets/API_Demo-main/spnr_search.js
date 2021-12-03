@@ -118,7 +118,7 @@ async function init() {
     // Go back to home page.
     const homeButton = document.querySelector("a");
     homeButton.addEventListener("click", () => {
-      window.location = "../index.html";
+      window.location = "homePage.html";
     });
 
     // resultSection.innerHTML = "";
