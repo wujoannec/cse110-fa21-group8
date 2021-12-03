@@ -9,8 +9,8 @@ export {
   addFavorite
 };
 // add recipe
-// const serverUrl = "https://devil-dishes.herokuapp.com/";
-const serverUrl = "http://localhost:3000/";
+const serverUrl = "https://devil-dishes.herokuapp.com/";
+// const serverUrl = "http://localhost:3000/";
 
 /**
  * user authentication
