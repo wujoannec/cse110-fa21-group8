@@ -5,6 +5,7 @@ export {
   getRecipe,
   authenticate,
   getOneRecipe,
+  getOneRecipeExplore
 };
 // add recipe
 const serverUrl = "https://devil-dishes.herokuapp.com/";
@@ -109,6 +110,32 @@ async function getOneRecipe(_id) {
   });
   const res = await response.text();
   return Promise.resolve(JSON.parse(res));
+}
+
+/**
+ * @param idNum: id of the current recipe
+ * return one recipe based on title
+ * @returns {JSON} a json of all recipe info
+ */
+ async function getOneRecipeExplore(idNum) {
+  let apiLink = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
+  // const apiKey = "&apiKey=c6c6e98c49db4067b8ac5b9fce7703cd";
+  const apiKey = "126a45f034mshd1de42a24e5a6d2p14ccefjsnd4686ee15764";
+
+  // set mode automatically
+  let infoQuery = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${idNum}/information`;
+  let source = await fetch(infoQuery,
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": apiLink,
+        "x-rapidapi-key": apiKey,
+      },
+    }
+    );
+  let sourceJson = await source.json();
+
+  return sourceJson;
 }
 
 /**

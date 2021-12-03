@@ -75,16 +75,27 @@ async function init() {
 
         // Add given recipe
         let idNum = res[pointer].id;
-        let infoQuery = `https://api.spoonacular.com/recipes/${idNum}/information?apiKey=c6c6e98c49db4067b8ac5b9fce7703cd`;
-        let source = await fetch(infoQuery);
+        let infoQuery = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${idNum}/information`;
+        let source = await fetch(infoQuery,
+          {
+            method: "GET",
+            headers: {
+              "x-rapidapi-host": apiLink,
+              "x-rapidapi-key": apiKey,
+            },
+          }
+          );
         let sourceJson = await source.json();
-        let originLink = sourceJson.sourceUrl;
+        // let originLink = sourceJson.sourceUrl;
+
+        console.log(sourceJson);
 
         recipeElements[i].textContent = res[pointer]["title"];
-        recipeElements[i].setAttribute("href", originLink);
+        recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + idNum);
         recipeElements[i].appendChild(recipe);
 
         // Update pointer
+        console.log(sourceJson);
         pointer++;
       }
 
