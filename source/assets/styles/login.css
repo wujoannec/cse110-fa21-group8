@@ -23,7 +23,7 @@ body {
   
   /* gives margin to first element after navbar so doesn't overlap */
   #navbarGrid + * {
-    margin-top: 65px;
+    margin-top: 15%;
   }
   
   #navbarGrid > * {
@@ -39,6 +39,10 @@ body {
     height: 115%;
     overflow-y: hidden;
   }
+
+  h2{
+      margin-bottom: 200px;
+  }
   
   /*****************/
   /** FORM LAYOUT **/
@@ -49,7 +53,7 @@ body {
     /* width: 95%; */
   
     /* center form */
-    margin: auto;
+    margin: 50px;
     place-items: center;
   }
   
