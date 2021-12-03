@@ -141,12 +141,12 @@ tags.forEach((tag) => {
 // return to view recipe page without making edits
 let backBtn = document.getElementById("backBtn");
 backBtn.addEventListener("click", function () {
-  window.location = "viewRecipe.html";
+  window.location.href = "viewRecipe.html" + "#" + _id;
 });
 // return to view recipe page without making edits
 let cancelBtn = document.getElementById("cancelBtn");
 cancelBtn.addEventListener("click", function () {
-  window.location = "viewRecipe.html";
+  window.location.href = "viewRecipe.html" + "#" + _id;
 });
 
 let ingredientBtns = document.getElementById("ingredientBtns");
