@@ -1,6 +1,10 @@
 import {updateRecipe, getOneRecipe, deleteRecipe} from "./CRUD.js";
 // READ part of CRUD
-const _id = window.location.hash.substring(1);
+// hash[0]: username
+// hash[1]: recipeid
+const hash = window.location.hash.replace(/^#/, '').split("&");
+const userName = hash[0];
+const _id = hash[1];
 console.log("on line4, editRecipe.js" + _id);
 
 let result = await getOneRecipe(_id).then((resolved) => {
@@ -110,7 +114,8 @@ confirmBtn.addEventListener("click", async function () {
   console.log(result);
 
   console.log("in editRecipe.js: " + _id);
-  window.location.href = "viewRecipe.html" + "#" + _id;
+  // keep the url info, go to viewrecipe page
+  window.location.href = "viewRecipe.html" + window.location.hash;
 });
 
 // DELETE part of CRUD
@@ -123,7 +128,7 @@ deleteBtn.addEventListener("click", async function () {
   console.log(deleted);
 
   // TODO: add below back
-  window.location = "../index.html";
+  window.location.href = "../index.html" + "#" + userName;
 });
 
 // toggle tags
@@ -141,12 +146,12 @@ tags.forEach((tag) => {
 // return to view recipe page without making edits
 let backBtn = document.getElementById("backBtn");
 backBtn.addEventListener("click", function () {
-  window.location.href = "viewRecipe.html" + "#" + _id;
+  window.location.href = "viewRecipe.html" + window.location.hash;
 });
 // return to view recipe page without making edits
 let cancelBtn = document.getElementById("cancelBtn");
 cancelBtn.addEventListener("click", function () {
-  window.location.href = "viewRecipe.html" + "#" + _id;
+  window.location.href = "viewRecipe.html" + window.location.hash;
 });
 
 let ingredientBtns = document.getElementById("ingredientBtns");
