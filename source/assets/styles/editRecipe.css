@@ -23,7 +23,7 @@ body {
 #navbarGrid {
   display: grid;
   background-color: rgb(224, 248, 255);
-  grid-template-columns: 5px 60px auto 60px 60px;
+  grid-template-columns: 5px 50px auto 50px 50px;
 
   /* sticky navbar */
   position: fixed;
@@ -42,12 +42,8 @@ body {
 
 #navbarGrid > * {
   margin: 1mm;
-}
-
-#navbarGrid > *,
-#navbarGrid > * > * {
-  height: 50px;
-  width: 50px;
+  height: 33px;
+  width: 33px;
 }
 
 #backBtn {
@@ -57,8 +53,8 @@ body {
 
 #logo {
   grid-column: 3/4;
-  width: 200px;
-  margin: 0mm;
+  width: 150px;
+  margin: 0mm; /* accounts for logo image itself having border */
   height: 115%;
   overflow-y: hidden;
 }
@@ -98,6 +94,13 @@ body {
 /***********/
 /** TITLE **/
 /***********/
+
+/* Placeholder text for div */
+[role="textbox"]:empty:not(:focus):before {
+  content: attr(data-text);
+  color: gray;
+}
+
 #title {
   display: block;
   margin-left: auto;
@@ -228,6 +231,28 @@ body {
 /** DESKTOP VIEW **/
 /******************/
 @media (min-width: 760px) {
+  /* taller navbar */
+  #navbarGrid {
+    grid-template-columns: 5px 60px auto 60px 60px;
+  }
+
+  /* gives margin to first element after navbar so doesn't overlap */
+  #navbarGrid + * {
+    margin-top: 82px;
+  }
+
+  #navbarGrid > * {
+    height: 50px;
+    width: 50px;
+    margin: 1mm;
+  }
+
+  #logo {
+    width: 200px;
+    margin-top: -2px; /* accounts for logo image itself having border */
+    height: 110%;
+  }
+
   #recipeCardGrid {
     display: grid;
     grid-auto-rows: 360px 20px auto 20px 40px;

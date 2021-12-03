@@ -23,7 +23,7 @@ body {
 
 /* gives margin to first element after navbar so doesn't overlap */
 #navbarGrid + * {
-  margin-top: 65px;
+  margin-top: 82px;
 }
 
 #navbarGrid > * {
