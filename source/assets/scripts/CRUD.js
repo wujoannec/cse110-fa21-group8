@@ -174,14 +174,22 @@ async function getRecipe(username) {
   });
   const res = await response.text();
   let resObj = JSON.parse(res);
-  // traverse each to parse the image link
-  resObj.forEach(async function(recipe) {
-      // check if the image in recipe is stored in the server(or outside link)
-  let imgBlob = await getImg(recipe.img)
-                        .then(resolve => {return resolve});
-      recipe.img = imgBlob;
-  });
-  console.log(resObj[0].img);
+  if(!(resObj.length == 0))
+  {
+
+  
+    console.log(resObj);
+
+    //if(resObj)
+    // traverse each to parse the image link
+    resObj.forEach(async function(recipe) {
+        // check if the image in recipe is stored in the server(or outside link)
+    let imgBlob = await getImg(recipe.img)
+                          .then(resolve => {return resolve});
+        recipe.img = imgBlob;
+    });
+    console.log(resObj[0].img);
+  }
   return Promise.resolve(resObj);
 }
 
