@@ -142,21 +142,22 @@ async function init() {
   // Filter for search
   const searchButton = document.querySelector(".search-button");
   const searchBar = document.querySelector(".search");
-  searchButton.addEventListener("click", () => {
+  searchButton.addEventListener("click", querySearch);
+  window.addEventListener("keydown", querySearch);
+
+  function querySearch() {
     fetchRecipes(userName);
 
     let recipeLength = recipes.length;
     let newRecipes = [];
     for (let i = 0; i < recipeLength; i++) {
       let name =
-        recipes[i].title != undefined ? recipes[i].title.toString() : "";
+        recipes[i].title != undefined ? recipes[i].title.toString().toLowerCase() : "";
       let tags = recipes[i].tags;
 
       // Filter by name
       if (
-        name.includes(searchBar.value) ||
-        name.includes(searchBar.value.toLowerCase()) ||
-        name.includes(searchBar.value.toUpperCase())
+        name.includes(searchBar.value.toLowerCase())
       )
         newRecipes.push(recipes[i]);
 
@@ -173,7 +174,7 @@ async function init() {
     pointer = 0;
 
     fillGrid();
-  });
+  }
 
   var tagBoxes = document.querySelectorAll(".sidenav > input");
   tagBoxes.forEach((element) => {
