@@ -99,6 +99,7 @@ async function init() {
 
       // Create recipe element
       const recipe = document.createElement("img");
+      console.log(recipes[i].img);
       recipe.setAttribute("src", recipes[i].img);
       console.log("src for recipe img at line 92 in home.js: " + recipes[i].img); 
       recipe.setAttribute("width", recipeWH);
