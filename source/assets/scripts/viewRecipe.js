@@ -1,4 +1,4 @@
-import {getOneRecipe, addFavorite, updateRecipe} from "./CRUD.js";
+import {getOneRecipe, favTag} from "./CRUD.js";
 
 // READ part of CRUD
 const hash = window.location.hash.replace(/^#/, '').split("&");
@@ -105,12 +105,18 @@ else {
 favBtn.addEventListener("click", async function () {
   // if not favored
   if (favBtn.getAttribute("src") == "../source/assets/images/heartEmpty.png") {
+    let response = await favTag(_id, "fav")
+                          .then(resolved => {return resolved});
+    console.log(response);
     favBtn.setAttribute("src", "../source/assets/images/heartFull.png");
   } else {
     // if favored
-
+    let response = await favTag(_id, "unfav")
+                          .then(resolved => {return resolved});
+    console.log(response);
     favBtn.setAttribute("src", "../source/assets/images/heartEmpty.png");
   }
+
 });
 
 // move to edit recipe page

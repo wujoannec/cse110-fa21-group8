@@ -1,4 +1,4 @@
-import {getOneRecipe, getOneRecipeExplore, addRecipe, addFavorite} from "./CRUD.js";
+import {getOneRecipe, getOneRecipeExplore, addRecipe, saveRecipe} from "./CRUD.js";
 
 const hash = window.location.hash.replace(/^#/, '').split("&");
 let loggedIn = false;
