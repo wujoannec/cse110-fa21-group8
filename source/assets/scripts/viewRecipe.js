@@ -35,7 +35,7 @@ let author = document.getElementById("author");
 author.innerHTML = result.author;
 
 let img = document.getElementById("recipeImg");
-img.src = result.src;
+img.src = result.img;
 
 let ingredientCount = 1;
 result.ingredients.forEach((ingredient) => {
