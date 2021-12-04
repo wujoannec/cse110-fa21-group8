@@ -7,7 +7,7 @@ export {
   getOneRecipe,
   getOneRecipeExplore,
   saveRecipe,
-  favTag
+  favTag,
 };
 // add recipe
 const serverUrl = "https://devil-dishes.herokuapp.com/";
@@ -59,11 +59,62 @@ async function saveRecipe(username, _id) {
   return Promise.resolve(res);
 }
 
+// image: the image file uploaded
+async function uploadImg(image, username, title) {
+  // if image is a string: return the link
+  if (typeof image == "string") {
+    return Promise.resolve(image);
+  }
+  // data to upload
+  const formData = new FormData();
+  let imgName = username + title + ".jpg";
+  imgName = imgName.replace(/\ /g,"_");
+  formData.append("image", image,  imgName);
+  const response = await fetch(serverUrl + "saveImg", {
+    method: "POST",
+    body: formData,
+  });
+  const dir = await response.text();
+  console.log(dir);
+  return Promise.resolve(dir);
+}
+
+// imgDir: img in recipe
+// returns {Blob} imagelink to put to src
+async function getImg(imgDirRaw) {
+  // check if imgDir is at the server
+  const imgDir = imgDirRaw.replace(/\ /g,"_");
+  if (imgDir.substring(0,9) != "user_img/") {
+    console.log(imgDir);
+    return Promise.resolve(imgDir);
+  }
+  const respond = await fetch(serverUrl + "getImg", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      imgDir: imgDir,
+    }),
+  });
+  const blob = await respond.blob();
+  const imageObjUrl = URL.createObjectURL(blob);
+  console.log(imageObjUrl);
+  // convert the file to image
+  // .then(response => {
+  //   let blobUrl = response.blob();
+  //   console.log(blobUrl);
+  //   const imageObjUrl = URL.createObjectURL(blobUrl);
+  //   return Promise.resolve(imageObjUrl);
+  // });
+  return Promise.resolve(imageObjUrl);
+}
+
 //CRUD
 /**
  * add recipe if recipe title DNE
  * @param {String} title
- * @param {String} img
+ * @param {File} img
  * @param {Array} ingredients
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
@@ -78,7 +129,10 @@ async function addRecipe(
   instructions,
   tags
 ) {
-  // set mode automatically
+  // server dir to image
+  const imgDir = await uploadImg(img, username, title)
+                          .then(resolved => {return resolved});
+  // set mode automatically.
   const response = await fetch(serverUrl + "add", {
     method: "POST",
     headers: {
@@ -86,7 +140,7 @@ async function addRecipe(
     },
     body: JSON.stringify({
       title: title,
-      img: img,
+      img: imgDir,
       ingredients: ingredients,
       servings: servings,
       cookTime: cookTime,
@@ -119,7 +173,16 @@ async function getRecipe(username) {
     }),
   });
   const res = await response.text();
-  return Promise.resolve(JSON.parse(res));
+  let resObj = JSON.parse(res);
+  // traverse each to parse the image link
+  resObj.forEach(async function(recipe) {
+      // check if the image in recipe is stored in the server(or outside link)
+  let imgBlob = await getImg(recipe.img)
+                        .then(resolve => {return resolve});
+      recipe.img = imgBlob;
+  });
+  console.log(resObj[0].img);
+  return Promise.resolve(resObj);
 }
 
 /**
@@ -140,7 +203,13 @@ async function getOneRecipe(_id) {
     }),
   });
   const res = await response.text();
-  return Promise.resolve(JSON.parse(res));
+  // change the img attribute to atcual blob link or original link
+  let resObj = JSON.parse(res);
+  // check if the image in recipe is stored in the server(or outside link)
+  let imgBlob = await getImg(resObj.img)
+                        .then(resolve => {return resolve});
+  resObj.img = imgBlob;
+  return Promise.resolve(resObj);
 }
 
 async function favTag(_id, favUnfav) {
@@ -187,7 +256,7 @@ async function favTag(_id, favUnfav) {
 /**
  * update recipe if recipe title exists, even if nothing changed!
  * @param {String} title
- * @param {String} img
+ * @param {File} img
  * @param {Array} ingredients
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
@@ -200,8 +269,11 @@ async function updateRecipe(
   author,
   ingredients,
   instructions,
-  tags
+  tags,
+  username
 ) {
+  const imgDir = await uploadImg(img, username, title)
+                        .then(resolved => {return resolved});
   // set mode automatically
   const response = await fetch(serverUrl + "update", {
     method: "POST",
@@ -211,7 +283,7 @@ async function updateRecipe(
     body: JSON.stringify({
       _id: _id,
       title: title,
-      img: img,
+      img: imgDir,
       ingredients: ingredients,
       servings: servings,
       cookTime: cookTime,
@@ -227,12 +299,15 @@ async function updateRecipe(
 
 /**
  * delete recipe if recipe id exists, also delete from user favorites if favorated
- * @param {String} title
- * @param {String} img (optional. can leave blank)
- * @param {Array} ingredients (optional. can leave blank)
+ * @param {String} username
+ * @param {Array} _id
+ * @param {String} title title of the recipe
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
-async function deleteRecipe(username, _id) {
+async function deleteRecipe(username, _id, title) {
+  const temp = "user_img" + "/" + username + title;
+  const imgDir = temp.replace(/\ /g,"_");
+  
   // set mode automatically
   // console.log(_id);
   const response = await fetch(serverUrl + "delete", {
@@ -242,10 +317,53 @@ async function deleteRecipe(username, _id) {
     },
     body: JSON.stringify({
       _id: _id,
-      username: username
+      username: username,
+      imgDir: imgDir,
     }),
   });
   const res = await response.text();
   console.log(res);
   return Promise.resolve(res);
 }
+
+// takes in image file from image input
+// returns processedUrl (img in base64 String)
+// function processImg(image) {
+//   const reader = new FileReader();
+//   let processedUrl = "";
+//   reader.addEventListener("loadend", function() {
+//     processedUrl = reader.result;
+//   });
+//   // if image is passed in
+//   if (image) {
+//     reader.readAsDataURL(image);
+//   }
+//   // if no image is here, use the ult
+//   else {
+//     processedUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
+//   }
+//   // when the string is processed
+//   if (processedUrl != "") {
+//     console.log(processedUrl);
+//     return processedUrl;
+//   }
+// }
+
+
+// old implementation of deleteimg
+// async function removeImg(imgDir) {
+//   // check if imgDir is at the server
+//   if (imgDir.substring(0,9) != "user_img/") {
+//     return Promise.resolve("link is outside");
+//   }
+//   // if imgDir is on the server
+//   const respond = await fetch(serverUrl + "deleteImg", {
+//     method: "POST",
+//     headers: {
+//       "Content-type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       imgDir: imgDir,
+//     }),
+//   });
+// }
