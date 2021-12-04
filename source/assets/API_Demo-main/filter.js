@@ -2,6 +2,17 @@ export {filter};
 let apiLink = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 const apiKey = "126a45f034mshd1de42a24e5a6d2p14ccefjsnd4686ee15764";
 
+let tags = document.querySelectorAll('.tags > *');
+tags.forEach((tag) => {
+  tag.addEventListener("click", function () {
+    if (tag.classList.contains("selected")) {
+      tag.classList.remove("selected");
+    } else {
+      tag.classList.add("selected");
+    }
+  });
+});
+
 var tagBoxes = document.querySelectorAll(".sidenav > input");
 tagBoxes.forEach((element) => {
     element.addEventListener("click", () => {
