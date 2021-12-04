@@ -37,8 +37,7 @@ body {
   }
 }
 
-
-.recipegrid {
+.recipe {
   display: grid;
   grid-template-rows: auto auto;
   background-color: #eff1db;
@@ -54,6 +53,44 @@ body {
   font-size: 12pt;
 }
 
+.createPanel{
+  display: grid;
+  grid-template-rows: auto auto;
+  background-color: #eff1db;
+  border: 3pt solid white;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 17pt;
+  height: 200px;
+  width: 28.5em;
+  padding: 12px;
+  color: rgb(42, 80, 105);
+  margin: 5px 10px 4.1px 5px;
+  font-size: 12pt;
+  
+}
+
+#createButton{
+  object-fit: fill;
+  align-self: center;
+  margin: auto;
+  padding: 8px;
+  background-color:rgb(226, 208, 147);
+  margin-top: 5%;
+  width: 100px;
+  height: 100px;
+  font-size: 50pt;
+  border: 3pt solid rgb(214, 177, 108);
+  opacity: 0.5; 
+  border-radius: 10px;
+}
+
+#createButton:hover{
+  background-color: rgb(191, 225, 245);
+  border: 3pt solid rgb(106, 150, 175);
+
+}
+
 .recipe:hover{
   background-color: rgb(157, 199, 229);
   border: 3pt solid rgb(130, 185, 223);
@@ -67,23 +104,19 @@ body {
   padding: 8px;
 }
 
-#createButton {
-  margin-top: 7vh;
-  width: 27%;
-  height: 50%;
-  font-size: xxx-large;
-}
-
 .logo {
   grid-area: logo;
 }
 
 .search {
   grid-area: search;
-  font-size: 13pt;
+  font-size: 19pt;
   border-radius: 15px;
-  margin-left: 400px;
-  padding-left: 100px;
+  margin-left: 500px;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+
 }
 
 .search-button {
@@ -96,6 +129,17 @@ body {
 
 .search-button:hover {
   background-color: rgb(195, 195, 195);  
+}
+
+.search-changed {
+  grid-area: search;
+  font-size: 19pt;
+  border-radius: 15px;
+  margin-left: 500px;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+
 }
 
 .drop-down {
@@ -178,7 +222,7 @@ body {
 /**********/
 .tags {
   grid-area: tags;
-  max-width: 1100px;
+  width: 257px;
   height: 765px;
   justify-content: center;
   text-align: center;
@@ -218,4 +262,20 @@ border: 3px solid rgb(144, 179, 202);
 
 .selected {
   opacity: 1;
+}
+
+div[hide = "true"], div[hide = 'true'] > *:hover{
+  overflow-y: hidden;
+  color:rgba(0, 0, 0, 0);
+  cursor: not-allowed;
+  background-image: url("../images/amjad.jpg");
+  background-size: 400px 800px;
+
+}
+
+div[hide = 'true'] > *{
+  background-color: rgb(191, 225, 245);
+  color: rgb(106, 150, 175);
+  opacity: 0;
+
 }
