@@ -1,3 +1,5 @@
+import {filter} from "./filter.js";
+
 // let mainLink = "https://api.spoonacular.com/";
 let queryLink = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 let apiLink = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
@@ -18,112 +20,123 @@ if (userName != "") {
 
 window.addEventListener("DOMContentLoaded", init);
 async function init() {
-  explore();
-
+  // let Servresponse = await filter([], 50);
+  await explore(false);
+  
   // let searchSuccess = false;
   let searchButton = document.getElementById("search");
-  searchButton.addEventListener("click", explore);
+  searchButton.addEventListener("click", async function() {
+    await explore(true);
+  });
 
   // Explore the different recipes.
-  async function explore() {
-    let typeOfSearch = document.getElementById("selector").value;
-    let response = await fetch(
-      queryLink + "/" + typeOfSearch + document.getElementById("query").value,
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": apiLink,
-          "x-rapidapi-key": apiKey,
-        },
-      }
-    );
-    let data = await response.json();
-    // element name of menu items is "menuItems"
-    let results = "results";
-    if (typeOfSearch == "food/menuItems/search?query=") {
-      results = "menuItems";
+  // queryStatus: true if searching, false if 
+  async function explore(search) {
+    if(search) {
+      let response = await fetch(
+        queryLink + "/" + "recipes/complexSearch?query=" + document.getElementById("query").value,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": apiLink,
+            "x-rapidapi-key": apiKey,
+          },
+        }
+      );
+      let data = await response.json();
+      console.log("in spnr_search line 45");
+      // element name of menu items is "menuItems"
+      res = data["results"];
+      var tagBoxes = document.querySelectorAll(".sidenav > input");
+      tagBoxes.forEach((element) => {
+        element.addEventListener("click", () => {
+          // console.log(`tag ${element.value} clicked`)
+
+          let newRecipes = [];
+          let recipeLength = res.length;
+          let selectedTags = [];
+
+          // Check for no tag selection
+          if (noTagSelected(tagBoxes)) {
+            pointer = 0;
+            fillGrid();
+            return;
+          }
+          else {
+            tagBoxes.forEach((tagBox) => {
+              if(tagBox.checked) selectedTags.push(tagBox.value.toLowerCase());
+            });
+          }
+
+          // Check every tag box if it's been selected
+          for (let i = 0; i < recipeLength; i++) {
+            let names = res[i].tags;
+            console.log(res[i].tags);
+
+            // Check every tag on recipe to see if it matches the selected box
+            names.forEach((name) => {
+              if(selectedTags.includes(name.toLowerCase())) {
+                if(!newRecipes.includes(res[i])) newRecipes.push(res[i]);
+              }
+            });
+          }
+
+          res = newRecipes;
+          pointer = 0;
+          fillGrid();
+
+          // Check if no tags are selected on the left panel
+          function noTagSelected(tagBoxes) {
+            for (let i = 0; i < tagBoxes.length; i++) {
+              if (tagBoxes[i].checked) return false;
+            }
+
+            return true;
+          }
+        });
+      });
+
     }
-    res = data[results];
+    else {
+      let filterRes = await filter([], 50)
+                    .then(filterRes => {return filterRes});
+      res = filterRes["recipes"];
+        
+      // When clicking tags, please filter
+      var tagBoxes = document.querySelectorAll(".sidenav > input");
+      tagBoxes.forEach((element) => {
+        element.addEventListener("click", async function() {
+            let selectedTags = [];
+            tagBoxes.forEach((tagBox) => {
+                if(tagBox.checked) selectedTags.push(tagBox.value.toLowerCase());
+            })
+
+            let filterRes = await filter(selectedTags, 50)
+                          .then(filterRes => {return filterRes});
+            res = filterRes["recipes"];
+            pointer = 0;
+            fillGridExplore();
+        });
+      });
+    }
 
     // Fill up explore grid
     const recipeElements = document.querySelectorAll(".recipe");
     // const recipeWH = 60;
     var pointer = 0;
 
-    fillGrid();
-
-    async function fillGrid() {
-      // Remove current recipes on display
-      for (let i = 0; i < recipeElements.length; i++) {
-        if (recipeElements[i].children.length > 0) {
-          if (recipeElements[i].children[0].tagName == "IMG") {
-            recipeElements[i].removeChild(recipeElements[i].children[0]);
-            recipeElements[i].removeAttribute("href");
-            recipeElements[i].textContent = "";
-          }
-        }
-      }
-
-      // Add new recipes to display
-      let capacity = pointer;
-
-      for (
-        let i = capacity % recipeElements.length;
-        i < recipeElements.length;
-        i++
-      ) {
-        if (pointer >= res.length) break;
-
-        // Create recipe element
-        const recipe = document.createElement("img");
-        recipe.setAttribute("src", res[pointer]["image"]);
-        // recipe.setAttribute("width", recipeWH);
-        // recipe.setAttribute("height", recipeWH);
-
-        // Add given recipe
-        let idNum = res[pointer].id;
-        let infoQuery = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${idNum}/information`;
-        let source = await fetch(infoQuery,
-          {
-            method: "GET",
-            headers: {
-              "x-rapidapi-host": apiLink,
-              "x-rapidapi-key": apiKey,
-            },
-          }
-          );
-        let sourceJson = await source.json();
-        // let originLink = sourceJson.sourceUrl;
-
-        console.log(sourceJson);
-
-        recipeElements[i].textContent = res[pointer]["title"];
-        if (loggedIn) {
-          recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + userName + "&" + idNum);  
-        }
-        else {
-          recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + idNum);
-        }
-        recipeElements[i].appendChild(recipe);
-
-        // Update pointer
-        console.log(sourceJson);
-        pointer++;
-      }
-
-      pointer = capacity + recipeElements.length;
-    }
+    fillGridExplore();
 
     const rightButton = document.getElementById("right");
     rightButton.addEventListener("click", (e) => {
-      if (pointer < res.length) fillGrid();
+      if (pointer < res.length) fillGridExplore();
     });
 
     const leftButton = document.getElementById("left");
     leftButton.addEventListener("click", (e) => {
       if (pointer > recipeElements.length) {
         pointer -= recipeElements.length * 2;
-        fillGrid();
+        fillGridExplore();
       }
     });
 
@@ -140,110 +153,51 @@ async function init() {
 
     });
 
-    // resultSection.innerHTML = "";
-    // for (let i = 0; i < res.length; i++) {
-    //     let result_pic = document.createElement("img");
-    //     result_pic.src = res[i].image;
-    //     result_pic.alt = "pic of the element";
-    //     result_pic.width = "300";
-    //     result_pic.height = "300";
-    //     resultSection.appendChild(result_pic);
-    //     if (typeOfSearch == "recipes/complexSearch?query=") {
-    //         let idNum = res[i].id;
-    //         let infoQuery = `https://api.spoonacular.com/recipes/${idNum}/information?apiKey=c6c6e98c49db4067b8ac5b9fce7703cd`;
-    //         let source = await fetch (infoQuery);
-    //         let sourceJson = await source.json();
-    //         let originLink = sourceJson.sourceUrl;
-    //         let title_ref = document.createElement("a");
-    //         title_ref.href = originLink;
-    //         // when the pic is clicked, display info
-    //         result_pic.addEventListener("click", async function() {
-    //             detail.innerHTML = "";
-    //             // display entire json file in detail
-    //             for (let i = 0 ; i < sourceJson.extendedIngredients.length; i++) {
-    //                 let ingredientsDetail = document.createElement("h4");
-    //                 let extIngredient = sourceJson.extendedIngredients[i]
-    //                 ingredientsDetail.innerHTML = extIngredient.aisle + " " + extIngredient.measures.metric.amount + extIngredient.measures.metric.unitShort + ",";
-    //                 detail.appendChild(ingredientsDetail);
-    //             }
-    //             resultSection.style.display = "none";
-    //             detail.style.display = "block";
-    //             console.log(sourceJson);
-    //         });
-    //         // when esc is pressed, show search results
-    //         window.addEventListener("keydown", (event) => {
-    //             const keyName = event.key;
-    //             if (keyName == "Escape") {
-    //               resultSection.style.display = "block";
-    //               detail.style.display = "none";
-    //             }
-    //           });
-    //         // ingredients have attribute name instead of title
-    //         if (typeOfSearch != "food/ingredients/search?query=") {
-    //             title_ref.innerHTML = res[i].title;
-    //         }
-    //         else {
-    //             title_ref.innerHTML = res[i].name;
-    //         }
-    //         resultSection.appendChild(title_ref);
-    //     }
-    //     else {
-    //         let objTitle = document.createElement("h3");
-    //         if (typeOfSearch != "food/ingredients/search?query=") {
-    //             objTitle.innerHTML = res[i].title;
-    //         }
-    //         else {
-    //             objTitle.innerHTML = res[i].name;
-    //         }
-    //         resultSection.appendChild(objTitle);
-    //     }
 
-    // }
-    // console.log("clicked");
-    // searchRecipe(document.getElementById("query").value)
-    //     .then(function() {
-    //         for (let i = 0; i < res.length; i++) {
-    //             let result_pic = document.createElement("img");
-    //             result_pic.src = res[i].image;
-    //             result_pic.alt = "pic of the recipe";
-    //             result_pic.width = "300";
-    //             result_pic.height = "300";
-    //             resultSection.appendChild(result_pic);
-    //             let result_title = document.createElement("h3");
-    //             result_title.innerHTML = res[i].title;
-    //             resultSection.appendChild(result_title);
-    //         }
-    //     });
+    async function fillGridExplore() {
+      // Remove current recipes on display
+      for (let i = 0; i < recipeElements.length; i++) {
+        if (recipeElements[i].children.length > 0) {
+          if (recipeElements[i].children[0].tagName == "IMG") {
+            recipeElements[i].removeChild(recipeElements[i].children[0]);
+            recipeElements[i].removeAttribute("href");
+            recipeElements[i].textContent = "";
+          }
+        }
+      }
+  
+      // Add new recipes to display
+      let capacity = pointer;
+  
+      for (
+        let i = capacity % recipeElements.length;
+        i < recipeElements.length;
+        i++
+      ) {
+        if (pointer >= res.length) break;
+  
+        // Create recipe element
+        const recipe = document.createElement("img");
+        recipe.setAttribute("src", res[pointer]["image"]);
+        // recipe.setAttribute("width", recipeWH);
+        // recipe.setAttribute("height", recipeWH);
+        
+        // recipe id
+        let idNum = res[pointer].id;
+  
+        recipeElements[i].textContent = res[pointer]["title"];
+        if (loggedIn) {
+          recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + userName + "&" + idNum);  
+        }
+        else {
+          recipeElements[i].setAttribute("href", "viewRecipeExplore.html#" + idNum);
+        }
+        recipeElements[i].appendChild(recipe);
 
-    // console.log(searchSuccess);
-    // if (searchSuccess) {
-    //     // create element for each recipe fetched
-
-    // }
-    // else {
-    //     console.log("error fetching recipes");
-    //     return ;
-    // }
+        pointer++;
+      }
+  
+      pointer = capacity + recipeElements.length;
+    }
   }
 }
-
-// const query = document.getElementById("query").value;
-
-// async function searchRecipe(keyWord) {
-//     return new Promise((resolve, reject) => {
-//         fetch(mainLink + keyWord + apiKey)
-//             .then(response => response.json())
-//             .then(data => {
-//                 res = data.results;
-//                 console.log(res);
-//             })
-//             // .then(console.log(data))
-//             .then(function() {
-//                 return resolve();
-//             })
-//             .catch(error => {
-//                 reject(error);
-//             });
-
-//     }
-// )};
