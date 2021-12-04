@@ -29,7 +29,7 @@ article[id="instructions"] > div {
 #navbarGrid {
   display: grid;
   background-color: rgb(224, 248, 255);
-  grid-template-columns: 5px 50px auto 50px 50px;
+  grid-template-columns: 5px 50px auto 50px 50px 50px;
 
   /* sticky navbar */
   position: fixed;
@@ -64,12 +64,17 @@ article[id="instructions"] > div {
   overflow-y: hidden;
 }
 
-#editBtn {
+#timer {
   grid-column: 4/5;
+  grid-row: 1/2;
+}
+
+#editBtn {
+  grid-column: 5/6;
 }
 
 #favBtn {
-  grid-column: 5/6;
+  grid-column: 6/7;
 }
 
 /***********/
@@ -159,15 +164,73 @@ article[id="instructions"] > div {
   margin: 4mm 4mm;
 }
 
+/*****************/
+/*** TIMER BOX ***/
+/*****************/
+#timerBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100mm;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#time {
+  background-color: burlywood;
+  margin: 15% auto;
+  padding: 20px;
+  border: 3px solid;
+  border-radius: 25px;
+  width: 80%;
+  font-size: 20mm;
+}
+
+#closeBtn {
+  color: black;
+  cursor: pointer;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+[type="text"] {
+  background-color: white;
+  border-radius: 1mm;
+  padding: 2mm;
+  border: solid;
+  border-width: 1px;
+  height: 16mm;
+  width: 18mm;
+  font-size: 14mm;
+}
+
+#timeInput,
+#timeDisplay {
+  margin: 10mm 0 5mm 0;
+}
+
+#startStopBtn {
+  height: 20mm;
+  width: 20mm;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 /******************/
 /** DESKTOP VIEW **/
 /******************/
-
-/*switches to desktop layout for iPad landscape and bigger*/
+/* switches to desktop layout for iPad landscape and bigger */
 @media (min-width: 760px) {
   /* taller navbar */
   #navbarGrid {
-    grid-template-columns: 5px 60px auto 60px 60px;
+    grid-template-columns: 5px 60px auto 60px 60px 60px;
   }
 
   /* gives margin to first element after navbar so doesn't overlap */
