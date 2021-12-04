@@ -54,8 +54,6 @@ body {
 #logo {
   grid-column: 3/4;
   width: 150px;
-  /* margin: 0mm; accounts for logo image itself having border */
-  /* height: 115%; */
   overflow-y: hidden;
 }
 
@@ -243,14 +241,12 @@ body {
 
   #navbarGrid > * {
     height: 50px;
-    width: 50px;  
+    width: 50px;
     margin: 1mm;
   }
 
   #logo {
     width: 200px;
-    /* margin-top: -2px; accounts for logo image itself having border */
-    /* height: 110%; */
   }
 
   #recipeCardGrid {

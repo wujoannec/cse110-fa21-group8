@@ -1,7 +1,5 @@
 :root {
-  /* --secondary-color: #ffc0cb; */
   --primary-color: white;
-  /* --penta-color rgb(175, 201, 216);*/
   --secondary-color: rgb(191, 225, 245);
   --tertiary-color: #cee4eb;
   --quatriary-color: rgb(158, 158, 158);
@@ -10,7 +8,6 @@
 body {
   background-color: var(--secondary-color);
   font-family: 'Noto Serif', serif;
-
 }
 
 @media only screen and (min-width: 1680px) {
@@ -45,13 +42,9 @@ body {
   grid-template-rows: auto auto;
   background-color: #eff1db;
   border: 3pt solid white;
-  
   border-radius: 15px;
-
-
   text-align: center;
   font-size: 17pt;
-  /* white-space: pre-line; */
   height: 200px;
   width: 28.5em;
   padding: 12px;
@@ -64,6 +57,7 @@ body {
   background-color: rgb(157, 199, 229);
   border: 3pt solid rgb(130, 185, 223);
 }
+
 .recipe > img {
   object-fit: fill;
   align-self: center;
@@ -79,32 +73,30 @@ body {
   font-size: xxx-large;
 }
 
-
 .logo {
   grid-area: logo;
 }
+
 .search {
   grid-area: search;
   font-size: 13pt;
   border-radius: 15px;
   margin-left: 400px;
   padding-left: 100px;
-
-  /* padding-right: 100px; */
-
 }
+
 .search-button {
   grid-area: button;
   padding-left: 50px;
   padding-right: 50px;
   margin-right: 40px;
   border-radius: 15px;
-
 }
 
 .search-button:hover {
   background-color: rgb(195, 195, 195);  
 }
+
 .drop-down {
   grid-area: drop;
   font-size: 13pt;
@@ -112,14 +104,10 @@ body {
   text-align: center;
   padding-right: 10px;
   border-radius: 15px;
-
-
 }
-
 
 .foot {
   grid-area: footer;
-  /* background-color: lightskyblue; */
   color: rgb(0, 0, 0);
 }
 
@@ -127,7 +115,6 @@ body {
   grid-area: bar;
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto;
-  /* background-color: lightskyblue; */
   margin-left: 15px;
   margin-right: 38px;
 }
@@ -146,72 +133,54 @@ body {
   padding: 10px;
 }
 
-/* The tags menu */
-
-
-
-
+/*Home Button*/
 .a {
   grid-area: a;
-  padding-top: 14px;
-
   color: black;
   font-size: 1.7vw;
   text-align: center;
   cursor: pointer;
+  padding-top: 14px;
   padding-left: 70px;
   padding-right: 70px;
   background-color: rgb(130, 185, 223);
-  /* border: 3pt solid rgb(136, 167, 177); */
-  border-radius: 15px;
-  /* margin-left: 0px; */
-  margin-right: 35px;
   border: 2px solid black;
-
+  border-radius: 15px;
+  margin-right: 35px;
 }
 
+/*Explore Button*/
 .b {
   grid-area: b;
   color: black;
   font-size: 1.7vw;
-  padding-top: 14px;
   text-align: center;
   cursor: pointer;
-  /* padding-right: 100px; */
   background-color: rgb(130, 185, 223);
-  /* border: 3pt solid rgb(136, 167, 177); */
   border-radius: 15px;
-  /* margin-left: 300px; */
+  padding-top: 14px;
   padding-left: 55px;
   padding-right: 55px;
   border: 2px solid black
-
 }
 
 .a:hover{
   background-color: rgb(164, 208, 240);
-
 }
 
 .b:hover{
   background-color: rgb(164, 208, 240);
-
 }
-
 
 /**********/
 /** TAGS **/
 /**********/
 .tags {
   grid-area: tags;
-
-  /* display: flex;
-  /* flex-wrap: wrap; */
   max-width: 1100px;
   height: 765px;
   justify-content: center;
   text-align: center;
-  /* margin: 15px auto 100px auto;  */
   border: solid;
   white-space: pre-line;
   background-color: #eff1db;
@@ -223,11 +192,9 @@ body {
   overflow-y: scroll;
   margin-right: 10px;
   margin-left: 3px;
-
 }
 
 .tags > * {
-  
   border: solid;
   border-radius: 30px;
   border-color: burlywood;
@@ -241,8 +208,8 @@ body {
   cursor: pointer;
   font-size: 14pt;
   color: rgb(42, 80, 105);
-
 }
+
 .tags > *:hover {
 background-color: rgb(209, 233, 241);
 border: 3px solid rgb(144, 179, 202); 
