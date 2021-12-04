@@ -2,13 +2,15 @@ import {addRecipe} from "./CRUD.js";
 
 const userName = window.location.hash.replace(/^#/, '');
 let confirmBtn = document.getElementById("confirmBtn");
+let uploadImg = document.getElementById("uploadImg");
+
 confirmBtn.addEventListener("click", async function () {
   //Getting all elements
   let recipeTitle = document.getElementById("title").textContent;
   let servings = document.getElementById("servings").value;
   let cookTime = document.getElementById("cookTime").value;
   let author = document.getElementById("author").value;
-  let img = document.getElementById("recipeImg").src;
+  let img = uploadImg.files[0];
 
   //returns all divs in ingredients article and instructions article
   let ingredients = document.querySelectorAll("#ingredients > div");
@@ -114,7 +116,6 @@ removeInstruction.addEventListener("click", function () {
 });
 // change recipe image on upload
 let recipeImg = document.getElementById("recipeImg");
-let uploadImg = document.getElementById("uploadImg");
 uploadImg.addEventListener("change", function () {
   let img = uploadImg.files[0];
   if (img) {
