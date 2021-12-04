@@ -4,32 +4,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="../source/assets/images/logoBear.png" />
+    <link rel="icon" href="source/assets/images/logoBear.png" />
     <title>DevilDishes</title>
-    <link rel="icon" href="../source/assets/images/logoBear.png" />
-    <link rel="stylesheet" href="../source/assets/styles/landingPage.css" />
-    <script
-      src="../source/assets/scripts/landingPage.js"
-      type="module"
-    ></script>
+    <link rel="icon" href="source/assets/images/logoBear.png" />
+    <link rel="stylesheet" href="source/assets/styles/landingPage.css" />
+    <script src="source/assets/scripts/landingPage.js" type="module"></script>
   </head>
   <body>
     <header>
       <div>
         <nav class="navigation">
           <a class="landingPage" href=""
-            ><img src="../source/assets/images/logo.png" alt=""
+            ><img src="source/assets/images/logo.png" alt=""
           /></a>
-          <a class="navbarLinks" href="../index.html">My Recipes</a>
-          <a class="navbarLinks" href="../views/explorePage.html">Explore</a>
-          <a class="navbarLinks" href="../views/login.html">Login</a>
-          <a class="navbarLinks" href="../views/register.html">Sign Up</a>
+          <span id="links">
+            <a class="navbarLinks" href="views/register.html">My Recipes</a>
+            <a class="navbarLinks" href="views/explorePage.html">Explore</a>
+            <a class="navbarLinks" href="views/login.html">Login</a>
+            <a class="navbarLinks" href="views/register.html">Sign Up</a>
+          </span>
+          <span id="dropdownLinks">
+            <image
+              id="dropdownBtn"
+              src="source/assets/images/dropdownBtn.png"
+            />
+            <span id="dropdownContent">
+              <a class="navbarLinks" href="views/register.html">My Recipes</a>
+              <a class="navbarLinks" href="views/explorePage.html">Explore</a>
+              <a class="navbarLinks" href="views/login.html">Login</a>
+              <a class="navbarLinks" href="views/register.html">Sign Up</a>
+            </span>
+          </span>
         </nav>
       </div>
     </header>
 
     <main class="midPage">
-      <img id="landingImg" src="../source/assets/images/recipeImg.jpg" />
+      <img id="landingImg" src="source/assets/images/recipeImg.jpg" />
       <h1 class="mainTitle">Devil Dishes</h1>
       <p class="about">
         Welcome to Devil Dishes!
@@ -39,7 +50,7 @@
         <br />
         Feel free to create some of your own and share with others!
       </p>
-      <a href="../views/explorePage.html" class="exploreButton">Explore!</a>
+      <a href="views/explorePage.html" class="exploreButton">Explore!</a>
     </main>
 
     <footer class="footer">
