@@ -15,3 +15,13 @@ setInterval(function () {
     ++counter; // iterate to next image
   }
 }, 5000);
+
+let dropdownBtn = document.getElementById("dropdownBtn");
+let dropdownContent = document.getElementById("dropdownContent");
+dropdownBtn.addEventListener("click", function () {
+  if (dropdownContent.getAttribute("class") == "hide") {
+    dropdownContent.setAttribute("class", "show");
+  } else {
+    dropdownContent.setAttribute("class", "hide");
+  }
+});
