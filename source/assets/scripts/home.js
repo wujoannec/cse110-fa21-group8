@@ -60,6 +60,8 @@ async function init() {
   const recipeWH = "170vw";
   var pointer = 0;
 
+  console.log(recipes);
+
   fillGrid();
 
   function fillGrid() {
@@ -69,6 +71,7 @@ async function init() {
         if (recipeElements[i].children[0].tagName == "IMG") {
           recipeElements[i].removeChild(recipeElements[i].children[0]);
           recipeElements[i].textContent = "";
+          recipeElements[i].removeAttribute("href");
         }
       }
     }
@@ -140,7 +143,7 @@ async function init() {
   const searchButton = document.querySelector(".search-button");
   const searchBar = document.querySelector(".search");
   searchButton.addEventListener("click", () => {
-    fetchRecipes();
+    fetchRecipes(userName);
 
     let recipeLength = recipes.length;
     let newRecipes = [];
@@ -175,10 +178,11 @@ async function init() {
   var tagBoxes = document.querySelectorAll(".sidenav > input");
   tagBoxes.forEach((element) => {
     element.addEventListener("click", () => {
-      fetchRecipes();
+      fetchRecipes(userName);
 
       let newRecipes = [];
       let recipeLength = recipes.length;
+      let selectedTags = [];
 
       // Check for no tag selection
       if (noTagSelected(tagBoxes)) {
@@ -186,20 +190,21 @@ async function init() {
         fillGrid();
         return;
       }
+      else {
+        tagBoxes.forEach((tagBox) => {
+          if(tagBox.checked) selectedTags.push(tagBox.value.toLowerCase());
+        });
+      }
 
       // Check every tag box if it's been selected
       for (let i = 0; i < recipeLength; i++) {
         let names = recipes[i].tags;
+        console.log(recipes[i].tags);
 
         // Check every tag on recipe to see if it matches the selected box
         names.forEach((name) => {
-          if (tagBoxes[i].checked) {
-            if (
-              name.includes(tagBoxes[i].value) ||
-              name.includes(tagBoxes[i].value.toLowerCase()) ||
-              name.includes(tagBoxes[i].value.toUpperCase())
-            )
-              if (!newRecipes.includes(recipes[i])) newRecipes.push(recipes[i]);
+          if(selectedTags.includes(name.toLowerCase())) {
+            if(!newRecipes.includes(recipes[i])) newRecipes.push(recipes[i]);
           }
         });
       }

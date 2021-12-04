@@ -1,4 +1,4 @@
-import {getOneRecipe, getOneRecipeExplore, addRecipe, addFavorite} from "./CRUD.js";
+import {getOneRecipe, getOneRecipeExplore, addRecipe, saveRecipe} from "./CRUD.js";
 
 const hash = window.location.hash.replace(/^#/, '').split("&");
 let loggedIn = false;
@@ -18,7 +18,7 @@ else {
 }
 
 
-console.log(userName);
+console.log("username: " + userName);
 
 let result = await getOneRecipeExplore(_id).then((resolved) => {
   return resolved;
@@ -41,7 +41,7 @@ img.src = result.image;
 
 let ingredientCount = 1;
 result.extendedIngredients.forEach((ingredient) => {
-  fillIngredient(ingredient.name, ingredientCount);
+  fillIngredient(ingredient.original, ingredientCount);
   ingredientCount++;
 });
 
@@ -54,7 +54,21 @@ for(let i = 0; i < instructs.length; i++) {
 }
 
 let tags = document.getElementById("tags");
+let tagArray = [];
 result.dishTypes.forEach((tag) => {
+  tagArray.push(tag);
+});
+result.cuisines.forEach((tag) => {
+  tagArray.push(tag);
+});
+result.occasions.forEach((tag) => {
+  tagArray.push(tag);
+});
+result.diets.forEach((tag) => {
+  tagArray.push(tag);
+});
+
+tagArray.forEach((tag) => {
   let newTag = document.createElement("p");
   newTag.textContent = tag;
   tags.insertAdjacentElement("beforeend", newTag);
@@ -98,51 +112,48 @@ function fillInstruction(instruction, instructionCount) {
 
 // toggle favorites button
 let favBtn = document.getElementById("favBtn");
+let clicked = false;
 favBtn.addEventListener("click", async function () {
-  if (favBtn.getAttribute("src") == "../source/assets/images/heartEmpty.png") {
-    // if logged in 
-    if (loggedIn) {
-      // get the ingredients array
-      let ingredientsArray = [];
-      // the ingredients
-      let ingredientSection = document.getElementById("ingredients").children;
-      // first is title
-      for (let i = 1 ; i < ingredientSection.length; i++) {
-        ingredientsArray.push(ingredientSection[i].children[1].innerHTML);
+    if (!clicked) {
+      // if logged in 
+      if (loggedIn) {
+        // get the ingredients array
+        let ingredientsArray = [];
+        // the ingredients
+        let ingredientSection = document.getElementById("ingredients").children;
+        // first is title
+        for (let i = 1 ; i < ingredientSection.length; i++) {
+          ingredientsArray.push(ingredientSection[i].children[1].innerHTML);
+        }
+        // get the instructions array
+        let instructionArray = [];
+        // the instructions
+        let instructionSection = document.getElementById("instructions").children;
+        // first is title
+        for (let i = 1 ; i < instructionSection.length; i++) {
+          instructionArray.push(instructionSection[i].children[1].innerHTML);
+        }
+        // get the tags array
+        let tagsArray = [];
+        // the tags
+        let tagSection = document.getElementById("tags").children;
+        for (let i = 0 ; i < tagSection.length; i++) {
+          tagsArray.push(tagSection[i].innerHTML);
+        }
+        // add recipe to the database
+        let recipeId = await addRecipe(userName, result.title, result.image, result.servings, result.readyInMinutes,
+                                        result.creditsText, ingredientsArray, instructionArray, tagsArray)
+                                .then((resolved) => {return resolved});
+        console.log("in line 132 in viewRecipeExplore" + recipeId);
+        favBtn.setAttribute("src", "../source/assets/images/confirm.png");
+        clicked = true;
       }
-      // get the instructions array
-      let instructionArray = [];
-      // the instructions
-      let instructionSection = document.getElementById("instructions").children;
-      // first is title
-      for (let i = 1 ; i < instructionSection.length; i++) {
-        instructionArray.push(instructionSection[i].children[1].innerHTML);
+      // if not logged in
+      else {
+        window.location.href = "register.html";
       }
-      // get the tags array
-      let tagsArray = [];
-      // the tags
-      let tagSection = document.getElementById("tags").children;
-      for (let i = 0 ; i < tagSection.length; i++) {
-        tagsArray.push(tagSection[i].innerHTML);
-      }
-      // add recipe to the database
-      let recipeId = await addRecipe(result.title, result.image, result.servings, result.readyInMinutes,
-                                      result.creditsText, ingredientsArray, instructionArray, tagsArray)
-                              .then((resolved) => {return resolved});
-      // add recipe id to the user's favlist 
-      let res = await addFavorite(userName, recipeId)
-                        .then((resolved) => {return resolved});
-      console.log(res);
-      favBtn.setAttribute("src", "../source/assets/images/heartFull.png");
     }
-    // if not logged in
-    else {
-      window.location.href = "register.html";
-    }
-  } 
-  else {
-    favBtn.setAttribute("src", "../source/assets/images/heartEmpty.png");
-  }
+
 });
 
 // // move to edit recipe page

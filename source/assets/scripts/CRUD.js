@@ -6,7 +6,8 @@ export {
   authenticate,
   getOneRecipe,
   getOneRecipeExplore,
-  addFavorite
+  saveRecipe,
+  favTag
 };
 // add recipe
 const serverUrl = "https://devil-dishes.herokuapp.com/";
@@ -42,7 +43,7 @@ async function authenticate(username, password, authType) {
  * @param {String} _id recipe id
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
-async function addFavorite(username, _id) {
+async function saveRecipe(username, _id) {
   const response = await fetch(serverUrl + "addFavorite", {
     method: "POST",
     headers: {
@@ -67,6 +68,7 @@ async function addFavorite(username, _id) {
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
 async function addRecipe(
+  username,
   title,
   img,
   servings,
@@ -93,8 +95,10 @@ async function addRecipe(
       tags: tags,
     }),
   });
+  // add to user specific area
   const res = await response.text();
-  console.log(res);
+  await saveRecipe(username, res);
+  console.log("in line 101 in CRUD" + res);
   return Promise.resolve(res);
 }
 
@@ -137,6 +141,21 @@ async function getOneRecipe(_id) {
   });
   const res = await response.text();
   return Promise.resolve(JSON.parse(res));
+}
+
+async function favTag(_id, favUnfav) {
+  const response = await fetch(serverUrl + "favTag", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      _id: _id,
+      favUnfav : favUnfav
+    }),
+  });
+  const res = await response.text();
+  return Promise.resolve(res);
 }
 
 /**
