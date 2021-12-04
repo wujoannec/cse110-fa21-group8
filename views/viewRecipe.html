@@ -20,6 +20,7 @@
           id="backBtn"
           src="../source/assets/images/backArrow.png"
       /></span> -->
+      <input type="image" id="timer" src="../source/assets/images/timer.png" />
 
       <input
         type="image"
@@ -40,6 +41,37 @@
         src="../source/assets/images/heartEmpty.png"
       />
     </nav>
+
+    <div id="timerBox" class="hide">
+      <div id="time">
+        <span id="closeBtn">&times;</span>
+        <p id="timeInput" class="show">
+          <input
+            type="text"
+            id="minutesInput"
+            size="2"
+            maxlength="2"
+            defaultValue="0"
+          />
+          :
+          <input
+            type="text"
+            id="secondsInput"
+            size="2"
+            maxlength="2"
+            defaultValue="0"
+          />
+        </p>
+        <p id="timeDisplay" class="hide">
+          <span id="minutesDisplay"></span> : <span id="secondsDisplay"></span>
+        </p>
+        <input
+          type="image"
+          id="startStopBtn"
+          src="../source/assets/images/play.png"
+        />
+      </div>
+    </div>
 
     <h1 id="title"></h1>
     <div id="metaData">
