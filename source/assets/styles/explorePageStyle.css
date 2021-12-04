@@ -206,3 +206,29 @@ body {
 
   
 }
+
+/**********/
+/** TAGS **/
+/**********/
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  justify-content: center;
+  margin: 0mm auto 7mm auto;
+}
+
+.tags > * {
+  border: solid;
+  border-radius: 5mm;
+  border-color: burlywood;
+  margin: 1mm;
+  padding: 1mm;
+  background-color: wheat;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.selected {
+  opacity: 1;
+}
