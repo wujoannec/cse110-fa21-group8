@@ -37,7 +37,9 @@ confirmBtn.addEventListener("click", async function () {
   });
 
   // result = _id;
+  console.log(author);
   let result = await addRecipe(
+    userName,
     recipeTitle,
     img,
     servings,

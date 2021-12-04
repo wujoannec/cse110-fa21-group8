@@ -1,4 +1,4 @@
-import {getOneRecipe} from "./CRUD.js";
+import {getOneRecipe, addFavorite, updateRecipe} from "./CRUD.js";
 
 // READ part of CRUD
 const hash = window.location.hash.replace(/^#/, '').split("&");
@@ -95,10 +95,20 @@ function fillInstruction(instruction, instructionCount) {
 
 // toggle favorites button
 let favBtn = document.getElementById("favBtn");
-favBtn.addEventListener("click", function () {
+// check if already favored
+if (result.tags.includes("favorite")) {
+  favBtn.setAttribute("src", "../source/assets/images/heartFull.png");
+}
+else {
+  favBtn.setAttribute("src", "../source/assets/images/heartEmpty.png");
+}
+favBtn.addEventListener("click", async function () {
+  // if not favored
   if (favBtn.getAttribute("src") == "../source/assets/images/heartEmpty.png") {
     favBtn.setAttribute("src", "../source/assets/images/heartFull.png");
   } else {
+    // if favored
+
     favBtn.setAttribute("src", "../source/assets/images/heartEmpty.png");
   }
 });

@@ -60,6 +60,8 @@ async function init() {
   const recipeWH = "170vw";
   var pointer = 0;
 
+  console.log(recipes);
+
   fillGrid();
 
   function fillGrid() {
@@ -69,6 +71,7 @@ async function init() {
         if (recipeElements[i].children[0].tagName == "IMG") {
           recipeElements[i].removeChild(recipeElements[i].children[0]);
           recipeElements[i].textContent = "";
+          recipeElements[i].removeAttribute("href");
         }
       }
     }
@@ -140,7 +143,7 @@ async function init() {
   const searchButton = document.querySelector(".search-button");
   const searchBar = document.querySelector(".search");
   searchButton.addEventListener("click", () => {
-    fetchRecipes();
+    fetchRecipes(userName);
 
     let recipeLength = recipes.length;
     let newRecipes = [];
@@ -175,7 +178,7 @@ async function init() {
   var tagBoxes = document.querySelectorAll(".sidenav > input");
   tagBoxes.forEach((element) => {
     element.addEventListener("click", () => {
-      fetchRecipes();
+      fetchRecipes(userName);
 
       let newRecipes = [];
       let recipeLength = recipes.length;
