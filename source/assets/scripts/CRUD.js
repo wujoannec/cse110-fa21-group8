@@ -69,7 +69,14 @@ async function uploadImg(image, username, title) {
   const formData = new FormData();
   let imgName = username + title + ".jpg";
   imgName = imgName.replace(/\ /g,"_");
-  formData.append("image", image,  imgName);
+  // check if is blob (did not update by user, keep the current blob)
+  if (image instanceof Blob) {
+    formData.append("blob", image,  imgName);
+  }
+  // if file is image
+  else {
+    formData.append("image", image,  imgName);
+  }
   const response = await fetch(serverUrl + "saveImg", {
     method: "POST",
     body: formData,
