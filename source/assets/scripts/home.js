@@ -2,6 +2,17 @@ import {getRecipe} from "./CRUD.js";
 window.addEventListener("DOMContentLoaded", init);
 const userName = window.location.hash.replace(/^#/, '');
 
+let tags = document.querySelectorAll('.tags > *');
+tags.forEach((tag) => {
+  tag.addEventListener("click", function () {
+    if (tag.classList.contains("selected")) {
+      tag.classList.remove("selected");
+    } else {
+      tag.classList.add("selected");
+    }
+  });
+});
+
 async function init() {
   // Create Recipes (took some code from Lab 5)
   let recipes = [];
