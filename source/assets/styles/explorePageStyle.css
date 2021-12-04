@@ -66,13 +66,6 @@ body {
   padding: 8px;
 }
 
-#createButton {
-  margin-top: 7vh;
-  width: 27%;
-  height: 50%;
-  font-size: xxx-large;
-}
-
 .logo {
   grid-area: logo;
 }
