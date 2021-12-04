@@ -67,6 +67,7 @@ async function addFavorite(username, _id) {
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
 async function addRecipe(
+  username,
   title,
   img,
   servings,
@@ -93,8 +94,10 @@ async function addRecipe(
       tags: tags,
     }),
   });
+  // add to user specific area
   const res = await response.text();
-  console.log(res);
+  await addFavorite(username, res);
+  console.log("in line 101 in CRUD" + res);
   return Promise.resolve(res);
 }
 
