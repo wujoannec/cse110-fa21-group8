@@ -19,14 +19,29 @@ if (userName != "") {
 
 
 window.addEventListener("DOMContentLoaded", init);
+
 async function init() {
   // let Servresponse = await filter([], 50);
   await explore(false);
   
   // let searchSuccess = false;
+  let searchBar = document.getElementById("query");
   let searchButton = document.getElementById("search");
+  searchBar.addEventListener("change", () => {
+    let tags = document.querySelector(".tags");
+    tags.style.display = (searchBar.value == "") ? "block" : "none";
+  })
+
   searchButton.addEventListener("click", async function() {
-    await explore(true);
+    if(searchBar.value == "") await explore(false);
+    else await explore(true);
+  });
+
+  window.addEventListener("keydown", async function(event) {
+    if(event.key == "Enter") {
+      if(searchBar.value == "") await explore(false);
+      else await explore(true);
+    }
   });
 
   // Explore the different recipes.

@@ -44,7 +44,7 @@ async function authenticate(username, password, authType) {
  * @returns {String} Message from server, you can use this to determine whether succeeded
  */
 async function saveRecipe(username, _id) {
-  const response = await fetch(serverUrl + "saveRecipe", {
+  const response = await fetch(serverUrl + "addFavorite", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
