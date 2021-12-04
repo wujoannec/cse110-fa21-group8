@@ -1,13 +1,13 @@
 :root {
-  /* --secondary-color: #ffc0cb; */
   --primary-color: white;
-  --secondary-color: #cee4eb;
+  --secondary-color: rgb(191, 225, 245);
   --tertiary-color: #cee4eb;
   --quatriary-color: rgb(158, 158, 158);
 }
 
 body {
   background-color: var(--secondary-color);
+  font-family: 'Noto Serif', serif;
 }
 
 @media only screen and (min-width: 1680px) {
@@ -40,71 +40,90 @@ body {
 .recipe {
   display: grid;
   grid-template-rows: auto auto;
-  background-color: var(--secondary-color);
-  border: 3pt solid var(--primary-color);
+  background-color: #eff1db;
+  border: 3pt solid white;
+  border-radius: 15px;
   text-align: center;
   font-size: 17pt;
-  /* white-space: pre-line; */
   height: 200px;
-  width: 20em;
-  padding: 20px;
-  color: var(--quatriary-color);
+  width: 28.5em;
+  padding: 12px;
+  color: rgb(42, 80, 105);
+  margin: 5px 10px 4.1px 5px;
+  font-size: 12pt;
+}
+
+.recipe:hover{
+  background-color: rgb(157, 199, 229);
+  border: 3pt solid rgb(130, 185, 223);
 }
 
 .recipe > img {
   object-fit: fill;
   align-self: center;
   margin: auto;
-  height: 170px;
-  padding: 10px;
-}
-
-#createButton {
-  margin-top: 7vh;
-  width: 27%;
-  height: 50%;
-  font-size: xxx-large;
-}
-
-.head {
-  grid-area: header;
-  font-size: 24pt;
-  font-family: "lobster";
-  color: blue;
+  height: 158px;
+  padding: 8px;
 }
 
 .logo {
   grid-area: logo;
 }
+
 .search {
   grid-area: search;
+  font-size: 19pt;
+  border-radius: 15px;
+  margin-left: 500px;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+
 }
+
 .search-button {
   grid-area: button;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-right: 40px;
+  border-radius: 15px;
+}
+
+.search-button:hover {
+  background-color: rgb(195, 195, 195);  
+}
+
+.search-changed {
+  grid-area: search;
+  font-size: 19pt;
+  border-radius: 15px;
+  margin-left: 500px;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+
 }
 
 .drop-down {
   grid-area: drop;
-}
-
-/* .tags {
-  grid-area: tags;
-  background-color: antiquewhite;
-  border: solid blue;
+  font-size: 13pt;
+  padding-left: 10px;
   text-align: center;
-} */
+  padding-right: 10px;
+  border-radius: 15px;
+}
 
 .foot {
   grid-area: footer;
-  /* background-color: lightskyblue; */
-  color: blue;
+  color: rgb(0, 0, 0);
 }
 
 .navbar {
   grid-area: bar;
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto;
-  /* background-color: lightskyblue; */
+  margin-left: 15px;
+  margin-right: 38px;
 }
 
 .home-grid {
@@ -121,68 +140,104 @@ body {
   padding: 10px;
 }
 
-/* The sidebar menu */
-.sidenav {
-  width: fit-content;
-  min-width: 20px;
-  max-width: 100%;
-  height: 720px;
-  z-index: 1; /* Stay on top */
-  top: 4; /* Stay at the top */
-  left: 0%;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding: 6px 80px 6px 10px;
-  overflow-y: scroll;
-  font-size: 2vw;
-  text-align: left;
-  color: #818181;
-}
-
-/* The navigation menu links */
-.sidenav a {
-  padding: 6px 8px 6px 20px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
+/*Home Button*/
 .a {
   grid-area: a;
-  color: var(--quatriary-color);
-  font-size: 2vw;
-  padding-top: 1vw;
+  color: black;
+  font-size: 1.7vw;
   text-align: center;
+  cursor: pointer;
+  padding-top: 14px;
+  padding-left: 70px;
+  padding-right: 70px;
+  background-color: rgb(130, 185, 223);
+  border: 2px solid black;
+  border-radius: 15px;
+  margin-right: 35px;
 }
 
+/*Explore Button*/
 .b {
   grid-area: b;
-  color: var(--quatriary-color);
-  font-size: 2vw;
-  padding-top: 1vw;
+  color: black;
+  font-size: 1.7vw;
   text-align: center;
+  cursor: pointer;
+  background-color: rgb(130, 185, 223);
+  border-radius: 15px;
+  padding-top: 14px;
+  padding-left: 55px;
+  padding-right: 55px;
+  border: 2px solid black
 }
 
+.a:hover{
+  background-color: rgb(164, 208, 240);
+}
+
+.b:hover{
+  background-color: rgb(164, 208, 240);
+}
+
+/**********/
+/** TAGS **/
+/**********/
 .tags {
   grid-area: tags;
-  background-color: #cee4eb;
-  border-radius: 10px;
-
-  border: 2px solid white;
+  max-width: 1100px;
+  height: 765px;
+  justify-content: center;
   text-align: center;
-  font-size: 30pt;
-  max-height: 100%;
+  border: solid;
+  white-space: pre-line;
+  background-color: #eff1db;
+  border-radius: 10px;
+  font-size: 14pt;
+  border: 3pt solid white;
+  margin-bottom: 0;
+  margin-top: 0;
+  overflow-y: scroll;
+  margin-right: 10px;
+  margin-left: 3px;
 }
 
-.a {
+.tags > * {
+  border: solid;
+  border-radius: 30px;
+  border-color: burlywood;
+  margin-top: 0px;
+  margin-bottom: -12px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 4mm;
+  background-color: wheat;
+  opacity: 0.5;
   cursor: pointer;
+  font-size: 14pt;
+  color: rgb(42, 80, 105);
 }
 
-.b {
-  cursor: pointer;
+.tags > *:hover {
+background-color: rgb(209, 233, 241);
+border: 3px solid rgb(144, 179, 202); 
+}
+
+.selected {
+  opacity: 1;
+}
+
+div[hide = "true"], div[hide = 'true'] > *:hover{
+  overflow-y: hidden;
+  color:rgba(0, 0, 0, 0);
+  cursor: not-allowed;
+  background-image: url("../images/amjad.jpg");
+  background-size: 400px 800px;
+
+}
+
+div[hide = 'true'] > *{
+  background-color: rgb(191, 225, 245);
+  color: rgb(106, 150, 175);
+  opacity: 0;
+
 }

@@ -177,7 +177,7 @@ article[id="instructions"] > div {
 }
 
 #time {
-  background-color: burlywood;
+  background-color: rgb(224, 248, 255);
   margin: 15% auto;
   padding: 20px;
   border: 3px solid;
@@ -246,8 +246,6 @@ article[id="instructions"] > div {
 
   #logo {
     width: 200px;
-    margin-top: -2px; /* accounts for logo image itself having border */
-    height: 110%;
   }
 
   #recipeCardGrid {

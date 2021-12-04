@@ -29,7 +29,7 @@ async function init() {
   let searchButton = document.getElementById("search");
   searchBar.addEventListener("change", () => {
     let tags = document.querySelector(".tags");
-    tags.style.display = (searchBar.value == "") ? "block" : "none";
+    tags.style.display = (searchBar.value == "") ? tags.setAttribute("hide", "false") : tags.setAttribute("hide", "true");
   })
 
   searchButton.addEventListener("click", async function() {
@@ -62,25 +62,20 @@ async function init() {
       console.log("in spnr_search line 45");
       // element name of menu items is "menuItems"
       res = data["results"];
-      var tagBoxes = document.querySelectorAll(".sidenav > input");
+      var tagBoxes = document.querySelectorAll(".tags > p");
       tagBoxes.forEach((element) => {
         element.addEventListener("click", () => {
           // console.log(`tag ${element.value} clicked`)
 
           let newRecipes = [];
           let recipeLength = res.length;
-          let selectedTags = [];
+          let selectedTags = document.querySelectorAll(".tags > .selected");
 
           // Check for no tag selection
-          if (noTagSelected(tagBoxes)) {
+          if (selectedTags.length == 0) {
             pointer = 0;
             fillGrid();
             return;
-          }
-          else {
-            tagBoxes.forEach((tagBox) => {
-              if(tagBox.checked) selectedTags.push(tagBox.value.toLowerCase());
-            });
           }
 
           // Check every tag box if it's been selected
@@ -90,7 +85,7 @@ async function init() {
 
             // Check every tag on recipe to see if it matches the selected box
             names.forEach((name) => {
-              if(selectedTags.includes(name.toLowerCase())) {
+              if(selectedTags.textContent.toLowerCase().includes(name.toLowerCase())) {
                 if(!newRecipes.includes(res[i])) newRecipes.push(res[i]);
               }
             });
@@ -99,15 +94,6 @@ async function init() {
           res = newRecipes;
           pointer = 0;
           fillGrid();
-
-          // Check if no tags are selected on the left panel
-          function noTagSelected(tagBoxes) {
-            for (let i = 0; i < tagBoxes.length; i++) {
-              if (tagBoxes[i].checked) return false;
-            }
-
-            return true;
-          }
         });
       });
 
@@ -118,12 +104,15 @@ async function init() {
       res = filterRes["recipes"];
         
       // When clicking tags, please filter
-      var tagBoxes = document.querySelectorAll(".sidenav > input");
+      var tagBoxes = document.querySelectorAll(".tags > p");
       tagBoxes.forEach((element) => {
         element.addEventListener("click", async function() {
-            let selectedTags = [];
-            tagBoxes.forEach((tagBox) => {
-                if(tagBox.checked) selectedTags.push(tagBox.value.toLowerCase());
+            let selectedElements = document.querySelectorAll(".tags > .selected");
+            let selectedTags = []
+            console.log(selectedElements);
+            
+            selectedElements.forEach((element) => {
+              selectedTags.push(element.textContent.toLowerCase());
             })
 
             let filterRes = await filter(selectedTags, 50)
