@@ -35,8 +35,8 @@ body {
   #logo {
     grid-column: 2/3;
     width: 200px;
-    margin: 0mm;
-    height: 115%;
+    /* margin: 0mm; */
+    /* height: 115%; */
     overflow-y: hidden;
   }
 
