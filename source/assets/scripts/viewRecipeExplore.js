@@ -1,4 +1,4 @@
-import {getOneRecipe, getOneRecipeExplore, addRecipe, addFavorite} from "./CRUD.js";
+import {getOneRecipe, getOneRecipeExplore, addRecipe, saveRecipe} from "./CRUD.js";
 
 const hash = window.location.hash.replace(/^#/, '').split("&");
 let loggedIn = false;
@@ -18,7 +18,7 @@ else {
 }
 
 
-console.log(userName);
+console.log("username: " + userName);
 
 let result = await getOneRecipeExplore(_id).then((resolved) => {
   return resolved;
@@ -41,7 +41,7 @@ img.src = result.image;
 
 let ingredientCount = 1;
 result.extendedIngredients.forEach((ingredient) => {
-  fillIngredient(ingredient.name, ingredientCount);
+  fillIngredient(ingredient.original, ingredientCount);
   ingredientCount++;
 });
 
@@ -54,7 +54,21 @@ for(let i = 0; i < instructs.length; i++) {
 }
 
 let tags = document.getElementById("tags");
+let tagArray = [];
 result.dishTypes.forEach((tag) => {
+  tagArray.push(tag);
+});
+result.cuisines.forEach((tag) => {
+  tagArray.push(tag);
+});
+result.occasions.forEach((tag) => {
+  tagArray.push(tag);
+});
+result.diets.forEach((tag) => {
+  tagArray.push(tag);
+});
+
+tagArray.forEach((tag) => {
   let newTag = document.createElement("p");
   newTag.textContent = tag;
   tags.insertAdjacentElement("beforeend", newTag);

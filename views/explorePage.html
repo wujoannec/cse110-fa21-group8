@@ -13,6 +13,10 @@
       src="../source/assets/API_Demo-main/spnr_search.js"
       type="module"
     ></script>
+    <script
+    src="../source/assets/API_Demo-main/filter.js"
+    type="module"
+  ></script>
   </head>
   <body>
     <main>
@@ -109,12 +113,6 @@
             height="40px"
           />
         </button>
-        <select class="drop-down" name="all kinds of search" id="selector">
-          <option value="recipes/complexSearch?query=">Recipes</option>
-          <option value="food/ingredients/search?query=">Ingredients</option>
-          <!---option value="food/products/search?query=">Products</option--->
-          <option value="food/menuItems/search?query=">Menu Items</option>
-        </select>
         <div id="result"></div>
         <div id="detail"></div>
         <a href="" id="sourceLink"></a>
