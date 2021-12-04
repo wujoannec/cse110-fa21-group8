@@ -79,10 +79,13 @@ body {
 
 .search {
   grid-area: search;
-  font-size: 13pt;
+  font-size: 19pt;
   border-radius: 15px;
-  margin-left: 400px;
-  padding-left: 100px;
+  margin-left: 500px;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+
 }
 
 .search-button {
@@ -95,6 +98,17 @@ body {
 
 .search-button:hover {
   background-color: rgb(195, 195, 195);  
+}
+
+.search-changed {
+  grid-area: search;
+  font-size: 19pt;
+  border-radius: 15px;
+  margin-left: 500px;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+
 }
 
 .drop-down {
@@ -217,4 +231,20 @@ border: 3px solid rgb(144, 179, 202);
 
 .selected {
   opacity: 1;
+}
+
+div[hide = "true"], div[hide = 'true'] > *:hover{
+  overflow-y: hidden;
+  color:rgba(0, 0, 0, 0);
+  cursor: not-allowed;
+  background-image: url("../images/amjad.jpg");
+  background-size: 400px 800px;
+
+}
+
+div[hide = 'true'] > *{
+  background-color: rgb(191, 225, 245);
+  color: rgb(106, 150, 175);
+  opacity: 0;
+
 }

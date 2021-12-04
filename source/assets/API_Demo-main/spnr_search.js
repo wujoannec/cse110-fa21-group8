@@ -29,7 +29,7 @@ async function init() {
   let searchButton = document.getElementById("search");
   searchBar.addEventListener("change", () => {
     let tags = document.querySelector(".tags");
-    tags.style.display = (searchBar.value == "") ? "block" : "none";
+    tags.style.display = (searchBar.value == "") ? tags.setAttribute("hide", "false") : tags.setAttribute("hide", "true");
   })
 
   searchButton.addEventListener("click", async function() {

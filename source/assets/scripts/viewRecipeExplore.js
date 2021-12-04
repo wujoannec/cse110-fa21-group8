@@ -180,7 +180,8 @@ let instructions = document.querySelectorAll("#instructions > div > input");
 let confetti = new JSConfetti();
 instructions.forEach(element => {
   element.addEventListener("click", () => {
-    if(checkTasks(instructions)) confetti.addConfetti();
+    if(checkTasks(instructions)) confetti.addConfetti({
+      emojis: ['🧊', '🐻', '😈',]});
   });
 });
 
