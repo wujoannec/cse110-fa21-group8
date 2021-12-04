@@ -11,6 +11,7 @@ let result = await getOneRecipe(_id).then((resolved) => {
   return resolved;
 });
 
+let uploadImg = document.getElementById("uploadImg");
 console.log(result);
 let recipeTitle = document.getElementById("title");
 recipeTitle.innerHTML = result.title;
@@ -25,7 +26,7 @@ let author = document.getElementById("author");
 author.value = result.author;
 
 let img = document.getElementById("recipeImg");
-img.src = result.src;
+img.src = result.img;
 
 result.ingredients.forEach((ingredient) => {
   fillIngredient(ingredient);
@@ -70,7 +71,7 @@ confirmBtn.addEventListener("click", async function () {
   let servings = document.getElementById("servings").value;
   let cookTime = document.getElementById("cookTime").value;
   let author = document.getElementById("author").value;
-  let img = document.getElementById("recipeImg").src;
+  let img = uploadImg.files[0];
 
   //returns all divs in ingredients article and instructions article
   let ingredients = document.querySelectorAll("#ingredients > div");
@@ -107,7 +108,8 @@ confirmBtn.addEventListener("click", async function () {
     author,
     ingredientsArray,
     instructionsArray,
-    tagsArray
+    tagsArray,
+    userName
   ).then((resolved) => {
     return resolved;
   });
@@ -122,7 +124,7 @@ confirmBtn.addEventListener("click", async function () {
 let deleteBtn = document.getElementById("deleteRecipeBtn");
 deleteBtn.addEventListener("click", async function () {
   // let recipeTitle = result.title;
-  let deleted = await deleteRecipe(userName, _id).then((resolved) => {
+  let deleted = await deleteRecipe(userName, _id, result.title).then((resolved) => {
     return resolved;
   });
   console.log(deleted);
@@ -194,7 +196,6 @@ removeInstruction.addEventListener("click", function () {
 
 // change recipe image on upload
 let recipeImg = document.getElementById("recipeImg");
-let uploadImg = document.getElementById("uploadImg");
 uploadImg.addEventListener("change", function () {
   let img = uploadImg.files[0];
   if (img) {

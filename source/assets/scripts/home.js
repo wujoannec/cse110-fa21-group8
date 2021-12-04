@@ -62,7 +62,7 @@ async function init() {
 
   console.log(recipes);
 
-  fillGrid();
+  setTimeout(fillGrid, 500);
 
   function fillGrid() {
     // Remove current recipes on display
@@ -89,6 +89,7 @@ async function init() {
       // Create recipe element
       const recipe = document.createElement("img");
       recipe.setAttribute("src", recipes[i].img);
+      console.log("src for recipe img at line 92 in home.js: " + recipes[i].img); 
       recipe.setAttribute("width", recipeWH);
       recipe.setAttribute("height", recipeWH);
       // recipe.style.position = "absolute";
@@ -143,7 +144,7 @@ async function init() {
   const searchButton = document.querySelector(".search-button");
   const searchBar = document.querySelector(".search");
   searchButton.addEventListener("click", querySearch);
-  window.addEventListener("keydown", querySearch);
+  // window.addEventListener("keydown", querySearch);
 
   function querySearch() {
     fetchRecipes(userName);
