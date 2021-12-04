@@ -1,9 +1,9 @@
 let imgArr = [
-  "../source/assets/images/sample-recipes/pizza.jpg",
-  "../source/assets/images/sample-recipes/quesa.jpg",
-  "../source/assets/images/sample-recipes/sushi.jpg",
-  "../source/assets/images/sample-recipes/sweet-rice.jpg",
-  "../source/assets/images/recipeImg.jpg",
+  "source/assets/images/sample-recipes/pizza.jpg",
+  "source/assets/images/sample-recipes/quesa.jpg",
+  "source/assets/images/sample-recipes/sushi.jpg",
+  "source/assets/images/sample-recipes/sweet-rice.jpg",
+  "source/assets/images/recipeImg.jpg",
 ];
 let counter = 0; // instantiate a counter
 let maxImage = imgArr.length; // the total number of images that are available
