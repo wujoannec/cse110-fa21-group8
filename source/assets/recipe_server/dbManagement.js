@@ -3,6 +3,8 @@
 const mongooseServ = require("mongoose");
 const MongoUrl = "mongodb+srv://software_devils:software_devils@cluster0.uzv91.mongodb.net";
 const dbName = "devil_dishes?retryWrites=true&w=majority";
+// get file system
+const fs = require("fs");
 
 if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
@@ -26,12 +28,16 @@ const app = express();
 const bodyParser = require("body-parser");
 // allow browser and server to share data
 const cors = require("cors");
+// get fileuploads
+const fileupload = require("express-fileupload");
 // allow sharing data
 app.use (cors());  
 // allow url-encoded bodies
 app.use (bodyParser.urlencoded( { extended: true }));
 // allow json-encoded bodies
 app.use (bodyParser.json());  
+// allow file uploades
+app.use (fileupload());
 
 // mongoDB Schemas
 // userdata
@@ -216,6 +222,47 @@ app.post("/getRecipe", async function(req, res) {
     res.send(oneRecipe);
 });
 
+// add image 
+app.post("/saveImg", function(req, res) {
+    const flieName = req.files.image.name;
+    const img = req.files.image;
+    const path = "user_img/" + flieName;
+    img.mv(path, error => {
+        if (error) {
+            console.log(error);
+            res.send(error);
+            return;
+        }
+        // if no error, send the path
+        res.send(path);
+        return;
+    });
+});
+
+// send the image stored
+app.post("/getImg", function(req, res) {
+    const imgDir = req.body.imgDir;
+    res.sendFile(__dirname + "/" + imgDir);
+    return;
+})
+
+// delete image helper function
+function deleteImg(imgDir) {
+    // check if img is stored in the server
+    if (imgDir.substring(0,9) != "user_img/") {
+        return;
+    }
+    // if img is on the server
+    fs.unlink(__dirname + "/" + imgDir + ".jpg", function(err) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log(`deleted ${imgDir}`);
+        }
+    });
+}
+
 // add recipe
 app.post("/add", async function(req, res) {
     const title = req.body.title;
@@ -264,6 +311,7 @@ async function checkRecipeExist(_id) {
 app.post("/delete", async function(req, res) {
     const username = req.body.username;
     const _id = req.body._id;
+    const imgDir = req.body.imgDir;
     // if recipe exists
     let exists = await checkRecipeExist(_id)
     .then(resolved => {return resolved})
@@ -285,6 +333,8 @@ app.post("/delete", async function(req, res) {
                 res.send(`delete failed, ${error}`);
                 return;
             });
+    // delete the image in the recipe
+    deleteImg(imgDir) ;
     res.send(`recipe ${_id} deleted`);
 });
 
@@ -307,13 +357,25 @@ app.post("/update", async function(req, res) {
         res.send("recipe doesn't exist, cannot update");
         return;
     }
-    // if recipe exists, delete from DB
+    // handle unchanged imgs
+    if (img == "original") {
+        await recipe.findByIdAndUpdate(_id, {title: title, ingredients: ingredients, servings: servings,
+                                                cookTime: cookTime, author: author, instructions: instructions, tags: tags})
+        .catch(error => {
+        res.send(`update failed, ${error}`);
+        return;
+        });
+    }
+    else {
+    // if image is also updated, update the img link
     await recipe.findByIdAndUpdate(_id, {title: title, img: img, ingredients: ingredients, servings: servings,
                                             cookTime: cookTime, author: author, instructions: instructions, tags: tags})
         .catch(error => {
-            res.send(`update failed, ${error}`);
-            return;
+        res.send(`update failed, ${error}`);
+        return;
         });
+    }
+
     res.send(`recipe ${title} updated`);
 });
 
