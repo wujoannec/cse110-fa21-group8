@@ -12,7 +12,7 @@ let result = await getOneRecipe(_id).then((resolved) => {
 });
 
 let uploadImg = document.getElementById("uploadImg");
-console.log(result);
+let recipeImg = document.getElementById("recipeImg");
 let recipeTitle = document.getElementById("title");
 recipeTitle.innerHTML = result.title;
 
@@ -195,7 +195,6 @@ removeInstruction.addEventListener("click", function () {
 });
 
 // change recipe image on upload
-let recipeImg = document.getElementById("recipeImg");
 uploadImg.addEventListener("change", function () {
   let img = uploadImg.files[0];
   if (img) {

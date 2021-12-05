@@ -10,8 +10,8 @@ export {
   favTag,
 };
 // add recipe
-const serverUrl = "https://devil-dishes.herokuapp.com/";
-// const serverUrl = "http://localhost:3000/";
+// const serverUrl = "https://devil-dishes.herokuapp.com/";
+const serverUrl = "http://localhost:3000/";
 
 /**
  * user authentication
@@ -61,6 +61,7 @@ async function saveRecipe(username, _id) {
 
 // image: the image file uploaded
 async function uploadImg(image, username, title) {
+  console.log("image passed into uploadImg: " + image);
   // if image is a string: return the link
   if (typeof image == "string") {
     return Promise.resolve(image);
@@ -69,14 +70,8 @@ async function uploadImg(image, username, title) {
   const formData = new FormData();
   let imgName = username + title + ".jpg";
   imgName = imgName.replace(/\ /g,"_");
-  // check if is blob (did not update by user, keep the current blob)
-  if (image instanceof Blob) {
-    formData.append("blob", image,  imgName);
-  }
   // if file is image
-  else {
-    formData.append("image", image,  imgName);
-  }
+  formData.append("image", image,  imgName);
   const response = await fetch(serverUrl + "saveImg", {
     method: "POST",
     body: formData,
@@ -136,10 +131,16 @@ async function addRecipe(
   instructions,
   tags
 ) {
-  // server dir to image
-  const imgDir = await uploadImg(img, username, title)
-                          .then(resolved => {return resolved});
-  // set mode automatically.
+  let imgDir;
+  // if no img is chosen
+  if (img == undefined) {
+    imgDir = "user_img/def.jpg";
+  }
+  else {
+    // server dir to image
+    imgDir = await uploadImg(img, username, title)
+      .then(resolved => {return resolved});
+  }
   const response = await fetch(serverUrl + "add", {
     method: "POST",
     headers: {
@@ -287,8 +288,16 @@ async function updateRecipe(
   tags,
   username
 ) {
-  const imgDir = await uploadImg(img, username, title)
-                        .then(resolved => {return resolved});
+  let imgDir;
+  // if user didn't update image
+  if (img == undefined) {
+    imgDir = "original";
+  }
+  else {
+    imgDir = await uploadImg(img, username, title)
+                      .then(resolved => {return resolved});
+  }
+
   // set mode automatically
   const response = await fetch(serverUrl + "update", {
     method: "POST",
