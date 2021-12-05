@@ -213,7 +213,7 @@ async function init() {
         // Check every tag on recipe to see if it matches the selected box
         names.forEach((name) => {
           selectedTags.forEach((tag) => {
-            if(tag.textContent.toLowerCase().includes(name.toLowerCase())) {
+            if(name.toLowerCase().includes(tag.textContent.toLowerCase())) {
               if(!newRecipes.includes(recipes[i])) newRecipes.push(recipes[i]);
             }
           })
