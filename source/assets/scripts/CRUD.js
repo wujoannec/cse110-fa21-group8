@@ -61,6 +61,7 @@ async function saveRecipe(username, _id) {
 
 // image: the image file uploaded
 async function uploadImg(image, username, title) {
+  console.log("image passed into uploadImg: " + image);
   // if image is a string: return the link
   if (typeof image == "string") {
     return Promise.resolve(image);
@@ -69,6 +70,7 @@ async function uploadImg(image, username, title) {
   const formData = new FormData();
   let imgName = username + title + ".jpg";
   imgName = imgName.replace(/\ /g,"_");
+  // if file is image
   formData.append("image", image,  imgName);
   const response = await fetch(serverUrl + "saveImg", {
     method: "POST",
@@ -129,10 +131,16 @@ async function addRecipe(
   instructions,
   tags
 ) {
-  // server dir to image
-  const imgDir = await uploadImg(img, username, title)
-                          .then(resolved => {return resolved});
-  // set mode automatically.
+  let imgDir;
+  // if no img is chosen
+  if (img == undefined) {
+    imgDir = "user_img/def.jpg";
+  }
+  else {
+    // server dir to image
+    imgDir = await uploadImg(img, username, title)
+      .then(resolved => {return resolved});
+  }
   const response = await fetch(serverUrl + "add", {
     method: "POST",
     headers: {
@@ -174,14 +182,22 @@ async function getRecipe(username) {
   });
   const res = await response.text();
   let resObj = JSON.parse(res);
-  // traverse each to parse the image link
-  resObj.forEach(async function(recipe) {
-      // check if the image in recipe is stored in the server(or outside link)
-  let imgBlob = await getImg(recipe.img)
-                        .then(resolve => {return resolve});
-      recipe.img = imgBlob;
-  });
-  console.log(resObj[0].img);
+  if(!(resObj.length == 0))
+  {
+
+  
+    console.log(resObj);
+
+    //if(resObj)
+    // traverse each to parse the image link
+    resObj.forEach(async function(recipe) {
+        // check if the image in recipe is stored in the server(or outside link)
+    let imgBlob = await getImg(recipe.img)
+                          .then(resolve => {return resolve});
+        recipe.img = imgBlob;
+    });
+    console.log(resObj[0].img);
+  }
   return Promise.resolve(resObj);
 }
 
@@ -272,8 +288,16 @@ async function updateRecipe(
   tags,
   username
 ) {
-  const imgDir = await uploadImg(img, username, title)
-                        .then(resolved => {return resolved});
+  let imgDir;
+  // if user didn't update image
+  if (img == undefined) {
+    imgDir = "original";
+  }
+  else {
+    imgDir = await uploadImg(img, username, title)
+                      .then(resolved => {return resolved});
+  }
+
   // set mode automatically
   const response = await fetch(serverUrl + "update", {
     method: "POST",

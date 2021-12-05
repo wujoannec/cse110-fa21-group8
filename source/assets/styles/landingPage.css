@@ -38,6 +38,10 @@ body {
   text-align: center;
 }
 
+#navLogo {
+  height: 21mm;
+}
+
 #landingImg {
   width: 100%;
   height: 54vh;

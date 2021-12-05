@@ -99,6 +99,7 @@ async function init() {
 
       // Create recipe element
       const recipe = document.createElement("img");
+      console.log(recipes[i].img);
       recipe.setAttribute("src", recipes[i].img);
       console.log("src for recipe img at line 92 in home.js: " + recipes[i].img); 
       recipe.setAttribute("width", recipeWH);
@@ -188,25 +189,20 @@ async function init() {
     fillGrid();
   }
 
-  var tagBoxes = document.querySelectorAll(".sidenav > input");
+  var tagBoxes = document.querySelectorAll(".tags > p");
   tagBoxes.forEach((element) => {
     element.addEventListener("click", () => {
       fetchRecipes(userName);
 
       let newRecipes = [];
       let recipeLength = recipes.length;
-      let selectedTags = [];
+      let selectedTags = document.querySelectorAll(".tags > .selected");
 
       // Check for no tag selection
-      if (noTagSelected(tagBoxes)) {
+      if (selectedTags.length == 0) {
         pointer = 0;
         fillGrid();
         return;
-      }
-      else {
-        tagBoxes.forEach((tagBox) => {
-          if(tagBox.checked) selectedTags.push(tagBox.value.toLowerCase());
-        });
       }
 
       // Check every tag box if it's been selected
@@ -216,24 +212,17 @@ async function init() {
 
         // Check every tag on recipe to see if it matches the selected box
         names.forEach((name) => {
-          if(selectedTags.includes(name.toLowerCase())) {
-            if(!newRecipes.includes(recipes[i])) newRecipes.push(recipes[i]);
-          }
+          selectedTags.forEach((tag) => {
+            if(name.toLowerCase().includes(tag.textContent.toLowerCase())) {
+              if(!newRecipes.includes(recipes[i])) newRecipes.push(recipes[i]);
+            }
+          })
         });
       }
 
       recipes = newRecipes;
       pointer = 0;
       fillGrid();
-
-      // Check if no tags are selected on the left panel
-      function noTagSelected(tagBoxes) {
-        for (let i = 0; i < tagBoxes.length; i++) {
-          if (tagBoxes[i].checked) return false;
-        }
-
-        return true;
-      }
     });
   });
 }
